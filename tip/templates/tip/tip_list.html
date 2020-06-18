@@ -57,7 +57,7 @@
         {% for post in post_list %}
             <div class="col-md-4">
                 <div>
-                    <div class="card text-white bg-dark mb-3">
+                    <div class="card text-white bg-light mb-3">
                         {% if post.post_pic %}
                             <a href="{% url 'tips:tip_detail' pk=post.id %}">
                             <div class="card-body">
@@ -65,7 +65,8 @@
   <source src="{{ post.post_pic.url }}" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
+                                <p class="card-text prize" style="text-align: center;"><a href="{% url 'tips:tip_detail' pk=post.id %}" style="color: white">{{ post.title }}</a></p>
+                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}" style="color: #e2c200">@{{ post.author.username }}</a></p>
                             </div>
                                             </a>
 

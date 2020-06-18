@@ -13,8 +13,15 @@
   <form method="post">
 
       {% csrf_token %}
-      <p>Estas seguro que quieres borrar " {{object}} "?</p>
-      <button type="submit" class="btn btn-danger">Borrar</button>
+      <p>¿Estás segura que quieres borrar?</p>
+      <h6>{{ object }}</h6>
+
+<video class="embed-responsive embed-responsive-16by9" width="320" height="240" controls>
+  <source src="{{ object.post_pic.url }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+      <button type="submit" class="btn btn-danger" style="margin: 5px">Borrar</button>
 
   </form>
             </div>
