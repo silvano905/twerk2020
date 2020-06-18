@@ -34,12 +34,16 @@
                     </video>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Publicar</button>
+                    <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
 
 
                 </form>
             </div>
 
+
+        <div class="alert alert-success" role="alert" style="margin: 10px; display: none" id="loadingGif">
+    <h4>Enviando Video........</h4>
+</div>
 
         <div class="alert alert-danger" role="alert" style="margin: 10px">
     <h4>Los videos submitidos se borraran automaticamente al final del concurso.</h4>
@@ -54,6 +58,15 @@
     var output = document.getElementById('output');
     output.src = URL.createObjectURL(event.target.files[0]);
   };
+
+      function showDiv() {
+  document.getElementById('loadingGif').style.display = "block";
+  setTimeout(function() {
+    document.getElementById('loadingGif').style.display = "none";
+  },200000);
+
+}
+
 </script>
 
 {% endblock %}
