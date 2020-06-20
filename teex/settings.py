@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'tip',
     'password_reset',
     'crispy_forms',
-    'bootstrap4'
+    'bootstrap4',
+
 ]
 
 MIDDLEWARE = [
@@ -85,10 +86,10 @@ WSGI_APPLICATION = 'teex.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodatabase',
-        'USER': 'silvano',
-        'PASSWORD': 'Realmadrid90',
-        'HOST': 'localhost',
+        'NAME': 'djangodata',
+        'USER': 'silvanotwo',
+        'PASSWORD': 'Arsenal90',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
