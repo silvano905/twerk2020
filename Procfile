@@ -1,1 +1,1 @@
-web: gunicorn twerk2020.wsgi
+web: gunicorn twerk2020/teex.wsgi
