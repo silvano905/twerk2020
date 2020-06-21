@@ -1,1 +1,1 @@
-web: gunicorn django_project.wsgi
+web: gunicorn twerk2020.wsgi
