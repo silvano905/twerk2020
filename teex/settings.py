@@ -28,7 +28,7 @@ SECRET_KEY = os.environ['MY_KEY_TWERK']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ruiz90.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ruiz90.pythonanywhere.com', '127.0.0.1', 'www.concurso2020twerk.com']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'password_reset',
     'crispy_forms',
     'bootstrap4',
+    'storages'
 
 ]
 
@@ -132,8 +133,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIR = [STATIC_DIR]
-STATIC_ROOT = 'accounts/static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts/static')
+]
+# STATIC_ROOT = 'accounts/static'
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
@@ -149,6 +152,16 @@ EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
 EMAIL_POST = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'from Silbere'
+
+AWS_ACCESS_KEY_ID = 'AKIAYGNXF4TM2QRMYZ6M'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'twerk-django'
+# AWS_S3_REGION_NAME = 'us-east-2'
+# AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
