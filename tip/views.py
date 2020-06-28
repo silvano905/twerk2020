@@ -12,8 +12,8 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
-
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 User = get_user_model()
 
@@ -28,7 +28,17 @@ def crate_tip(request):
         if form.is_valid():
             user_tip = form.save(commit=False)
             user_tip.author = request.user
+
+            url_pic = form.cleaned_data['post_pict_link']
+
             form.save(commit=True)
+
+
+            msg_contra = url_pic
+
+            send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
+                      fail_silently=False)
+
             return redirect('tips:gracias')
         else:
             form = MakePostForm()
