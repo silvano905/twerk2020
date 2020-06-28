@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="758d0744-16e8-49d4-92e9-e6471b303945" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/migrations/0002_auto_20200628_1148.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/migrations/0003_auto_20200628_1155.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/migrations/0004_auto_20200628_1340.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" afterDir="false" />
@@ -13,13 +10,7 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/_tip.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/_tip.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/maketip_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/maketip_confirm_delete.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/templates/tip/maketip_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/maketip_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
