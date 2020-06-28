@@ -17,7 +17,7 @@
 {#                                <img class="card-img-top silvano" src="{{ post.post_pic.url }}" alt="Card image cap">#}
 
                                     <video class="embed-responsive embed-responsive-16by9" width="320" height="240" controls>
-                                      <source src="{{ post.post_pic.url }}" type="video/mp4">
+                                      <source src="{{ post.post_pic }}" type="video/mp4">
                                       Your browser does not support the video tag.
                                     </video>
                                 <div class="card-body">
@@ -45,7 +45,10 @@
                             {% else %}
                                 <div class="card-body">
                                     <p class="text-center"><a href="{% url 'tips:tip_detail' pk=post.id %}">{{ post.title }}</a></p>
-                                    <p class="card-text">{{ post.post_info_summary }}</p>
+                                                                <div class="alert alert-primary" role="alert">
+                                    Video se está calificando. En unos 10 minutos aparecerá tu video aquí.
+                                                                </div>
+
                                     <p class="card-text">Publicado en: {{post.created_date|date:"D M Y"}}</p>
                                     <div class="card-text">
                                         <div class="btn-group" role="group" aria-label="Basic example">

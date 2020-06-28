@@ -18,20 +18,8 @@
 
                     <a class="nav-link" href="{% url 'tips:reglas'%}" style="  background-color: rgba(218,61,48,0.77);color: white;padding: 1em 1.5em;text-decoration: none;border-radius: 5px;margin: 5px;text-transform: uppercase;">Reglas & Puntuación</a>
 
-                        <p style="color: white">Nombre: {{ form.title }}</p>
-
-
-                            <label style="color: white">Imagen</label>
-                        <p style="color: green">Presiona el botton "Choose file" de abajo para enviar video</p>
-        {#                    <input type="file" accept="image/*" onchange="loadFile(event)" value="{{ form.post_pic }}">#}
-                            <p onchange="loadFile(event)">{{ form.post_pic }}</p>
-                    </div>
-                    <div class="form-row">
-
-                    <video id="output" width="320" height="240" controls>
-                      <source type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
+                        <p style="color: white">Nombre de Video: {{ form.title }}</p>
+                        <p style="color: white">Enlace de Video: {{ form.post_pict_link }}</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
@@ -39,11 +27,6 @@
 
                 </form>
             </div>
-
-
-        <div class="alert alert-success" role="alert" style="margin: 10px; display: none" id="loadingGif">
-    <h4>Enviando Video........</h4>
-</div>
 
         <div class="alert alert-danger" role="alert" style="margin: 10px">
     <h4>Los videos submitidos se borraran automaticamente al final del concurso.</h4>

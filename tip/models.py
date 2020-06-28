@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 class MakeTip(models.Model):
     author = models.ForeignKey(User, related_name='tips', on_delete=models.CASCADE)
     title = models.CharField(max_length=63)
-    post_pic = models.FileField(upload_to='media', blank=True, help_text='Selecciona video')
+    post_pict_link = models.TextField(null=True)
+    post_pic = models.URLField(null=True)
     creativity = models.IntegerField(default=0, null=True)
     sexy = models.IntegerField(default=0, null=True)
     quality = models.IntegerField(default=0, null=True)
@@ -28,6 +29,9 @@ class MakeTip(models.Model):
 
     def total_outfit(self):
         return self.outfit
+
+    def text_url(self):
+        return self.post_pic
 
 
     # def post_info_summary(self):

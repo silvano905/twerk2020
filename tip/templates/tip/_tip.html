@@ -7,10 +7,13 @@
     {% if post.post_pic %}
 
         <video class="embed-responsive embed-responsive-16by9" width="320" height="240" controls>
-          <source src="{{ post.post_pic.url }}" type="video/mp4">
+          <source src="{{ post.post_pic }}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-
+    {% else %}
+        <div class="alert alert-primary" role="alert" style="text-align: center">
+                                    Video se está calificando. En unos 10 minutos aparecerá tu video aquí.
+        </div>
     {% endif %}
         <div class="card-body">
 
