@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" filepath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" filepath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" />
       <module fileurl="file://$PROJECT_DIR$/../meex/.idea/meex.iml" filepath="$PROJECT_DIR$/../meex/.idea/meex.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/teex.iml" filepath="$PROJECT_DIR$/.idea/teex.iml" />

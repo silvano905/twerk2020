@@ -20,6 +20,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="meex" />
     <orderEntry type="module" module-name="chicagobusiness" />
+    <orderEntry type="module" module-name="buensexo_web" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
