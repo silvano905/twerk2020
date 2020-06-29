@@ -10,9 +10,7 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teex/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/teex/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/password_reset_confirm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/migrations/0001_initial.py" beforeDir="false" />
@@ -120,7 +118,7 @@
       <workItem from="1592960924965" duration="1740000" />
       <workItem from="1593012085775" duration="4450000" />
       <workItem from="1593390250171" duration="2557000" />
-      <workItem from="1593447536244" duration="859000" />
+      <workItem from="1593447536244" duration="1488000" />
     </task>
     <servers />
   </component>
