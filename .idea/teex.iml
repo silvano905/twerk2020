@@ -21,6 +21,7 @@
     <orderEntry type="module" module-name="meex" />
     <orderEntry type="module" module-name="chicagobusiness" />
     <orderEntry type="module" module-name="buensexo_web" />
+    <orderEntry type="module" module-name="stripeapp" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

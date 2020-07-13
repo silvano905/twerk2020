@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" filepath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" filepath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" />
       <module fileurl="file://$PROJECT_DIR$/../meex/.idea/meex.iml" filepath="$PROJECT_DIR$/../meex/.idea/meex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../stripeapp/.idea/stripeapp.iml" filepath="$PROJECT_DIR$/../stripeapp/.idea/stripeapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/teex.iml" filepath="$PROJECT_DIR$/.idea/teex.iml" />
     </modules>
   </component>

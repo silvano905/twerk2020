@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from tip import views
-
+from django.urls import path
 
 app_name = 'tips'
 
@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^like/$', views.like_tip, name='like_tip'),
     url(r'^down/$', views.down_tip, name='down_tip'),
     url(r'^warning', views.CreateProfileBeforeSearch.as_view(), name='createprofilebeforeview'),
-
+    url('^stripe/$', views.index, name="stripe"),
+    url('charge/', views.charge, name="charge"),
+    path('success/<str:args>/', views.successMsg, name="success")
 ]
