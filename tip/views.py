@@ -32,15 +32,26 @@ def crate_tip(request):
             user_tip = form.save(commit=False)
             user_tip.author = request.user
 
-            url_pic = form.cleaned_data['post_pict_link']
+            one = form.cleaned_data['one']
+            two = form.cleaned_data['two']
+            three = form.cleaned_data['three']
+            four = form.cleaned_data['four']
+            five = form.cleaned_data['five']
+            six = form.cleaned_data['six']
+            seven = form.cleaned_data['seven']
+            eight = form.cleaned_data['eight']
+            nine = form.cleaned_data['nine']
 
+            user_tip.all_choices = one + two + three + four + five + six + seven + eight + nine
+
+            print(user_tip.all_choices)
             form.save(commit=True)
 
 
-            msg_contra = url_pic
-
-            send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
-                      fail_silently=False)
+            # msg_contra = url_pic
+            #
+            # send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
+            #           fail_silently=False)
 
             return redirect('tips:gracias')
         else:
@@ -130,6 +141,7 @@ class TipUpdateView(UpdateView, LoginRequiredMixin):
     form_class = MakePostForm
     success_url = reverse_lazy('tips:list')
     model = MakeTip
+    template_name = 'tip/maketipupdate.html'
 
 
 class TipDeleteView(DeleteView, LoginRequiredMixin):
@@ -158,35 +170,63 @@ class UserTips(ListView, LoginRequiredMixin):
 
 
 def tips_list_search(request):
-    notificaciones = 'none'
-    if request.user.is_anonymous:
-        pass
+    queryset = MakeTip.objects.all()
 
-    queryset_list = '?'
-    if request.method == 'GET':
-        sku = request.GET.get('populares')
-        sku2 = request.GET.get('comentadas')
-        sku3 = request.GET.get('recientes')
+    nine_points_list = []
+    eight_points_list = []
+    seven_points_list = []
+    six_points_list = []
+    five_points_list = []
+    four_points_list = []
+    three_points_list = []
+    two_points_list = []
+    one_point_list = []
+    zero_points_list = []
 
-        if sku:
-            queryset_list = MakeTip.objects.annotate(like_count=Count('likes')).order_by('-like_count')
-        elif sku2:
-            queryset_list = MakeTip.objects.annotate(comment_count=Count('comments')).order_by('-comment_count')
-        else:
-            queryset_list = MakeTip.objects.all().order_by('-created_date')
+    nine_points = 'LEEVEVELE'
+    eight_points = 'LEEVEVEL'
+    seven_points = 'LEEVEVE'
+    six_points = 'LEEVEV'
+    five_points = 'LEEVE'
+    four_points = 'LEEV'
+    three_points = 'LEE'
+    two_points = 'LV'
+    one_point = 'V'
 
-    query = request.GET.get('q')
-    if query is not None:
-        queryset_list = queryset_list.filter(Q(title__icontains=query) | Q(info__icontains=query))
-
-    paginator = Paginator(queryset_list, 36)    # Show 25 contacts per page
-
-    page = request.GET.get('page')
-    queryset = paginator.get_page(page)
+    for i in queryset:
+        if i.all_choices[0] != one_point:
+            zero_points_list.append(i)
+        if i.all_choices[0:1] == one_point:
+            one_point_list.append(i)
+        if i.all_choices[0:2] == two_points:
+            two_points_list.append(i)
+        if i.all_choices[0:3] == three_points:
+            three_points_list.append(i)
+        if i.all_choices[0:4] == four_points:
+            four_points_list.append(i)
+        if i.all_choices[0:5] == five_points:
+            five_points_list.append(i)
+        if i.all_choices[0:6] == six_points:
+            six_points_list.append(i)
+        if i.all_choices[0:7] == seven_points:
+            seven_points_list.append(i)
+        if i.all_choices[0:8] == eight_points:
+            eight_points_list.append(i)
+        if i.all_choices == nine_points:
+            nine_points_list.append(i)
 
     context = {
-        'notifications_list': notificaciones,
-        "post_list": queryset
+        "post_list": queryset,
+        "nine_list": nine_points_list,
+        "eight_list": eight_points_list,
+        "seven_list": seven_points_list,
+        "five_list": five_points_list,
+        "four_list": four_points_list,
+        "three_list": three_points_list,
+        "two_list": two_points_list,
+        "one_list": one_point_list,
+        "zero_list": zero_points_list,
+        "six_list": six_points_list
     }
     return render(request, 'tip/tip_list.html', context)
 

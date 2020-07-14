@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% block body_block %}
+
+    <div class="jumbotron" style="text-align: center">
+
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Terminé de cambiar</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

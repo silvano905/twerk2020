@@ -1,24 +1,32 @@
 from django import forms
 from .models import MakeTip
 from django.forms import Textarea, TextInput, ImageField
-
+from django.utils.translation import ugettext_lazy as _
 
 class MakePostForm(forms.ModelForm):
-    creativity = forms.IntegerField(required=False)
-    sexy = forms.IntegerField(required=False)
-    quality = forms.IntegerField(required=False)
-    outfit = forms.IntegerField(required=False)
-    post_pict_link = forms.Textarea(attrs={'placeholder': 'Please enter the  description'})
-    post_pic = forms.URLField(required=False)
+    CHOICES = (
+        ('', 'seleciona aqui'),
+        ('L', 'L'),
+        ('E', 'E'),
+        ('V', 'V'),
+    )
+    one = forms.CharField(widget=forms.Select(choices=CHOICES), label='Chivas vs América', required=True)
+    two = forms.CharField(widget=forms.Select(choices=CHOICES), label='Monterrey vs Cruz Azul', required=True)
+    three = forms.CharField(widget=forms.Select(choices=CHOICES), label='León vs Santos', required=True)
+    four = forms.CharField(widget=forms.Select(choices=CHOICES), label='Pumas vs Tigres', required=True)
+    five = forms.CharField(widget=forms.Select(choices=CHOICES), label='FC Juárez vs Morelia', required=True)
+    six = forms.CharField(widget=forms.Select(choices=CHOICES), label='Puebla vs Pachuca', required=True)
+    seven = forms.CharField(widget=forms.Select(choices=CHOICES), label='Querétaro vs Atlético de San Luis', required=True)
+    eight = forms.CharField(widget=forms.Select(choices=CHOICES), label='Necaxa vs Toluca', required=True)
+    nine = forms.CharField(widget=forms.Select(choices=CHOICES), label='Club Tijuana vs Atlas', required=True)
+
 
     class Meta:
         model = MakeTip
-        fields = ['post_pic', 'title', 'creativity', 'sexy', 'quality', 'outfit', 'post_pict_link']
-        labels = {
-            'post_pic': 'Selecciona video'
-        }
+        fields = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
-        widgets = {
-            'title': TextInput(attrs={'class': 'form-control'}),
-            'post_pict_link': TextInput(attrs={'class': 'form-control'}),
-        }
+
+
+        # widgets = {
+        #     'one': TextInput(attrs={'class': 'jj'}),
+        # }

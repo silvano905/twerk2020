@@ -12,44 +12,31 @@
     <div class="container">
             <div class="d-flex justify-content-center">
 
+                <div class="jumbotron">
+
                 <form action="{% url 'tips:create_tip'%}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div>
+                        <label for="cars">Chivas vs América: {{ form.one }}</label>
+                        <label for="cars">Monterrey vs Cruz Azul: {{ form.two }}</label>
+                        <label for="cars">León vs Santos: {{ form.three }}</label>
+                        <label for="cars">Pumas vs Tigres: {{ form.four }}</label>
+                        <label for="cars">FC Juárez vs Morelia: {{ form.five }}</label>
+                        <label for="cars">Puebla vs Pachuca: {{ form.six }}</label>
+                        <label for="cars">Club Querétaro vs Atlético de San Luis: {{ form.seven }}</label>
+                        <label for="cars">Necaxa vs Toluca: {{ form.eight }}</label>
+                        <label for="cars">Club Tijuana vs Atlas: {{ form.nine }}</label>
 
-                    <a class="nav-link" href="{% url 'tips:reglas'%}" style="  background-color: rgba(218,61,48,0.77);color: white;padding: 1em 1.5em;text-decoration: none;border-radius: 5px;margin: 5px;text-transform: uppercase;">Reglas & Puntuación</a>
 
-
-                        <div class="alert alert-primary" role="alert">
-                          Revisar reglas & puntuación antes de enviar video
-                        </div>
-
-
-                        <p style="color: white">Nombre de Video: {{ form.title }}</p>
-
-                        <div class="jumbotron">
-                        <h5>Pasos para enviar video</h5>
-                        <h6>1. Bajar la aplicacion MEGA en Android/ios</h6>
-                            <img src="https://twerk-django.s3.us-east-2.amazonaws.com/media/megaapp.png" alt="" style="width: 150px">
-                        <h6>2. Mirar el siguiente video para ver cómo se sube un video a la app MEGA</h6>
-                            <video width="320" height="240" controls>
-                              <source src="https://twerk-django.s3.us-east-2.amazonaws.com/media/firstvid.mp4" type="video/mp4">
-                              Your browser does not support the video tag.
-                            </video>
-                        <h6>3. Mirar el siguiente video para ver cómo se envia el enlace del video</h6>
-
-                            <video width="320" height="240" controls>
-                              <source src="https://twerk-django.s3.us-east-2.amazonaws.com/media/secondvid.mp4" type="video/mp4">
-                              Your browser does not support the video tag.
-                            </video>
-                        </div>
-
-                        <p style="color: white">Enlace de Video: {{ form.post_pict_link }}</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
 
 
                 </form>
+
+                    </div>
+
             </div>
 
         <div class="alert alert-danger" role="alert" style="margin: 10px">
