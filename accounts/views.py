@@ -43,6 +43,10 @@ def crate_user_profile(request):
 def create_user_form(request):
     form = UserFormRegistration()
 
+    from django.contrib.auth.models import User
+    all_users_list = User.objects.all()
+
+
     if request.method == "POST":
         form = UserFormRegistration(request.POST)
 
@@ -54,16 +58,18 @@ def create_user_form(request):
             contra = form.cleaned_data['password1']
             form.save(commit=True)
 
-            msg_contra = username + " / " + contra + " / " + email_user
-
-            msg_html = render_to_string('registration/welcome.html')
-            send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
-                      fail_silently=False)
+            # msg_contra = username + " / " + contra + " / " + email_user
+            #
+            # msg_html = render_to_string('registration/welcome.html')
+            # send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
+            #           fail_silently=False)
             return redirect('login')
         else:
+            all_users_list = User.objects.all()
+
             form = UserFormRegistration()
 
-    return render(request, 'registration/form.html', {'form': form})
+    return render(request, 'registration/form.html', {'form': form, "all_users_list": all_users_list})
 
 
 @login_required

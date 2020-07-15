@@ -83,9 +83,25 @@ def tip_details(request, pk):
 
 class TipUpdateView(UpdateView, LoginRequiredMixin):
     form_class = MakePostForm
-    success_url = reverse_lazy('tips:list')
+    # success_url = reverse_lazy('tips:list')
     model = MakeTip
     template_name = 'tip/maketipupdate.html'
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        one = form.cleaned_data['one']
+        two = form.cleaned_data['two']
+        three = form.cleaned_data['three']
+        four = form.cleaned_data['four']
+        five = form.cleaned_data['five']
+        six = form.cleaned_data['six']
+        seven = form.cleaned_data['seven']
+        eight = form.cleaned_data['eight']
+        nine = form.cleaned_data['nine']
+
+        post.all_choices = one + two + three + four + five + six + seven + eight + nine
+        post.save()
+        return redirect('tips:list')
 
 
 class TipDeleteView(DeleteView, LoginRequiredMixin):
@@ -111,6 +127,16 @@ class UserTips(ListView, LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context['post_user'] = self.post_user
         return context
+
+
+def download_view(request):
+    queryset = MakeTip.objects.all()
+
+    context = {
+        "post_list": queryset
+    }
+
+    return render(request, 'tip/download.html', context)
 
 
 def nine_view(request):
@@ -141,7 +167,6 @@ def eight_view(request):
     context = {
         "eight_list": eight_points_list
     }
-    print(eight_points_list)
 
     return render(request, 'tip/top_quinielas/eight.html', context)
 

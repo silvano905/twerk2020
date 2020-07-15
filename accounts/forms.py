@@ -6,6 +6,9 @@ from django.forms import Textarea, TextInput
 
 
 class UserFormRegistration(UserCreationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': "inputPassword"}), max_length=40, label="Nombre")
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': "inputemail"}), max_length=60, label="Dirección de correo electrónico")
+
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')

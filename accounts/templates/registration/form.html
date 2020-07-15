@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 {% extends 'main.html' %}
 {% load bootstrap4 %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
     <div class="container">
         <div class="jumbotron">
 
-
     <form method="post" enctype="multipart/form-data">
 
         <p class="text-center">Por favor registrate</p>
+
+        <div id="alertme" class="alert alert-danger" role="alert" style="display: none"></div>
+        <div id="alertme_email" class="alert alert-warning" role="alert" style="display: none"></div>
         {% csrf_token %}
 
         {% bootstrap_form form %}
-
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary" id="submithide">Registrar</button>
 
     </form>
 
@@ -29,5 +31,67 @@
 
         </div>
     </div>
+
+
+    <script>
+
+    {# for unsername #}
+        const getInput = document.querySelector('.inputPassword');
+        const alert_me = document.getElementById('alertme');
+        const all_users = [];
+        {% for b in all_users_list %}
+            all_users.push('{{ b }}');
+        {% endfor %}
+
+
+        getInput.onfocusout = function() {
+            let input_value = getInput.value;
+            let boolean = all_users.includes(input_value);
+            if(boolean){
+                alert_me.textContent = "Este nombre de usuario fue tomado por otro persona, elija otro nombre";
+                alert_me.style.display = 'block';
+                document.getElementById('submithide').disabled = true;
+            }else {
+                alert_me.style.display = 'none';
+                const alert_me_email_signal = document.getElementById('alertme_email').style.display;
+                if(alert_me_email_signal === 'none'){
+                    document.getElementById('submithide').disabled = false;
+                }else {
+                    document.getElementById('submithide').disabled = true;
+                }
+
+            }
+        };
+
+
+    {# for email #}
+        const getInputEmail = document.querySelector('.inputemail');
+        const alert_me_email = document.getElementById('alertme_email');
+        const all_users_email = [];
+        {% for z in all_users_list %}
+            all_users_email.push('{{ z.email }}');
+        {% endfor %}
+
+
+        getInputEmail.onfocusout = function() {
+            let input_value_email = getInputEmail.value;
+            let boolean_email = all_users_email.includes(input_value_email);
+            if(boolean_email) {
+                alert_me_email.textContent = "Este correo electrónico ya fue registrado por otro usuario, elija otro correo electrónico";
+                alert_me_email.style.display = 'block';
+                document.getElementById('submithide').disabled = true;
+            }else {
+                alert_me_email.style.display = 'none';
+                const alert_me_signal = document.getElementById('alertme').style.display;
+                if(alert_me_signal === 'none'){
+                    document.getElementById('submithide').disabled = false;
+                }else {
+                    document.getElementById('submithide').disabled = true;
+                }
+
+            }
+        };
+
+    </script>
 
 {% endblock %}

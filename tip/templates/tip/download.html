@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% block body_block %}
+
+        <div class="jumbotron">
+        <div class="row">
+            {% for post in post_list %}
+                <div class="col-md-4">
+                    <div>
+
+                        {% if user.is_authenticated and post.author == user %}
+                        <div class="card text-black bg-warning mb-3">
+                        {% else %}
+                        <div class="card text-black bg-light mb-3">
+                        {% endif %}
+
+                            <div class="card-body">
+
+                                <p>{{ post.all_choices }} - {{ post.author.username }} -Numero de Identificacion {{ post.pk }}</p>
+
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">@{{ post.author.username }}</li>#}
+{#                                  <li class="list-group-item">Numero de identificacion# {{ post.pk }}</li>#}
+{#                                  <li class="list-group-item">{{ post.one }} - Chivas vs América</li>#}
+{#                                </ul>#}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.two }} - Monterrey vs Cruz Azul</li>#}
+{#                                </ul>#}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.three }} - León vs Santos</li>#}
+{#                                </ul>#}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.four }} - Pumas vs Tigres</li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.five }} - Juárez vs Morelia</li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.six }} - Puebla vs Pachuca</li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.seven }} - Querétaro vs San Luis</li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.eight }} - Necaxa vs Toluca</li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                                <ul class="list-group">#}
+{#                                  <li class="list-group-item">{{ post.nine }} - Tijuana vs Atlas</li>#}
+{#                                </ul>#}
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+        </div>
+        </div>
+
+{% endblock %}
