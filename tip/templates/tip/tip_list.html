@@ -20,22 +20,23 @@
 <h5 style="text-align: center">Quinielas con mejor puntuacion</h5>
 <div class="container">
   <div class="row">
-    <div class="col col-4 col-md-3"><a href="">9 puntos</a></div>
-    <div class="col col--4 col-md-3"><a href="">8 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">7 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">6 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">5 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">4 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">3 puntos</a></div>
-    <div class="col col-4 col-md-3"><a href="">2 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:nine' %}">9 puntos</a></div>
+    <div class="col col--4 col-md-3"><a href="{% url 'tips:eight' %}">8 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:seven' %}">7 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:six' %}">6 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:five' %}">5 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:four' %}">4 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:three' %}">3 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:two' %}">2 puntos</a></div>
+    <div class="col col-4 col-md-3"><a href="{% url 'tips:one' %}">1 puntos</a></div>
   </div>
 </div>
 </div>
 
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">9 Puntos</h1>
+
+    <div class="jumbotron">
         <div class="row">
-            {% for post in nine_list %}
+            {% for post in post_list %}
                 <div class="col-md-4">
                     <div>
 
@@ -120,815 +121,908 @@
         </div>
         </div>
 
+
+
+
+
+<div>
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">9 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in nine_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {#  9  #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">8 Puntos</h1>
-        <div class="row">
-            {% for post in eight_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">8 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in eight_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {#  3  #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">7 Puntos</h1>
-        <div class="row">
-            {% for post in seven_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">7 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in seven_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {# 6 #}
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">6 Puntos</h1>
-        <div class="row">
-            {% for post in six_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">6 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in six_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {# 5 #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">5 Punto</h1>
-        <div class="row">
-            {% for post in five_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">5 Punto</h1>#}
+{#        <div class="row">#}
+{#            {% for post in five_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {# 4 #}
-
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">4 Puntos</h1>
-        <div class="row">
-            {% for post in four_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">4 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in four_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {#  3  #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">3 Puntos</h1>
-        <div class="row">
-            {% for post in three_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">3 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in three_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {#   2 #}
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">2 Puntos</h1>
-        <div class="row">
-            {% for post in two_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">2 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in two_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {# 1 #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">1 Punto</h1>
-        <div class="row">
-            {% for post in one_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">1 Punto</h1>#}
+{#        <div class="row">#}
+{#            {% for post in one_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+{##}
 {# 0 #}
-
-        <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">0 Puntos</h1>
-        <div class="row">
-            {% for post in zero_list %}
-                <div class="col-md-4">
-                    <div>
-
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
-
-                            <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>
-                                      <button type="button" class="btn btn-secondary">2 - 2</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>
-                                      <button type="button" class="btn btn-secondary">1 - 1</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">León vs Santos</button>
-                                      <button type="button" class="btn btn-secondary"> - </button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>
-                                      <button type="button" class="btn btn-secondary">0 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>
-                                      <button type="button" class="btn btn-secondary">4 - 2</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>
-                                      <button type="button" class="btn btn-secondary">0 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>
-                                      <button type="button" class="btn btn-secondary">2 - 3</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>
-                                      <button type="button" class="btn btn-secondary">0 - 0</button>
-                                    </div>  </li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
-
+{##}
+{#        <div class="jumbotron">#}
+{#        <h1 class="display-4" style="text-align: center">0 Puntos</h1>#}
+{#        <div class="row">#}
+{#            {% for post in zero_list %}#}
+{#                <div class="col-md-4">#}
+{#                    <div>#}
+{##}
+{#                        {% if user.is_authenticated and post.author == user %}#}
+{#                        <div class="card text-black bg-warning mb-3">#}
+{#                        {% else %}#}
+{#                        <div class="card text-black bg-light mb-3">#}
+{#                        {% endif %}#}
+{##}
+{#                            <div class="card-body">#}
+{#                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>#}
+{##}
+{#                                <ul class="list-group list-group-horizontal-sm">#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Chivas vs América</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 2</button>#}
+{#                                    </div>#}
+{#                                  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Monterrey vs Cruz Azul</button>#}
+{#                                      <button type="button" class="btn btn-secondary">1 - 1</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">León vs Santos</button>#}
+{#                                      <button type="button" class="btn btn-secondary"> - </button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Pumas vs Tigres</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">FC Juárez vs Morelia</button>#}
+{#                                      <button type="button" class="btn btn-secondary">4 - 2</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Puebla vs Pachuca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Querétaro vs San Luis</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Necaxa vs Toluca</button>#}
+{#                                      <button type="button" class="btn btn-secondary">2 - 3</button>#}
+{#                                    </div>  </li>#}
+{#                                  <li class="list-group-item">#}
+{#                                      <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>#}
+{#                                      <button type="button" class="btn btn-secondary">Tijuana vs Atlas</button>#}
+{#                                      <button type="button" class="btn btn-secondary">0 - 0</button>#}
+{#                                    </div>  </li>#}
+{#                                </ul>#}
+{##}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        </div>#}
+</div>
 
 
 

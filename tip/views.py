@@ -60,12 +60,6 @@ def crate_tip(request):
     return render(request, 'tip/maketip_form.html', {'form': form})
 
 
-
-@login_required
-def reglas_view(request):
-    return render(request, 'tip/reglas.html')
-
-
 @login_required
 def tip_details(request, pk):
     post = get_object_or_404(MakeTip, pk=pk)
@@ -85,56 +79,6 @@ def tip_details(request, pk):
         # 'comment_list': Comment.objects.all().order_by('-created_date')
     }
     return render(request, 'tip/tip_detail.html', context)
-
-
-@login_required
-def like_tip(request):
-    all_tipsx = MakeTip.objects.filter(author__exact=request.user)
-    pksx = MakeTip.objects.filter(author__exact=request.user).values_list('id', flat=True)
-
-    def appendTest(x):
-        theList = []
-        for i in x:
-            theList.append(i)
-        return theList
-
-    to_be_deleted = []
-    spp = appendTest(pksx)
-    while spp:
-        s2 = all_tipsx.get(pk=spp[-1])
-        s3 = s2.total_down_votes()
-        if s3 >= 105:
-            to_be_deleted.append(s2.pk)
-        spp.pop()
-    for x in to_be_deleted:
-        MakeTip.objects.filter(author__exact=request.user).get(pk=x).delete()
-
-    is_liked = False
-    tip = get_object_or_404(MakeTip, id=request.POST.get('post_id'))
-    membership = LikeUserList.objects.filter(user=request.user, post=tip.pk)
-    if membership:
-        membership.delete()
-        is_liked = False
-
-    else:
-        LikeUserList.objects.create(user=request.user, post=tip)
-        is_liked = True
-    return redirect(tip.get_absolute_url())
-
-
-@login_required
-def down_tip(request):
-    is_down = False
-    tip = get_object_or_404(MakeTip, id=request.POST.get('post_id'))
-    membership = DownVoteUserList.objects.filter(user=request.user, post=tip.pk)
-    if membership:
-        membership.delete()
-        is_down = False
-
-    else:
-        DownVoteUserList.objects.create(user=request.user, post=tip)
-        is_down = True
-    return redirect(tip.get_absolute_url())
 
 
 class TipUpdateView(UpdateView, LoginRequiredMixin):
@@ -167,6 +111,150 @@ class UserTips(ListView, LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context['post_user'] = self.post_user
         return context
+
+
+def nine_view(request):
+    queryset = MakeTip.objects.all()
+    nine_points_list = []
+    nine_points = 'LEEVEVELE'
+
+    for i in queryset:
+        if i.all_choices == nine_points:
+            nine_points_list.append(i)
+
+    context = {
+        "nine_list": nine_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/nine.html', context)
+
+
+def eight_view(request):
+    queryset = MakeTip.objects.all()
+    eight_points_list = []
+    eight_points = 'LEEVEVEL'
+
+    for i in queryset:
+        if i.all_choices[0:8] == eight_points:
+            eight_points_list.append(i)
+
+    context = {
+        "eight_list": eight_points_list
+    }
+    print(eight_points_list)
+
+    return render(request, 'tip/top_quinielas/eight.html', context)
+
+
+def seven_view(request):
+    queryset = MakeTip.objects.all()
+    seven_points_list = []
+    seven_points = 'LEEVEVE'
+
+    for i in queryset:
+        if i.all_choices[0:7] == seven_points:
+            seven_points_list.append(i)
+
+    context = {
+        "seven_list": seven_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/seven.html', context)
+
+def six_view(request):
+    queryset = MakeTip.objects.all()
+    six_points_list = []
+    six_points = 'LEEVEV'
+
+    for i in queryset:
+        if i.all_choices[0:6] == six_points:
+            six_points_list.append(i)
+
+    context = {
+        "six_list": six_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/six.html', context)
+
+
+def five_view(request):
+    queryset = MakeTip.objects.all()
+    five_points_list = []
+    five_points = 'LEEVE'
+
+    for i in queryset:
+        if i.all_choices[0:5] == five_points:
+            five_points_list.append(i)
+
+    context = {
+        "five_list": five_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/five.html', context)
+
+
+def four_view(request):
+    queryset = MakeTip.objects.all()
+    four_points_list = []
+    four_points = 'LEEV'
+
+    for i in queryset:
+        if i.all_choices[0:4] == four_points:
+            four_points_list.append(i)
+
+    context = {
+        "four_list": four_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/four.html', context)
+
+
+def three_view(request):
+    queryset = MakeTip.objects.all()
+    three_points_list = []
+    three_points = 'LEE'
+
+    for i in queryset:
+        if i.all_choices[0:3] == three_points:
+            three_points_list.append(i)
+
+    context = {
+        "three_list": three_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/three.html', context)
+
+
+def two_view(request):
+    queryset = MakeTip.objects.all()
+    two_points_list = []
+    two_points = 'LV'
+
+    for i in queryset:
+        if i.all_choices[0:2] == two_points:
+            two_points_list.append(i)
+
+    context = {
+        "two_list": two_points_list
+    }
+
+    return render(request, 'tip/top_quinielas/two.html', context)
+
+
+def one_view(request):
+    queryset = MakeTip.objects.all()
+    one_point_list = []
+    one_point = 'V'
+
+    for i in queryset:
+        if i.all_choices[0:1] == one_point:
+            one_point_list.append(i)
+
+    context = {
+        "one_list": one_point_list
+    }
+
+    return render(request, 'tip/top_quinielas/one.html', context)
 
 
 def tips_list_search(request):
@@ -239,11 +327,6 @@ def request_services(request):
     return render(request, 'tip/gracias.html')
 
 
-
-
-
-
-
 stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcCjIJGddtE9hbhsCzUaOJ5EmwuNNeEWoYC1Xf003Kwq0IBk"
 
 
@@ -278,36 +361,5 @@ def charge(request):
 def successMsg(request, args):
     amount = args
     return render(request, 'tip/stripe/success.html', {'amount': amount})
-
-
-
-
-
-# class tips_list_search(TemplateView, LoginRequiredMixin):
-#     login_url = '/login/'
-#     template_name = 'tip/tip_list.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         queryset_list = MakeTip.objects.all()
-#
-#         query = self.request.GET.get('q')
-#         if query is not None:
-#             queryset_list = queryset_list.filter(Q(title__icontains=query) | Q(info__icontains=query))
-#
-#         paginator = Paginator(queryset_list, 36)    # Show 25 contacts per page
-#
-#         page = self.request.GET.get('page')
-#         queryset = paginator.get_page(page)
-#
-#         ss = self.request.GET
-#         print(ss)
-#         context = {
-#             "post_list": queryset
-#         }
-#         return context
-
-
-
 
 
