@@ -16,19 +16,22 @@
 
                 <form action="{% url 'tips:create_tip'%}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div>
-                        <label for="cars">Chivas vs América: {{ form.one }}</label>
-                        <label for="cars">Monterrey vs Cruz Azul: {{ form.two }}</label>
-                        <label for="cars">León vs Santos: {{ form.three }}</label>
-                        <label for="cars">Pumas vs Tigres: {{ form.four }}</label>
-                        <label for="cars">FC Juárez vs Morelia: {{ form.five }}</label>
-                        <label for="cars">Puebla vs Pachuca: {{ form.six }}</label>
-                        <label for="cars">Club Querétaro vs Atlético de San Luis: {{ form.seven }}</label>
-                        <label for="cars">Necaxa vs Toluca: {{ form.eight }}</label>
-                        <label for="cars">Club Tijuana vs Atlas: {{ form.nine }}</label>
 
+                            {% bootstrap_form form %}
 
-                    </div>
+{#                    <div>#}
+{#                        <label for="cars">Chivas vs América: {{ form.one }}</label>#}
+{#                        <label for="cars">Monterrey vs Cruz Azul: {{ form.two }}</label>#}
+{#                        <label for="cars">León vs Santos: {{ form.three }}</label>#}
+{#                        <label for="cars">Pumas vs Tigres: {{ form.four }}</label>#}
+{#                        <label for="cars">FC Juárez vs Morelia: {{ form.five }}</label>#}
+{#                        <label for="cars">Puebla vs Pachuca: {{ form.six }}</label>#}
+{#                        <label for="cars">Club Querétaro vs Atlético de San Luis: {{ form.seven }}</label>#}
+{#                        <label for="cars">Necaxa vs Toluca: {{ form.eight }}</label>#}
+{#                        <label for="cars">Club Tijuana vs Atlas: {{ form.nine }}</label>#}
+{##}
+{##}
+{#                    </div>#}
 
                     <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
 
@@ -39,27 +42,13 @@
 
             </div>
 
-        <div class="alert alert-danger" role="alert" style="margin: 10px">
-    <h4>Los videos submitidos se borraran automaticamente al final del concurso.</h4>
-</div>
 
     </div>
 
 
 
 <script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-  };
 
-      function showDiv() {
-  document.getElementById('loadingGif').style.display = "block";
-  setTimeout(function() {
-    document.getElementById('loadingGif').style.display = "none";
-  },200000);
-
-}
 
 </script>
 

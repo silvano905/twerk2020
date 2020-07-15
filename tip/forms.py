@@ -14,11 +14,11 @@ class MakePostForm(forms.ModelForm):
     two = forms.CharField(widget=forms.Select(choices=CHOICES), label='Monterrey vs Cruz Azul', required=True)
     three = forms.CharField(widget=forms.Select(choices=CHOICES), label='León vs Santos', required=True)
     four = forms.CharField(widget=forms.Select(choices=CHOICES), label='Pumas vs Tigres', required=True)
-    five = forms.CharField(widget=forms.Select(choices=CHOICES), label='FC Juárez vs Morelia', required=True)
+    five = forms.CharField(widget=forms.Select(choices=CHOICES), label='Juárez vs Morelia', required=True)
     six = forms.CharField(widget=forms.Select(choices=CHOICES), label='Puebla vs Pachuca', required=True)
-    seven = forms.CharField(widget=forms.Select(choices=CHOICES), label='Querétaro vs Atlético de San Luis', required=True)
+    seven = forms.CharField(widget=forms.Select(choices=CHOICES), label='Querétaro vs San Luis', required=True)
     eight = forms.CharField(widget=forms.Select(choices=CHOICES), label='Necaxa vs Toluca', required=True)
-    nine = forms.CharField(widget=forms.Select(choices=CHOICES), label='Club Tijuana vs Atlas', required=True)
+    nine = forms.CharField(widget=forms.Select(choices=CHOICES), label='Tijuana vs Atlas', required=True)
 
 
     class Meta:
