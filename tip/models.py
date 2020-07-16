@@ -24,15 +24,33 @@ class MakeTip(models.Model):
     def all_choices_field(self):
         return self.all_choices
 
+    def one_team(self):
+        return 'Chivas vs América'
 
+    def two_team(self):
+        return 'Monterrey 0 vs Cruz Azul 0'
 
+    def three_team(self):
+        return 'León 2 vs Santos 3'
 
-    # def post_info_summary(self):
-    #     len_info = len(self.info)
-    #     if len_info > 480:
-    #         return self.info[:480]+' . . . .continue'
-    #     else:
-    #         return self.info
+    def four_team(self):
+        return 'Pumas 1 vs Tigres 2'
+
+    def five_team(self):
+        return 'Juárez 0 vs Morelia 3'
+
+    def six_team(self):
+        return 'Puebla 2 vs Pachuca 0'
+
+    def seven_team(self):
+        return 'Querétaro vs San Luis'
+
+    def eight_team(self):
+        return 'Necaxa vs Toluca'
+
+    def nine_team(self):
+        return 'Tijuana 1 vs Atlas 1'
+
 
     def get_absolute_url(self):
         return reverse('tips:tip_detail', kwargs={'pk': self.pk})

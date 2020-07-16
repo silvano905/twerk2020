@@ -27,6 +27,7 @@ class MakePostForm(forms.ModelForm):
 
 
 
+
         # widgets = {
         #     'one': TextInput(attrs={'class': 'jj'}),
         # }
