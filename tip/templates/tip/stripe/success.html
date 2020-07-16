@@ -1,6 +1,6 @@
-{% extends 'tip/stripe/template.html' %}
-{% load static %}
-{% block content %}
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% block body_block %}
 	<div id="box">
 {#		<img id="succes-icon" src="{% static 'images/check.png' %}">#}
 		<h4>Thank you for your contribution of ${{amount}}!</h4>
@@ -9,4 +9,4 @@
 		<a class="myButton" href="{% url 'tips:stripe' %}">&#x2190;Back to donation page</a>
 	</div>
 
-{% endblock content %}
+{% endblock %}

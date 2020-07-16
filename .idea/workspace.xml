@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="758d0744-16e8-49d4-92e9-e6471b303945" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/fortesting.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/jjj.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" afterDir="false" />
@@ -13,8 +11,7 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/template.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" />
@@ -154,7 +151,7 @@
       <workItem from="1593447536244" duration="2028000" />
       <workItem from="1594655970870" duration="22218000" />
       <workItem from="1594740655132" duration="32243000" />
-      <workItem from="1594823054253" duration="26537000" />
+      <workItem from="1594823054253" duration="26826000" />
     </task>
     <servers />
   </component>
