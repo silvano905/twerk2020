@@ -363,13 +363,12 @@ def index(request):
 
 def charge(request):
     if request.method == 'POST':
-        print('Data:', request.POST)
-
-        amount = int(request.POST['amount'])
-
+        amount = 5
+        email = request.user.email
+        name = request.user.username
         customer = stripe.Customer.create(
-            email=request.POST['email'],
-            name=request.POST['nickname'],
+            email=email,
+            name=name,
             source=request.POST['stripeToken']
         )
 

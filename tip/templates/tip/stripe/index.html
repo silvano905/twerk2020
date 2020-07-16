@@ -1,43 +1,91 @@
-{% extends 'tip/stripe/template.html' %}
-{% load static %}
-{% block content %}
-	<style type="text/css">
-		/**
-		 * The CSS shown here will not be introduced in the Quickstart guide, but shows
-		 * how you can use CSS to style your Element's container.
-		 */
-		.StripeElement {
-		  box-sizing: border-box;
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Inter&display=swap" rel="stylesheet">
 
-		  height: 40px;
+{% block body_block %}
+<script src="https://www.paypal.com/sdk/js?client-id=AfGJDv8iqoA5-Q5A-0EZIo0kJUr9XI3y0IYhw4EKYByYjRyzwaXsPOSdmjra1TryhmYB97BRyyvqtjkZ&currency=USD"></script>
 
-		  padding: 10px 12px;
+<script src="https://js.stripe.com/v3/"></script>
+    <style>
+    /**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  box-sizing: border-box;
+    width: 300px;
+  height: 40px;
 
-		  border: 1px solid transparent;
-		  border-radius: 4px;
-		  background-color: white;
+  padding: 10px 12px;
 
-		  box-shadow: 0 1px 3px 0 #e6ebf1;
-		  -webkit-transition: box-shadow 150ms ease;
-		  transition: box-shadow 150ms ease;
-		}
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
 
-		.StripeElement--focus {
-		  box-shadow: 0 1px 3px 0 #cfd7df;
-		}
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
 
-		.StripeElement--invalid {
-		  border-color: #fa755a;
-		}
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
 
-		.StripeElement--webkit-autofill {
-		  background-color: #fefde5 !important;
-		}
-	</style>
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+    *, label {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-variant: normal;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  color: #fff;
+  background: #32325d;
+  white-space: nowrap;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 14px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+  float: left;
+  margin-left: 12px;
+  margin-top: 28px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
+  background-color: #43458b;
+}
 
 
-	<script src="https://js.stripe.com/v3/"></script>
+    </style>
 
+    <div class="container">
+            <div class="d-flex justify-content-center">
+
+                <div class="jumbotron">
 
 
 
@@ -45,7 +93,6 @@
     <div id="paypal-button-container"></div>
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AfGJDv8iqoA5-Q5A-0EZIo0kJUr9XI3y0IYhw4EKYByYjRyzwaXsPOSdmjra1TryhmYB97BRyyvqtjkZ&currency=USD"></script>
 
     <script >
         // Render the PayPal button into #paypal-button-container
@@ -78,81 +125,90 @@
         }).render('#paypal-button-container');
     </script>
 
-	
 
-	<div id="container">
-		<div class="column-6">
-			<div id="left-wrapper">
+
+
+
+
+
+<form action="{% url 'tips:charge' %}" method="post" id="payment-form">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="card-element2">
+      Credit or debit card
+    </label>
+
+
+    <div id="card-element2">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button>Submit Payment</button>
+</form>
+
+
+
+
+{#	<div id="container">#}
+{#		<div class="column-6">#}
 {#				<img id="profile-pic" src="{% static 'images/Dennis.jfif' %}">#}
-				<div id="left-wrapper-header">
-					<h3>Buy Us Coffee?</h3>
-					<h5>One Time Donation</h5>
-				</div>
-				<div style="clear:left"></div>
-				<hr>
-				<!-- Add form here -->
-				<form action="{% url 'tips:charge' %}" method="post" id="payment-form">
-					{% csrf_token %}
-					<div class="form-field-12">
-						<label for="amount">Choose Amount:</label>
-						<br>
-						<br>
-						<select required name="amount" id="amount">
-						  <option selected value="5">$5 --- Here's a coffee, on me :)</option>
-						  <option value="10">$10 --- You helped me, so I am going to help you</option>
-						  <option value="25">$25 --- I love your channel!</option>
-						</select>
-					</div>
-
-					<div class="form-field-6">
-						<input required type="text" name="email" placeholder="email...">
-					</div>
-
-					<div class="form-field-6">
-						<input required type="text" name="nickname" placeholder="Nickname...">
-					</div>
-
-				  <div class="form-row">
-				    <label for="card-element">
-				      Credit or debit card
-				    </label>
-				    <div id="card-element">
-				      <!-- A Stripe Element will be inserted here. -->
-				    </div>
-
-				    <!-- Used to display form errors. -->
-				    <div id="card-errors" role="alert"></div>
-				  </div>
-
-				  <div style="clear:left"></div>
-				  <hr>
-
-				 	<input  class="myButton" style="background-color:#10a195" type="submit" value="Submit Payment" name="">
-
-				</form>
-
-
-			</div>
-		</div>
-
-		<div class="column-6">
-			<div id="right-wrapper">
-
-{#				<img class="coffee-cup" src="{% static 'images/Coffee5.png' %}">#}
-{#				<img class="coffee-cup2" src="{% static 'images/Coffee10.png' %}">#}
-{#				<img class="coffee-cup3" src="{% static 'images/Coffee25.png' %}">#}
-				<h3>If I've provided you with value please consider supporting our efforts ;)</h3>
-
-				<p>Source code and videos are free to download, use as you wish :) At no point should you feel obligated to donate but if you have the means consider the time and effort I put into each project/video. Thank you!</p>
-				<hr>
-				<a href="https://github.com/divanov11/buydenniscoffee" target="_blank" class="myButton">Download source code</a>
-			</div>
-		</div>
-	</div>
+{##}
+{#				<hr>#}
+{#				<!-- Add form here -->#}
+{#				<form action="{% url 'tips:charge' %}" method="post" id="payment-form">#}
+{#					{% csrf_token %}#}
+{#					<div class="form-field-12">#}
+{#						<label for="amount">Choose Amount:</label>#}
+{#						<br>#}
+{#						<br>#}
+{#						<select required name="amount" id="amount">#}
+{#						  <option selected value="5">$5 --- Here's a coffee, on me :)</option>#}
+{#						  <option value="10">$10 --- You helped me, so I am going to help you</option>#}
+{#						  <option value="25">$25 --- I love your channel!</option>#}
+{#						</select>#}
+{#					</div>#}
+{##}
+{#					<div class="form-field-6">#}
+{#						<input required type="text" name="email" placeholder="email...">#}
+{#					</div>#}
+{##}
+{#					<div class="form-field-6">#}
+{#						<input required type="text" name="nickname" placeholder="Nickname...">#}
+{#					</div>#}
+{##}
+{#				  <div class="form-row">#}
+{#				    <label for="card-element2">#}
+{#				      Credit or debit card#}
+{#				    </label>#}
+{#				    <div id="card-element2">#}
+{#				      <!-- A Stripe Element will be inserted here. -->#}
+{#				    </div>#}
+{##}
+{#				    <!-- Used to display form errors. -->#}
+{#				    <div id="card-errors" role="alert"></div>#}
+{#				  </div>#}
+{##}
+{#				  <div style="clear:left"></div>#}
+{#				  <hr>#}
+{##}
+{#    <button>Submit Payment</button>#}
+{##}
+{#				</form>#}
+{##}
+{##}
+{#		</div>#}
+{##}
+{##}
+{#	</div>#}
 
 
-
-
+</div>
+            </div>
+    </div>
 
 
 	<script>
@@ -184,7 +240,7 @@
 		var card = elements.create('card', {style: style});
 
 		// Add an instance of the card Element into the `card-element` <div>.
-		card.mount('#card-element');
+		card.mount('#card-element2');
 
 		// Handle real-time validation errors from the card Element.
 		card.addEventListener('change', function(event) {
@@ -227,5 +283,5 @@
 		  form.submit();
 		}
 	</script>
-	
-{% endblock content %}
+
+{% endblock %}
