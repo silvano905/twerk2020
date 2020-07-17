@@ -37,9 +37,9 @@ class UserFormProfileUpdate(forms.ModelForm):
         model = Profile
         fields = ['description', ]
 
-        widgets = {
-            'description': Textarea(attrs={'class': 'form-control'}),
-        }
+        # widgets = {
+        #     'description': Textarea(attrs={'class': 'form-control'}),
+        # }
 
 
 class UserFormCreationFormUpdate(forms.ModelForm):

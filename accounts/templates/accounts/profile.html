@@ -9,13 +9,13 @@
 <div class="jumbotron main_wrapper_jumbotron">
     <div class="container">
     <div class="jumbotron">
-        <h3 align="center">Crear Perfil</h3>
+        <h3 align="center">Agrega tu número de teléfono</h3>
 
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-4 col-sm-12">
-                <label>Agrega tu numero de telefono para contactarte si eres unos de los ganadores</label>
+                <label>Si eres unos de los ganadores de alguna quiniela se te contactara usando el número de teléfono que escribas.</label>
             {{ form.description }}
             </div>
 
@@ -23,7 +23,7 @@
         <input type="hidden" name="mypk" placeholder="your pk" value="{{ request.user.pk }}">
 
 
-<button class="btn btn-primary" type="submit">Agregar</button>
+<button class="btn btn-primary" type="submit">Enviar</button>
     </form>
         </div>
 </div>

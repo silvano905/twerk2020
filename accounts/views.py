@@ -128,21 +128,17 @@ def point_crown(request):
 
 @login_required
 def edit_profile(request):
-    image = request.user.profiles.profile_pic
 
     if request.method == 'POST':
-        form1 = UserFormCreationFormUpdate(request.POST, instance=request.user)
         form2 = UserFormProfileUpdate(request.POST, request.FILES, instance=request.user.profiles)
 
-        if form1.is_valid() and form2.is_valid():
-            form1.save(commit=True)
+        if form2.is_valid():
             form2.save(commit=True)
             return redirect('tips:list')
     else:
-        form1 = UserFormCreationFormUpdate(instance=request.user)
         form2 = UserFormProfileUpdate(instance=request.user.profiles)
 
-    return render(request, 'accounts/createprofile.html', {'form': form1, 'formm': form2, 'image': image})
+    return render(request, 'accounts/createprofile.html', {'formm': form2})
 
 
 class UserProfileView(TemplateView, LoginRequiredMixin):

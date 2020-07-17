@@ -11,24 +11,14 @@
 <div class="jumbotron main_wrapper_jumbotron">
     <div class="container">
         <div class="jumbotron">
+            <h4><strong>Información privada. Solo tú puedes ver esta información</strong></h4>
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
-                    <div>
-                        <div style="width: 300px; height: 300px">
-                            <img src="{{ user.profiles.profile_pic.url }}" style="max-height: 280px; width:100%;max-width:268px; object-fit: cover">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-12">
 
                     <div>
-                        <h5>username: {{ user.username }}</h5>
-                        <p>primer nombre: {{ user.first_name }}</p>
-                        <p>apellido: {{ user.last_name }}</p>
-                        <p>email: {{ user.email }}</p>
-                        <p>descripcion: {{ user.profiles.description }}</p>
-                        <p>genero: {{ user.profiles.gender }}</p>
+                        <h5>Nombre de usuario: {{ user.username }}</h5>
+                        <h5>email/correo electrónico: {{ user.email }}</h5>
+                        <h5>Mi número de teléfono: {{ user.profiles.description }}</h5>
                     </div>
 
                 </div>
