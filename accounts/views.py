@@ -26,9 +26,7 @@ def crate_user_profile(request):
         if form.is_valid():
             userprofile = form.save(commit=False)
 
-            pic = form.cleaned_data['profile_pic']
-            if not pic:
-                userprofile.profile_pic = 'hummingbird.jpg'
+
             userprofile.user = request.user
 
             form.save(commit=True)

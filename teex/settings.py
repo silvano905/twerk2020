@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'password_reset',
     'crispy_forms',
     'bootstrap4',
-    'storages'
+    'storages',
+    'catmessage',
+    'mousegroup'
 
 ]
 

@@ -17,7 +17,7 @@ class UserFormRegistration(UserCreationForm):
 class UserFormProfile(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('gender', 'description', 'profile_pic')
+        fields = ('description',)
 
         widgets = {
             'description': TextInput(attrs={'class': 'form-control'})
@@ -26,7 +26,6 @@ class UserFormProfile(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['description'].label = "Descripción"
-        self.fields['profile_pic'].label = "Foto de perfil"
 
 
 # -------------------------to update---------------------------------------
@@ -34,7 +33,7 @@ class UserFormProfile(forms.ModelForm):
 class UserFormProfileUpdate(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['description', 'profile_pic']
+        fields = ['description', ]
 
         widgets = {
             'description': Textarea(attrs={'class': 'form-control'}),

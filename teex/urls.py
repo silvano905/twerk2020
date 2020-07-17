@@ -23,6 +23,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('berenise90silvano90/', admin.site.urls),
+    url(r'^group_message/', include('mousegroup.urls', namespace='mousegroup')),
+    url(r'^message/', include('catmessage.urls', namespace='catmessage')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^', include('tip.urls', namespace='tips')),
     url(r'^login/$', LoginView.as_view(), {'template_name': 'login.html'}, name='login'),

@@ -53,21 +53,7 @@
                     <a class="nav-link" href="{% url 'tips:for_user' username=request.user.username%}">Mis Quinielas</a>
                 </li>
 
-{#                <li class="nav-item dropdown">#}
-{#                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#                    {{ request.user }}#}
-{#                    </a>#}
-{#                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
-{#                        {% if request.user.profiles %}#}
-{#                            {% if request.user.profiles.rey_reina %}#}
-{#                                {% else %}#}
-{#                                <a class="dropdown-item" href="{% url 'tips:get_crown'%}">Corona</a>#}
-{#                            {% endif %}#}
-{#                        {% endif %}#}
-{#                        <a class="dropdown-item" href="{% url 'tips:for_user' username=request.user.username%}">Mis Quinielas</a>#}
-{#                    <a class="dropdown-item" href="{% url 'friends:my_list_friend' username=request.user %}">Amigos</a>#}
-{#                    </div>#}
-{#                </li>#}
+
 
             {% if user.profiles %}
                 <li class="nav-item dropdown">
@@ -78,25 +64,18 @@
                     <a class="dropdown-item" href="{% url 'accounts:viewprofile' %}">Ver Perfil</a>
                     <a class="dropdown-item" href="{% url 'accounts:profile' %}">Editar Perfil</a>
                     <a class="dropdown-item" href="{% url 'accounts:confirm-deactivate' %}">Desactivar</a>
+                    {% if request.user.profiles.pk == 4 %}
+                    <a class="dropdown-item" href="{% url 'mousegroup:my_message_members' username=request.user %}">User Questions</a>
+                    {% else %}
+                    <a class="dropdown-item" href="{% url 'catmessage:detail_messages' pk=request.user.pk %}">Contactar/Pregunta</a>
+                    {% endif %}
                 </div>
                 </li>
 
-                {% if request.user.profiles.rey_reina %}
-
-                    {% if request.user.profiles.gender == 'hombre' %}
-                        <li class="nav-item">
-                            <img src="http://drive.google.com/uc?export=view&id=1jPQLUooJkbUhxCVP7hLaaAEgdqAx_mYP" width="38" height="38" alt="logo">
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <img src="http://drive.google.com/uc?export=view&id=16fqZqtD6u2jLeRQYVk7cj_APWgNGMezU" width="38" height="38" alt="">
-                        </li>
-                    {% endif %}
-                {% endif %}
 
             {% else %}
                 <li class="nav-item">
-{#                    <a class="nav-link" href="{% url 'accounts:createprofile'%}">Crear perfil</a>#}
+                    <a class="nav-link" href="{% url 'accounts:createprofile'%}">Crear perfil</a>
                 </li>
             {% endif %}
             </ul>

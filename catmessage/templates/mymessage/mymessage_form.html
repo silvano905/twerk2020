@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+{% load bootstrap4 %}
+
+
+{% block body_block %}
+
+<div class="container">
+    <div class="jumbotron">
+
+        <h5 class="text-center">Contacta Al Administrador</h5>
+
+        <form method="POST" enctype="multipart/form-data">
+
+
+            {% csrf_token %}
+            <label for="">Escribe Tu Pregunta:</label>
+            {{ form.text }}
+
+
+
+
+            <div class="form-group">
+                {% bootstrap_form form2 %}
+                {% bootstrap_form form3 %}
+
+            </div>
+            <button type="submit" class="btn btn-dark">Enviar</button>
+        </form>
+
+
+
+    </div>
+</div>
+
+
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
+
+{% endblock %}

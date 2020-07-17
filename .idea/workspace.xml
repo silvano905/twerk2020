@@ -3,37 +3,60 @@
   <component name="ChangeListManager">
     <list default="true" id="758d0744-16e8-49d4-92e9-e6471b303945" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_auto_20200716_1516.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/templates/mymessage/mymessage_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/templates/mymessage/user_detail_messages.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/catmessage/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mousegroup/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mousegroup/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mousegroup/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mousegroup/templates/message_group/user_groupmessage_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mousegroup/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/django/contrib/auth/migrations/0012_auto_20200716_1311.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/rest_framework/authtoken/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/rest_framework/authtoken/migrations/0002_auto_20160226_1747.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/chicagobusiness.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/teex.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/teex.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teex/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/teex/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teex/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/teex/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/eight.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/eight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/five.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/five.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/four.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/four.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/nine.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/nine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/one.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/one.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/seven.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/seven.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/six.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/six.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/three.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/three.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/two.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/two.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/comments/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/friends/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/message_group/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/mymessage/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/friends/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/friends/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/friends/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/friends/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/message_group/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/message_group/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/mymessage/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/mymessage/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/mymessage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/mymessage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/rest_framework/authtoken/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/templates/noti/all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/noti/views.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/tip/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/tip/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/tip/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/tip/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +71,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -70,7 +93,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../silvano/javascript" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../silvano/django/buensexo_web" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,18 +104,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mymessages" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\stripe" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp\mysite" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\meex\accounts\static\media" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\meex\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mousegroup" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\message_groups" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\top_quinielas" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\stripeapp\media\mdia" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\stripeapp\base\templates\base" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\meex\staticfiles" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\meex\accounts\static" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.stripeapp">
@@ -164,7 +187,8 @@
       <workItem from="1594655970870" duration="22218000" />
       <workItem from="1594740655132" duration="32243000" />
       <workItem from="1594823054253" duration="27166000" />
-      <workItem from="1594911409308" duration="4195000" />
+      <workItem from="1594911409308" duration="12391000" />
+      <workItem from="1594926661758" duration="21688000" />
     </task>
     <servers />
   </component>
@@ -176,10 +200,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="444" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1592698744476" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1594829145841">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1594933750108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594829145841" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594933750108" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1592959195903">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -196,14 +220,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592959195903" />
-    <state x="277" y="55" key="SettingsEditor" timestamp="1594666707005">
+    <state x="277" y="55" key="SettingsEditor" timestamp="1594927980739">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594666707005" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1594911451659">
+    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594927980739" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1594926668939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1594911451659" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1594926668939" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/twerk2020$fjdf.coverage" NAME="fjdf Coverage Results" MODIFIED="1593215395681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../silvano/javascript/2019JavaScript" />
