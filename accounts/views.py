@@ -18,6 +18,8 @@ class ViewUserProfile(TemplateView, LoginRequiredMixin):
 
 @login_required
 def crate_user_profile(request):
+    pk = request.POST.get('mypk')
+
     form = UserFormProfile()
 
     if request.method == "POST":
@@ -31,7 +33,9 @@ def crate_user_profile(request):
 
             form.save(commit=True)
 
-            return render(request, 'tip/tip_list.html')
+            return redirect('catmessage:detail_messages', pk=pk)
+
+            # return render(request, 'tip/tip_list.html')
         else:
             form = UserFormProfile()
 

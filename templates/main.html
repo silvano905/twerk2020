@@ -59,26 +59,30 @@
             {% if user.profiles %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Perfil
+                        Mi Cuenta
                     </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'accounts:viewprofile' %}">Ver Perfil</a>
-                    <a class="dropdown-item" href="{% url 'accounts:profile' %}">Editar Perfil</a>
-                    <a class="dropdown-item" href="{% url 'accounts:confirm-deactivate' %}">Desactivar</a>
-                    {% if request.user.profiles.pk == 4 %}
-                    <a class="dropdown-item" href="{% url 'mousegroup:my_message_members' username=request.user %}">User Questions</a>
-                    {% else %}
-                    <a class="dropdown-item" href="{% url 'catmessage:detail_messages' pk=request.user.pk %}">Contactar/Pregunta</a>
-                    {% endif %}
+                    <a class="dropdown-item" href="{% url 'accounts:viewprofile' %}">Ver mi cuenta</a>
+                    <a class="dropdown-item" href="{% url 'accounts:profile' %}">Editar mi cuenta</a>
+                    <a class="dropdown-item" href="{% url 'accounts:confirm-deactivate' %}">Borrar mi cuenta</a>
                 </div>
                 </li>
+
+
+                    {% if request.user.profiles.pk == 4 %}
+                        <a class="nav-link" href="{% url 'mousegroup:my_message_members' username=request.user %}">User Questions</a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catmessage:detail_messages' pk=request.user.pk %}">¿Tienes una pregunta?</a>
+                    </li>
+                    {% endif %}
 
 
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'accounts:createprofile'%}">
-                        Agregar numero
-                        <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/jumpstart_phone.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
+                        ¿Tienes una pregunta?
+{#                        <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/jumpstart_phone.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">#}
                     </a>
                 </li>
             {% endif %}
