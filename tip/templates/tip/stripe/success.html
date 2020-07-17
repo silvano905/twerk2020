@@ -3,10 +3,10 @@
 {% block body_block %}
 	<div id="box">
 {#		<img id="succes-icon" src="{% static 'images/check.png' %}">#}
-		<h4>Thank you for your contribution of ${{amount}}!</h4>
-		<p>Your support helps me fulfill my dream of teaching aspiring developers around the world! You should receive a receipt to the email you provided shortly :)</p>
+		<h4>Thank you for your payment of ${{amount}}!</h4>
+		<p>Compraste 7 quinielas</p>
 		<hr>
-		<a class="myButton" href="{% url 'tips:stripe' %}">&#x2190;Back to donation page</a>
+		<a class="myButton" href="{% url 'tips:list'%}">&#x2190;Mis Quinielas</a>
 	</div>
 
 {% endblock %}

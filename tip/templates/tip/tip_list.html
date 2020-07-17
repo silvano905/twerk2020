@@ -25,13 +25,16 @@
                     {% else %}
 
                         <a href="{% url 'tips:create_tip'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Comprar Quiniela</a>
-                        <a href="{% url 'accounts:createprofile'%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Agrega Tu Numero</a>
+                        <a href="{% url 'accounts:createprofile'%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">
+                            Agrega Tu Numero
+                            <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/jumpstart_phone.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
+                        </a>
 
                     {% endif %}
 
                 {% else %}
-                    <a href="{% url 'login'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Ya Tengo Cuenta</a>
-                    <a href="{% url 'accounts:registration'%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">No Tengo Cuenta</a>
+                    <a href="{% url 'login'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Entrar A Mi Cuenta</a>
+                    <a href="{% url 'accounts:registration'%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Crear Cuenta Nueva</a>
                 {% endif %}
 
 
@@ -65,7 +68,10 @@
 
     <div class="jumbotron">
     <div style="text-align: center; margin-bottom: 10px">
-        <a class="btn btn-success" href="{% url 'tips:download' %}" role="button">Descargar lista completa</a>
+        <a class="btn btn-success" href="{% url 'tips:download' %}" role="button">
+            Descargar lista completa
+            <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/k21Asset+3.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
+        </a>
     </div>
         <div class="row">
             {% for post in post_list %}

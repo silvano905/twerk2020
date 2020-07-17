@@ -15,6 +15,8 @@ class UserFormRegistration(UserCreationForm):
 
 
 class UserFormProfile(forms.ModelForm):
+    description = forms.CharField(label='Agrega tu numero de telefono', required=True)
+
     class Meta:
         model = Profile
         fields = ('description',)

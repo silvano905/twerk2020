@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profiles', on_delete=models.CASCADE)
-    description = models.CharField(max_length=12, default=0)
+    description = models.CharField(max_length=12)
 
     def __str__(self):
         return self.user.username
