@@ -5,15 +5,24 @@
 
 <div class="prize">
   <div class="container">
-      <h1 class="display-4"> Quiniela Liaga MX</h1>
+
+      <h1 class="display-4">Quiniela Liga MX</h1>
       <h2>$500 Dolares + Más Todo El Dinero Recaudado De Las Ventas De Las Quinielas</h2>
       <p class="lead">Solo Para Personas De Estados Unidos</p>
-      <p class="lead">Depósito A Cuenta De Banco A Los Ganadores</p>
+      <p class="lead">Precio: $2 dolares por quiniela</p>
+      <p class="lead">A Los Ganadores Se Les Contactará Para Depositar EL Dinero A Su Cuenta De Banco</p>
       <p class="lead">Puedes Comprar Las Quinielas Con Tarjeta De Crédito, Débito o Paypal</p>
+
+      <div style="text-align: center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'tips:create_tip'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Comprar Quiniela</a>
+            <a href="{% url 'tips:for_user' username=request.user.username%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Mis Quinielas</a>
+        </div>
+      </div>
+
   </div>
 </div>
 
-<div>
 
 <div class="jumbotron">
 <h5 style="text-align: center">Quinielas con mejor puntuacion</h5>
