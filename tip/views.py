@@ -196,158 +196,29 @@ def filter_list(request, value):
         if games.points == int(value):
             all_games_filter.append(games)
 
-
     return render(request, 'tip/top_quinielas/nine.html', {'nine_list': all_games_filter, 'points': value})
 
 
-def nine_view(request):
-    queryset = MakeTip.objects.all()
-    nine_points_list = []
-    nine_points = 'LEEVEVELE'
+# def nine_view(request):
+#     queryset = MakeTip.objects.all()
+#     nine_points_list = []
+#     nine_points = 'LEEVEVELE'
+#
+#     for i in queryset:
+#         if i.all_choices == nine_points:
+#             nine_points_list.append(i)
+#
+#     context = {
+#         "nine_list": nine_points_list
+#     }
+#
+#     return render(request, 'tip/top_quinielas/nine.html', context)
 
-    for i in queryset:
-        if i.all_choices == nine_points:
-            nine_points_list.append(i)
-
-    context = {
-        "nine_list": nine_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/nine.html', context)
-
-
-def eight_view(request):
-    queryset = MakeTip.objects.all()
-    eight_points_list = []
-    eight_points = 'LEEVEVEL'
-
-    for i in queryset:
-        if i.all_choices[0:8] == eight_points:
-            eight_points_list.append(i)
-
-    context = {
-        "eight_list": eight_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/eight.html', context)
-
-
-def seven_view(request):
-    queryset = MakeTip.objects.all()
-    seven_points_list = []
-    seven_points = 'LEEVEVE'
-
-    for i in queryset:
-        if i.all_choices[0:7] == seven_points:
-            seven_points_list.append(i)
-
-    context = {
-        "seven_list": seven_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/seven.html', context)
-
-def six_view(request):
-    queryset = MakeTip.objects.all()
-    six_points_list = []
-    six_points = 'LEEVEV'
-
-    for i in queryset:
-        if i.all_choices[0:6] == six_points:
-            six_points_list.append(i)
-
-    context = {
-        "six_list": six_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/six.html', context)
-
-
-def five_view(request):
-    queryset = MakeTip.objects.all()
-    five_points_list = []
-    five_points = 'LEEVE'
-
-    for i in queryset:
-        if i.all_choices[0:5] == five_points:
-            five_points_list.append(i)
-
-    context = {
-        "five_list": five_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/five.html', context)
-
-
-def four_view(request):
-    queryset = MakeTip.objects.all()
-    four_points_list = []
-    four_points = 'LEEV'
-
-    for i in queryset:
-        if i.all_choices[0:4] == four_points:
-            four_points_list.append(i)
-
-    context = {
-        "four_list": four_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/four.html', context)
-
-
-def three_view(request):
-    queryset = MakeTip.objects.all()
-    three_points_list = []
-    three_points = 'LEE'
-
-    for i in queryset:
-        if i.all_choices[0:3] == three_points:
-            three_points_list.append(i)
-
-    context = {
-        "three_list": three_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/three.html', context)
-
-
-def two_view(request):
-    queryset = MakeTip.objects.all()
-    two_points_list = []
-    two_points = 'LV'
-
-    for i in queryset:
-        if i.all_choices[0:2] == two_points:
-            two_points_list.append(i)
-
-    context = {
-        "two_list": two_points_list
-    }
-
-    return render(request, 'tip/top_quinielas/two.html', context)
-
-
-def one_view(request):
-    queryset = MakeTip.objects.all()
-    one_point_list = []
-    one_point = 'V'
-
-    for i in queryset:
-        if i.all_choices[0:1] == one_point:
-            one_point_list.append(i)
-
-    context = {
-        "one_list": one_point_list
-    }
-
-    return render(request, 'tip/top_quinielas/one.html', context)
 
 
 def tips_list_search(request):
     game_results = get_object_or_404(GamesModel, pk=1).games
     queryset = MakeTip.objects.all()
-
-
     a = game_results
 
     for gm in queryset:

@@ -18,6 +18,7 @@ import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from tip.models import MakeTip
+
 User = get_user_model()
 
 
@@ -72,19 +73,38 @@ def getAllWinners(request):
         gm.points = points
 
     winners_list = []
+    nine_winner = False
+    eight_winner = False
+    seven_winner = False
+    six_winner = False
+    five_winner = False
     winners_list_total = 0
 
     for gamesx in queryset:
         if gamesx.points == 9:
+            nine_winner = True
             winners_list_total = 9
             winners_list.append(gamesx)
         elif gamesx.points == 8:
-            winners_list.append(gamesx)
-            winners_list_total = 8
-        elif gamesx.points == 7 and gamesx.points != 8:
-            winners_list.append(gamesx)
-            winners_list_total = 7
-
+            if not nine_winner:
+                eight_winner = True
+                winners_list.append(gamesx)
+                winners_list_total = 8
+        elif gamesx.points == 7:
+            if not nine_winner and not eight_winner:
+                seven_winner = True
+                winners_list.append(gamesx)
+                winners_list_total = 7
+        elif gamesx.points == 6:
+            if not nine_winner and not eight_winner and not seven_winner:
+                six_winner = True
+                winners_list.append(gamesx)
+                winners_list_total = 6
+        elif gamesx.points == 5:
+            if not nine_winner and not eight_winner and not seven_winner and not six_winner:
+                five_winner = True
+                winners_list.append(gamesx)
+                winners_list_total = 5
 
     context = {
         "nine_list": winners_list,
@@ -92,4 +112,3 @@ def getAllWinners(request):
     }
 
     return render(request, 'promotions/all_winners.html', context)
-
