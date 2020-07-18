@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, DeleteView, UpdateView, ListView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from .forms import MakePostForm
+from promotions.models import GamesModel
 from .models import MakeTip, LikeUserList, DownVoteUserList
 # from comments.models import Comment
 from django.db.models import Q
@@ -137,6 +138,66 @@ def download_view(request):
     }
 
     return render(request, 'tip/download.html', context)
+
+
+def filter_list(request, value):
+    game_results = get_object_or_404(GamesModel, pk=1).games
+    queryset = MakeTip.objects.all()
+
+    all_games_filter = []
+
+    a = game_results
+
+    for gm in queryset:
+        points = 0
+        b = gm.all_choices
+
+        one = a[0:1]
+        two = a[1:2]
+        three = a[2:3]
+        four = a[3:4]
+        five = a[4:5]
+        six = a[5:6]
+        seven = a[6:7]
+        eight = a[7:8]
+        nine = a[8:9]
+
+        one_user = b[0:1]
+        two_user = b[1:2]
+        three_user = b[2:3]
+        four_user = b[3:4]
+        five_user = b[4:5]
+        six_user = b[5:6]
+        seven_user = b[6:7]
+        eight_user = b[7:8]
+        nine_user = b[8:9]
+
+        if one_user == one:
+            points += 1
+        if two_user == two:
+            points += 1
+        if three_user == three:
+            points += 1
+        if four_user == four:
+            points += 1
+        if five_user == five:
+            points += 1
+        if six_user == six:
+            points += 1
+        if seven_user == seven:
+            points += 1
+        if eight_user == eight:
+            points += 1
+        if nine_user == nine:
+            points += 1
+        gm.points = points
+
+    for games in queryset:
+        if games.points == int(value):
+            all_games_filter.append(games)
+
+
+    return render(request, 'tip/top_quinielas/nine.html', {'nine_list': all_games_filter, 'points': value})
 
 
 def nine_view(request):
@@ -283,63 +344,102 @@ def one_view(request):
 
 
 def tips_list_search(request):
+    game_results = get_object_or_404(GamesModel, pk=1).games
     queryset = MakeTip.objects.all()
 
-    nine_points_list = []
-    eight_points_list = []
-    seven_points_list = []
-    six_points_list = []
-    five_points_list = []
-    four_points_list = []
-    three_points_list = []
-    two_points_list = []
-    one_point_list = []
-    zero_points_list = []
 
-    nine_points = 'LEEVEVELE'
-    eight_points = 'LEEVEVEL'
-    seven_points = 'LEEVEVE'
-    six_points = 'LEEVEV'
-    five_points = 'LEEVE'
-    four_points = 'LEEV'
-    three_points = 'LEE'
-    two_points = 'LV'
-    one_point = 'V'
+    a = game_results
 
-    for i in queryset:
-        if i.all_choices[0] != one_point:
-            zero_points_list.append(i)
-        if i.all_choices[0:1] == one_point:
-            one_point_list.append(i)
-        if i.all_choices[0:2] == two_points:
-            two_points_list.append(i)
-        if i.all_choices[0:3] == three_points:
-            three_points_list.append(i)
-        if i.all_choices[0:4] == four_points:
-            four_points_list.append(i)
-        if i.all_choices[0:5] == five_points:
-            five_points_list.append(i)
-        if i.all_choices[0:6] == six_points:
-            six_points_list.append(i)
-        if i.all_choices[0:7] == seven_points:
-            seven_points_list.append(i)
-        if i.all_choices[0:8] == eight_points:
-            eight_points_list.append(i)
-        if i.all_choices == nine_points:
-            nine_points_list.append(i)
+    for gm in queryset:
+        points = 0
+        b = gm.all_choices
+
+        one = a[0:1]
+        two = a[1:2]
+        three = a[2:3]
+        four = a[3:4]
+        five = a[4:5]
+        six = a[5:6]
+        seven = a[6:7]
+        eight = a[7:8]
+        nine = a[8:9]
+
+        one_user = b[0:1]
+        two_user = b[1:2]
+        three_user = b[2:3]
+        four_user = b[3:4]
+        five_user = b[4:5]
+        six_user = b[5:6]
+        seven_user = b[6:7]
+        eight_user = b[7:8]
+        nine_user = b[8:9]
+
+        if one_user == one:
+            points += 1
+        if two_user == two:
+            points += 1
+        if three_user == three:
+            points += 1
+        if four_user == four:
+            points += 1
+        if five_user == five:
+            points += 1
+        if six_user == six:
+            points += 1
+        if seven_user == seven:
+            points += 1
+        if eight_user == eight:
+            points += 1
+        if nine_user == nine:
+            points += 1
+        gm.points = points
+
+    # nine_points_list = []
+    # eight_points_list = []
+    # seven_points_list = []
+    # six_points_list = []
+    # five_points_list = []
+    # four_points_list = []
+    # three_points_list = []
+    # two_points_list = []
+    # one_point_list = []
+    # zero_points_list = []
+    #
+    # nine_points = 'LEEVEVELE'
+    # eight_points = 'LEEVEVEL'
+    # seven_points = 'LEEVEVE'
+    # six_points = 'LEEVEV'
+    # five_points = 'LEEVE'
+    # four_points = 'LEEV'
+    # three_points = 'LEE'
+    # two_points = 'LV'
+    # one_point = 'V'
+    #
+    # for i in queryset:
+    #     if i.all_choices[0] != one_point:
+    #         zero_points_list.append(i)
+    #     if i.all_choices[0:1] == one_point:
+    #         one_point_list.append(i)
+    #     if i.all_choices[0:2] == two_points:
+    #         two_points_list.append(i)
+    #     if i.all_choices[0:3] == three_points:
+    #         three_points_list.append(i)
+    #     if i.all_choices[0:4] == four_points:
+    #         four_points_list.append(i)
+    #     if i.all_choices[0:5] == five_points:
+    #         five_points_list.append(i)
+    #     if i.all_choices[0:6] == six_points:
+    #         six_points_list.append(i)
+    #     if i.all_choices[0:7] == seven_points:
+    #         seven_points_list.append(i)
+    #     if i.all_choices[0:8] == eight_points:
+    #         eight_points_list.append(i)
+    #     if i.all_choices == nine_points:
+    #         nine_points_list.append(i)
 
     context = {
         "post_list": queryset,
-        "nine_list": nine_points_list,
-        "eight_list": eight_points_list,
-        "seven_list": seven_points_list,
-        "five_list": five_points_list,
-        "four_list": four_points_list,
-        "three_list": three_points_list,
-        "two_list": two_points_list,
-        "one_list": one_point_list,
-        "zero_list": zero_points_list,
-        "six_list": six_points_list
+
     }
     return render(request, 'tip/tip_list.html', context)
 

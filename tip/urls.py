@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$', views.tips_list_search, name='list'),
     url(r'^create_tip/$', views.crate_tip, name='create_tip'),
     url(r'^descargar/$', views.download_view, name='download'),
+    url(r'^filter/(?P<value>\d+)/$', views.filter_list, name='filter'),
     url(r'^nueve/$', views.nine_view, name='nine'),
     url(r'^ocho/$', views.eight_view, name='eight'),
     url(r'^siete/$', views.seven_view, name='seven'),

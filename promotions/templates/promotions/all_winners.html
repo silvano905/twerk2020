@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 {% extends 'main.html' %}
 {% block body_block %}
-
-
-     <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">3 Puntos</h1>
+        <div class="jumbotron">
+        <h1 class="display-4" style="text-align: center">Ganaron con {{ point }} Puntos</h1>
         <div class="row">
-            {% for post in three_list %}
+            {% for post in nine_list %}
                 <div class="col-md-4">
                     <div>
 
@@ -19,6 +17,7 @@
                             <div class="card-body">
                                 <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
 
+                                <h5>{{ post.points }}</h5>
 
                                 <ul class="list-group list-group-horizontal-sm">
                                   <li class="list-group-item">
@@ -82,5 +81,4 @@
             {% endfor %}
         </div>
         </div>
-
 {% endblock %}

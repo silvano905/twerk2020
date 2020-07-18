@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'storages',
     'catmessage',
-    'mousegroup'
+    'mousegroup',
+    'promotions'
 
 ]
 

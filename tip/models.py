@@ -16,6 +16,7 @@ class MakeTip(models.Model):
     eight = models.CharField(max_length=63, default=0)
     nine = models.CharField(max_length=63, default=0)
     all_choices = models.CharField(max_length=20, blank=True)
+    points = models.IntegerField(default=0, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

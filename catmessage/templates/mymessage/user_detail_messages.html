@@ -15,7 +15,7 @@
                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                       <div class="card-body">
                           <h5 class="card-title">@{{ request.user }}</h5>
-                          <p class='text-white'><a href="{% url 'accounts:detail' pk=mm.author.profiles.pk %}"></a><br><strong>{{ mm.text }}|{{ mm.recipient }}</strong></p>
+                          <p class='text-white'><a href="{% url 'accounts:detail' pk=mm.author.profiles.pk %}"></a><br><strong>{{ mm.text }}</strong></p>
 
                       </div>
                     </div>
