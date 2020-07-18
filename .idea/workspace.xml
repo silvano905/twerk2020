@@ -13,15 +13,13 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/promotions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/promotions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/eight.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/five.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/four.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/one.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/seven.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/six.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/three.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/top_quinielas/two.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/_tip.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
@@ -61,8 +59,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -93,19 +91,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mousegroup" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\message_groups" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\top_quinielas" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\stripeapp\media\mdia" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mymessages" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\stripe" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp\mysite" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\promotions\templates\promotions" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mousegroup" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\message_groups" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\top_quinielas" />
     </key>
   </component>
   <component name="RunManager" selected="Python.delete">
@@ -208,7 +206,7 @@
       <workItem from="1594926661758" duration="22219000" />
       <workItem from="1594998727002" duration="18819000" />
       <workItem from="1595039191595" duration="5711000" />
-      <workItem from="1595085322923" duration="3503000" />
+      <workItem from="1595085322923" duration="9602000" />
     </task>
     <servers />
   </component>

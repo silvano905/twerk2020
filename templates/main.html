@@ -70,7 +70,17 @@
 
 
                     {% if request.user.profiles.pk == 4 %}
-                        <a class="nav-link" href="{% url 'mousegroup:my_message_members' username=request.user %}">User Questions</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'promotions:updatescores' %}">Update Scores</a>
+                            <a class="dropdown-item" href="{% url 'mousegroup:my_message_members' username=request.user %}">User Questions</a>
+                        </div>
+                        </li>
+
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'catmessage:detail_messages' pk=request.user.pk %}">¿Tienes una pregunta?</a>

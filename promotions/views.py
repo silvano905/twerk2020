@@ -23,6 +23,86 @@ User = get_user_model()
 
 
 def getAllWinners(request):
+    queryset = MakeTip.objects.all()
+
+    final_list = []
+    winners_list = []
+    nine_winner = []
+    eight_winner = []
+    seven_winner = []
+    six_winner = []
+    five_winner = []
+    winners_list_total = 0
+
+    for liga in queryset:
+        if liga.points == 9:
+            nine_winner.append(liga)
+        if liga.points == 8:
+            eight_winner.append(liga)
+        if liga.points == 7:
+            seven_winner.append(liga)
+        if liga.points == 6:
+            six_winner.append(liga)
+        if liga.points == 5:
+            five_winner.append(liga)
+
+    if nine_winner:
+        winners_list_total = 9
+        final_list = nine_winner
+    elif eight_winner:
+        winners_list_total = 8
+        final_list = eight_winner
+    elif seven_winner:
+        winners_list_total = 7
+        final_list = seven_winner
+    elif six_winner:
+        winners_list_total = 6
+        final_list = six_winner
+    elif five_winner:
+        winners_list_total = 5
+        final_list = five_winner
+
+
+
+    # for gamesx in queryset:
+    #     if gamesx.points == 9:
+    #         nine_winner = True
+    #         winners_list_total = 9
+    #         winners_list.append(gamesx)
+    #     elif gamesx.points == 8:
+    #         if not nine_winner:
+    #             print('nine failed')
+    #             eight_winner = True
+    #             winners_list.append(gamesx)
+    #             winners_list_total = 8
+    #     elif gamesx.points == 7:
+    #         if not nine_winner and not eight_winner:
+    #             print('eight and nine failed')
+    #             seven_winner = True
+    #             winners_list.append(gamesx)
+    #             winners_list_total = 7
+    #     elif gamesx.points == 6:
+    #         if not nine_winner and not eight_winner and not seven_winner:
+    #             print('nine, eight and seven failed')
+    #             six_winner = True
+    #             winners_list.append(gamesx)
+    #             winners_list_total = 6
+    #     elif gamesx.points == 5:
+    #         if not nine_winner and not eight_winner and not seven_winner and not six_winner:
+    #             print('nine, eight, seven and six failed')
+    #             five_winner = True
+    #             winners_list.append(gamesx)
+    #             winners_list_total = 5
+
+    context = {
+        "nine_list": final_list,
+        "point": winners_list_total
+    }
+
+    return render(request, 'promotions/all_winners.html', context)
+
+
+def update_all_scores_view(request):
     game_results = get_object_or_404(GamesModel, pk=1).games
     queryset = MakeTip.objects.all()
 
@@ -71,44 +151,7 @@ def getAllWinners(request):
         if nine_user == nine:
             points += 1
         gm.points = points
+        #save the change to the database
+        gm.save()
 
-    winners_list = []
-    nine_winner = False
-    eight_winner = False
-    seven_winner = False
-    six_winner = False
-    five_winner = False
-    winners_list_total = 0
-
-    for gamesx in queryset:
-        if gamesx.points == 9:
-            nine_winner = True
-            winners_list_total = 9
-            winners_list.append(gamesx)
-        elif gamesx.points == 8:
-            if not nine_winner:
-                eight_winner = True
-                winners_list.append(gamesx)
-                winners_list_total = 8
-        elif gamesx.points == 7:
-            if not nine_winner and not eight_winner:
-                seven_winner = True
-                winners_list.append(gamesx)
-                winners_list_total = 7
-        elif gamesx.points == 6:
-            if not nine_winner and not eight_winner and not seven_winner:
-                six_winner = True
-                winners_list.append(gamesx)
-                winners_list_total = 6
-        elif gamesx.points == 5:
-            if not nine_winner and not eight_winner and not seven_winner and not six_winner:
-                five_winner = True
-                winners_list.append(gamesx)
-                winners_list_total = 5
-
-    context = {
-        "nine_list": winners_list,
-        "point": winners_list_total
-    }
-
-    return render(request, 'promotions/all_winners.html', context)
+    return redirect('tips:list')
