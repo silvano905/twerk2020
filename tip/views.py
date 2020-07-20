@@ -18,6 +18,7 @@ from django.conf import settings
 import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from catmessage.models import Juego
 
 User = get_user_model()
 
@@ -45,7 +46,6 @@ def crate_tip(request):
 
             user_tip.all_choices = one + two + three + four + five + six + seven + eight + nine
 
-            print(user_tip.all_choices)
             form.save(commit=True)
 
 
@@ -153,7 +153,9 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 
 def index(request):
-    return render(request, 'tip/stripe/index.html')
+    request_user = Juego.objects.filter(author=request.user)
+
+    return render(request, 'tip/stripe/index.html', {'quinielas': request_user})
 
 
 def charge(request):
@@ -178,6 +180,28 @@ def charge(request):
 
 
 def successMsg(request, args):
+    user_obj = Juego.objects.filter(author=request.user)
+
+    for cart_item in user_obj:
+        all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
+        bought_items = MakeTip.objects.create(one=cart_item.one,
+                                              two=cart_item.two,
+                                              three=cart_item.three,
+                                              four=cart_item.four,
+                                              five=cart_item.five,
+                                              six=cart_item.six,
+                                              seven=cart_item.seven,
+                                              eight=cart_item.eight,
+                                              nine=cart_item.nine,
+                                              author=request.user,
+                                              all_choices=all_choices
+                               )
+
+        bought_items.save()
+
+        delete_cart_item = Juego.objects.filter(author__exact=request.user, pk=cart_item.pk)
+        delete_cart_item.delete()
+
     amount = args
     return render(request, 'tip/stripe/success.html', {'amount': amount})
 

@@ -82,73 +82,165 @@ button:hover {
 
     </style>
 
-    <div class="container">
-            <div class="d-flex justify-content-center">
-
-                <div class="jumbotron">
-
-
-
-        <!-- Set up a container element for the button -->
-    <div id="paypal-button-container"></div>
-
-    <!-- Include the PayPal JavaScript SDK -->
-
-    <script >
-        // Render the PayPal button into #paypal-button-container
-        paypal.Buttons({
-            style: {
-                color: 'gold',
-                layout: 'horizontal'
-            },
-
-            // Set up the transaction
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '10.01'
-                        }
-                    }]
-                });
-            },
-
-            // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Show a success message to the buyer
-                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                });
-            }
-
-
-        }).render('#paypal-button-container');
-    </script>
-
-
-
-
-
-
-
-<form action="{% url 'tips:charge' %}" method="post" id="payment-form">
-    {% csrf_token %}
-  <div class="form-group">
-    <label for="card-element2">
-      Tarjeta de crédito o débito
-    </label>
-
-
-    <div id="card-element2">
-      <!-- A Stripe Element will be inserted here. -->
+    <div class="jumbotron" style="text-align: center">
+        <h5>Todas las Quinielas</h5>
+        {% for games in quinielas %}
+            <p>{{ games.author }}</p>
+            <p>{{ games.one }}</p>
+        {% endfor %}
     </div>
 
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
-  </div>
 
-  <button>Submit Payment</button>
-</form>
+
+
+    <div class="jumbotron">
+        <div class="jumbotron" style="text-align: center">
+            <h5>quinielas de la Jornada 7</h5>
+        </div>
+
+
+        <div class="row">
+                {% for post in quinielas %}
+                <div class="col-lg-4">
+                    <div>
+                          <div class="card text-black bg-light mb-3">
+
+                                <div class="card-body">
+                                    <p class="card-text" style="color: black">@{{ post.author.username }}</p>
+                                    <ul class="list-group list-group-horizontal-sm">
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.one }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.one_team }}</button>
+                                        </div>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.two }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.two_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.three }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.three_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.four }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.four_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.five }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.five_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.six }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.six_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.seven_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.eight_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.nine_team }}</button>
+                                        </div>  </li>
+                                    </ul>
+
+                                    {% if user.is_authenticated and post.author == user %}
+                                        <a href="{% url 'promotions:cart_remove_item' pk=post.pk%}" class="btn btn-outline-info">Delete</a>
+                                    {% endif %}
+
+
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="jumbotron">
+
+                        <!-- Set up a container element for the button -->
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Include the PayPal JavaScript SDK -->
+
+                    <script >
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+                            style: {
+                                color: 'gold',
+                                layout: 'horizontal'
+                            },
+
+                            // Set up the transaction
+                            createOrder: function(data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: '10.01'
+                                        }
+                                    }]
+                                });
+                            },
+
+                            // Finalize the transaction
+                            onApprove: function(data, actions) {
+                                return actions.order.capture().then(function(details) {
+                                    // Show a success message to the buyer
+                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                });
+                            }
+
+
+                        }).render('#paypal-button-container');
+                    </script>
+
+
+
+
+
+
+
+                <form action="{% url 'tips:charge' %}" method="post" id="payment-form">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="card-element2">
+                      Tarjeta de crédito o débito
+                    </label>
+
+
+                    <div id="card-element2">
+                      <!-- A Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                  </div>
+
+                  <button>Submit Payment</button>
+                </form>
 
 
 
@@ -206,8 +298,8 @@ button:hover {
 {#	</div>#}
 
 
-</div>
-            </div>
+                </div>
+        </div>
     </div>
 
 

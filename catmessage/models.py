@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from accounts.models import Profile
-
+from django.utils.translation import ugettext_lazy as _
 
 class MyMessage(models.Model):
     author = models.ForeignKey(User, related_name='mymessages', on_delete=models.CASCADE)
@@ -25,3 +25,59 @@ class MyMessage(models.Model):
 
     class Meta:
         ordering = ['created_date']
+
+
+class Juego(models.Model):
+
+    class Month(models.TextChoices):
+        one = '', "seleciona aqui"
+        two = 'L', "L"
+        three = 'E', "E"
+        four = 'V', 'V'
+
+    author = models.ForeignKey(User, related_name='games', on_delete=models.CASCADE)
+    one = models.CharField(max_length=3, choices=Month.choices, default=Month.one)
+    two = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    three = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    four = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    five = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    six = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    seven = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    eight = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    nine = models.CharField(max_length=63, choices=Month.choices, default=Month.one)
+    all_choices = models.CharField(max_length=20, blank=True)
+    points = models.IntegerField(default=0, blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.author.username
+
+    def all_choices_field(self):
+        return self.all_choices
+
+    def one_team(self):
+        return 'Chivas vs América'
+
+    def two_team(self):
+        return 'Monterrey 0 vs Cruz Azul 0'
+
+    def three_team(self):
+        return 'León 2 vs Santos 3'
+
+    def four_team(self):
+        return 'Pumas 1 vs Tigres 2'
+
+    def five_team(self):
+        return 'Juárez 0 vs Morelia 3'
+
+    def six_team(self):
+        return 'Puebla 2 vs Pachuca 0'
+
+    def seven_team(self):
+        return 'Querétaro vs San Luis'
+
+    def eight_team(self):
+        return 'Necaxa vs Toluca'
+
+    def nine_team(self):
+        return 'Tijuana 1 vs Atlas 1'

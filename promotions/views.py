@@ -18,7 +18,10 @@ import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from tip.models import MakeTip
-
+from catmessage.models import Juego
+from catmessage.forms import BookModelFormset
+from django.forms import formset_factory
+from django.forms import modelformset_factory
 User = get_user_model()
 
 
@@ -61,38 +64,6 @@ def getAllWinners(request):
     elif five_winner:
         winners_list_total = 5
         final_list = five_winner
-
-
-
-    # for gamesx in queryset:
-    #     if gamesx.points == 9:
-    #         nine_winner = True
-    #         winners_list_total = 9
-    #         winners_list.append(gamesx)
-    #     elif gamesx.points == 8:
-    #         if not nine_winner:
-    #             print('nine failed')
-    #             eight_winner = True
-    #             winners_list.append(gamesx)
-    #             winners_list_total = 8
-    #     elif gamesx.points == 7:
-    #         if not nine_winner and not eight_winner:
-    #             print('eight and nine failed')
-    #             seven_winner = True
-    #             winners_list.append(gamesx)
-    #             winners_list_total = 7
-    #     elif gamesx.points == 6:
-    #         if not nine_winner and not eight_winner and not seven_winner:
-    #             print('nine, eight and seven failed')
-    #             six_winner = True
-    #             winners_list.append(gamesx)
-    #             winners_list_total = 6
-    #     elif gamesx.points == 5:
-    #         if not nine_winner and not eight_winner and not seven_winner and not six_winner:
-    #             print('nine, eight, seven and six failed')
-    #             five_winner = True
-    #             winners_list.append(gamesx)
-    #             winners_list_total = 5
 
     context = {
         "nine_list": final_list,
@@ -155,3 +126,49 @@ def update_all_scores_view(request):
         gm.save()
 
     return redirect('tips:list')
+
+
+def create_book_model_form(request):
+    template_name = 'promotions/create_normal.html'
+    heading_message = 'Model Formset Demo'
+    if request.method == 'GET':
+        # we don't want to display the already saved model instances
+        # formset = modelformset_factory(Juego, fields=('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'))
+        # formset = formset(queryset=Juego.objects.none())
+
+        formset = BookModelFormset(queryset=Juego.objects.none())
+    elif request.method == 'POST':
+        formset = BookModelFormset(request.POST)
+        if formset.is_valid():
+            for form in formset:
+                # only save if name is present
+                if form:
+                    juego_model = form.save(commit=False)
+                    form.save(commit=False)
+                    juego_model.author = request.user
+
+                    one = form.cleaned_data['one']
+                    two = form.cleaned_data['two']
+                    three = form.cleaned_data['three']
+                    four = form.cleaned_data['four']
+                    five = form.cleaned_data['five']
+                    six = form.cleaned_data['six']
+                    seven = form.cleaned_data['seven']
+                    eight = form.cleaned_data['eight']
+                    nine = form.cleaned_data['nine']
+
+                    juego_model.all_choices = one + two + three + four + five + six + seven + eight + nine
+
+                    form.save()
+            return redirect('tips:stripe')
+    return render(request, template_name, {
+            'formset': formset,
+            'heading': heading_message,
+        })
+
+
+@login_required
+def delete_cart_item(request, pk):
+    query = Juego.objects.filter(author__exact=request.user, pk=pk)
+    query.delete()
+    return redirect('tips:stripe')
