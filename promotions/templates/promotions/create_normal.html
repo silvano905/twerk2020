@@ -2,35 +2,34 @@
 {% extends 'main.html' %}
 {% load bootstrap4 %}
 {% block body_block %}
+    <div class="d-flex justify-content-center">
     <div class="jumbotron">
 
-    <form class="form-horizontal" method="POST" action="">
-{% csrf_token %}
-{{ formset.management_form }}
-{% for form in formset %}
-<div class="row form-row spacer">
-    <div class="col-2">
-        <label>1</label>
-    </div>
-    <div class="col-4">
-        <div class="input-group">
-{% bootstrap_form form %}
-            <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <nav class="navbar sticky-top navbar-light bg-light">
+                  <p><strong id="number_quinielas">1</strong> Quinielas - Total: $<strong id="total_quinielas">2</strong></p>
+                </nav>
+
+            <div class="form-row">
+                <div class="col-auto">
+                    {% bootstrap_form form %}
+                            <div class="input-group-append">
+                                <button class="btn btn-success add-form-row" id="change_info">+</button>
+                            </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-{% endfor %}
-<div class="row spacer">
-    <div class="col-4 offset-2">
-        <button type="submit" class="btn btn-block btn-primary">Create</button>
-    </div>
-</div>
-</form>
-</div>
+            {% endfor %}
+                    <div>
+                        <button type="submit" class="btn btn-block btn-primary">Create</button>
+                    </div>
+         </form>
 
-
+    </div>
+    </div>
 <!-- create_normal.html :: part 4 -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -61,6 +60,18 @@ function cloneMore(selector, prefix) {
         }
     });
     total++;
+
+    {#i added this to update quinela list total#}
+    const addNumberQuinielas = document.getElementById('number_quinielas');
+    addNumberQuinielas.textContent = total;
+
+    const addTotalQuinielas = document.getElementById('total_quinielas');
+    let totaltoPay = total;
+    totaltoPay *= 2;
+    addTotalQuinielas.textContent = totaltoPay;
+
+    {#end of my addition#}
+
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
     $(selector).after(newElement);
     var conditionRow = $('.form-row:not(:last)');
@@ -77,6 +88,18 @@ function deleteForm(prefix, btn) {
         var forms = $('.form-row');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
         for (var i=0, formCount=forms.length; i<formCount; i++) {
+
+            {#i added this to update quinela list total#}
+            const addNumberQuinielas = document.getElementById('number_quinielas');
+            addNumberQuinielas.textContent = forms.length;
+
+            const addTotalQuinielas = document.getElementById('total_quinielas');
+            let totaltoPay = forms.length;
+            totaltoPay *= 2;
+            addTotalQuinielas.textContent = totaltoPay;
+
+            {#end of my addition#}
+
             $(forms.get(i)).find(':input').each(function() {
                 updateElementIndex(this, prefix, i);
             });
@@ -94,6 +117,9 @@ $(document).on('click', '.remove-form-row', function(e){
     deleteForm('form', $(this));
     return false;
 });
+
+
+
 
 </script>
 

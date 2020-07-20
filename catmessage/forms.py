@@ -40,4 +40,4 @@ class BookFormset(forms.ModelForm):
         # exclude = ()
         fields = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
-BookModelFormset = modelformset_factory(Juego, form=BookFormset)
+BookModelFormset = modelformset_factory(Juego, form=BookFormset, max_num=25, validate_max=True)
