@@ -15,13 +15,13 @@
             {{ formset.management_form }}
             {% for form in formset %}
                 <nav class="navbar sticky-top navbar-light bg-light">
-                  <p><strong id="number_quinielas">1</strong> Quinielas - Precio total: $<strong id="total_quinielas">2</strong></p>
+                  <p><strong id="number_quinielas">1</strong> Quiniela<span id="plural"></span> - Precio total: $<strong id="total_quinielas">2</strong></p>
                 </nav>
 
                 <div class="form-row" style="margin-top: 15px">
                     <div class="col-auto">
 
-                    <div style="background-color: #205067; width: 300px;height: 5px; border-radius: 5px; margin-top: 10px"></div>
+                    <div style="background-color: #205067; width: 300px;height: 5px; border-radius: 5px; margin-top: 20px"></div>
 
 
                         {% bootstrap_form form %}
@@ -31,8 +31,8 @@
                     </div>
                 </div>
             {% endfor %}
-                    <div>
-                        <button type="submit" class="btn btn-block btn-primary">Comprar</button>
+                    <div style="margin-top: 20px">
+                        <button type="submit" class="btn btn-block btn-primary">Pagar Quinielas</button>
                     </div>
         </form>
         </div>
@@ -79,6 +79,9 @@ function cloneMore(selector, prefix) {
     totaltoPay *= 2;
     addTotalQuinielas.textContent = totaltoPay;
 
+    let plural = document.getElementById('plural');
+    plural.textContent = 's';
+
     {#end of my addition#}
 
     $('#id_' + prefix + '-TOTAL_FORMS').val(total);
@@ -110,6 +113,11 @@ function deleteForm(prefix, btn) {
             totaltoPay *= 2;
             addTotalQuinielas.textContent = totaltoPay;
 
+            let plural = document.getElementById('plural');
+            if(forms.length === 1){
+                plural.textContent = '';
+            }
+
             {#end of my addition#}
 
             $(forms.get(i)).find(':input').each(function() {
@@ -130,10 +138,8 @@ $(document).on('click', '.remove-form-row', function(e){
     return false;
 });
 
-    x = document.querySelectorAll(".btn-success");
     c = document.querySelector(".btn-success");
-    c.textContent = "Agregar Otra Quiniela"
-
+    c.textContent = "Agregar Otra Quiniela";
 
 
 </script>
