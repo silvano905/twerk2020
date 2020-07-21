@@ -154,13 +154,26 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 def index(request):
     request_user = Juego.objects.filter(author=request.user)
+    total_payment = request_user.count()*2
+    total_quinielas = request_user.count()
 
-    return render(request, 'tip/stripe/index.html', {'quinielas': request_user})
+    import datetime
+    x = datetime.datetime.now()
+    date_now = x.today()
+
+    context = {
+        "quinielas": request_user,
+        "total": total_payment,
+        "total_quinielas": total_quinielas,
+        "date": date_now
+    }
+
+    return render(request, 'tip/stripe/index.html', context)
 
 
 def charge(request):
     if request.method == 'POST':
-        amount = 5
+        amount = Juego.objects.filter(author=request.user).count()*2
         email = request.user.email
         name = request.user.username
         customer = stripe.Customer.create(
@@ -203,6 +216,7 @@ def successMsg(request, args):
         delete_cart_item.delete()
 
     amount = args
-    return render(request, 'tip/stripe/success.html', {'amount': amount})
+    total_quinielas = int(amount)//2
+    return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": total_quinielas})
 
 

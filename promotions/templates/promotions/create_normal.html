@@ -12,6 +12,8 @@
         <div class="d-flex justify-content-center">
         <form method="POST" action="">
             {% csrf_token %}
+
+            <input id="send_total" type="hidden" name="total_money" value="">
             {{ formset.management_form }}
             {% for form in formset %}
                 <nav class="navbar sticky-top navbar-light bg-light">
@@ -79,6 +81,9 @@ function cloneMore(selector, prefix) {
     totaltoPay *= 2;
     addTotalQuinielas.textContent = totaltoPay;
 
+    const total_send = document.getElementById('send_total');
+    total_send.value = totaltoPay;
+
     let plural = document.getElementById('plural');
     plural.textContent = 's';
 
@@ -112,6 +117,9 @@ function deleteForm(prefix, btn) {
             let totaltoPay = forms.length;
             totaltoPay *= 2;
             addTotalQuinielas.textContent = totaltoPay;
+
+            const total_send = document.getElementById('send_total');
+            total_send.value = totaltoPay;
 
             let plural = document.getElementById('plural');
             if(forms.length === 1){

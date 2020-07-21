@@ -83,9 +83,81 @@ button:hover {
     </style>
 
     <div class="jumbotron">
-        <div class="jumbotron" style="text-align: center">
-            <h5>quinielas de la Jornada 7</h5>
-        </div>
+
+            <div class="mx-auto card text-white bg-primary mb-3" style="max-width: 18rem;">
+              <div class="card-body">
+                <h6 class="card-title">Usuario: {{ request.user }}</h6>
+                <h6 class="card-title">Numero de Quinielas: <strong>{{ total_quinielas }}</strong></h6>
+                <h6 class="card-title">Precio Total: <strong>${{ total }}</strong></h6>
+                <p class="card-text"><small>{{ date }}</small></p>
+              </div>
+            </div>
+
+
+            <div class="mx-auto card text-white bg-info mb-3" style="max-width: 22rem;">
+              <div class="card-body">
+
+
+                                      <!-- Set up a container element for the button -->
+                    <div id="paypal-button-container"></div>
+
+                    <!-- Include the PayPal JavaScript SDK -->
+
+                    <script >
+                        // Render the PayPal button into #paypal-button-container
+                        paypal.Buttons({
+                            style: {
+                                color: 'gold',
+                                layout: 'horizontal'
+                            },
+
+                            // Set up the transaction
+                            createOrder: function(data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        amount: {
+                                            value: '10.01'
+                                        }
+                                    }]
+                                });
+                            },
+
+                            // Finalize the transaction
+                            onApprove: function(data, actions) {
+                                return actions.order.capture().then(function(details) {
+                                    // Show a success message to the buyer
+                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                });
+                            }
+
+
+                        }).render('#paypal-button-container');
+                    </script>
+
+
+
+                <form action="{% url 'tips:charge' %}" method="post" id="payment-form">
+                    {% csrf_token %}
+
+                  <div class="form-group">
+
+                    <label for="card-element2">
+                      Tarjeta de crédito o débito
+                    </label>
+
+
+                    <div id="card-element2">
+                      <!-- A Stripe Element will be inserted here. -->
+                    </div>
+
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                  </div>
+
+                  <button>Completar Pago</button>
+                </form>
+              </div>
+</div>
 
 
         <div class="row">
@@ -95,7 +167,7 @@ button:hover {
                           <div class="card text-black bg-light mb-3">
 
                                 <div class="card-body">
-                                    <p class="card-text" style="color: black">@{{ post.author.username }}</p>
+                                    <p class="card-text" style="color: black">{{ post.author.username }}</p>
                                     <ul class="list-group list-group-horizontal-sm">
                                       <li class="list-group-item">
                                           <div class="btn-group" role="group" aria-label="Basic example">
@@ -146,7 +218,7 @@ button:hover {
                                     </ul>
 
                                     {% if user.is_authenticated and post.author == user %}
-                                        <a href="{% url 'promotions:cart_remove_item' pk=post.pk%}" class="btn btn-outline-info">Delete</a>
+                                        <a href="{% url 'promotions:cart_remove_item' pk=post.pk%}" class="btn btn-warning" style="margin-top: 5px">Borrar Quiniela</a>
                                     {% endif %}
 
 
@@ -157,137 +229,6 @@ button:hover {
                 </div>
                 {% endfor %}
 
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <div class="container">
-            <div class="d-flex justify-content-center">
-                <div class="jumbotron">
-
-                        <!-- Set up a container element for the button -->
-                    <div id="paypal-button-container"></div>
-
-                    <!-- Include the PayPal JavaScript SDK -->
-
-                    <script >
-                        // Render the PayPal button into #paypal-button-container
-                        paypal.Buttons({
-                            style: {
-                                color: 'gold',
-                                layout: 'horizontal'
-                            },
-
-                            // Set up the transaction
-                            createOrder: function(data, actions) {
-                                return actions.order.create({
-                                    purchase_units: [{
-                                        amount: {
-                                            value: '10.01'
-                                        }
-                                    }]
-                                });
-                            },
-
-                            // Finalize the transaction
-                            onApprove: function(data, actions) {
-                                return actions.order.capture().then(function(details) {
-                                    // Show a success message to the buyer
-                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                });
-                            }
-
-
-                        }).render('#paypal-button-container');
-                    </script>
-
-
-
-
-
-
-
-                <form action="{% url 'tips:charge' %}" method="post" id="payment-form">
-                    {% csrf_token %}
-                  <div class="form-group">
-                    <label for="card-element2">
-                      Tarjeta de crédito o débito
-                    </label>
-
-
-                    <div id="card-element2">
-                      <!-- A Stripe Element will be inserted here. -->
-                    </div>
-
-                    <!-- Used to display form errors. -->
-                    <div id="card-errors" role="alert"></div>
-                  </div>
-
-                  <button>Submit Payment</button>
-                </form>
-
-
-
-
-{#	<div id="container">#}
-{#		<div class="column-6">#}
-{#				<img id="profile-pic" src="{% static 'images/Dennis.jfif' %}">#}
-{##}
-{#				<hr>#}
-{#				<!-- Add form here -->#}
-{#				<form action="{% url 'tips:charge' %}" method="post" id="payment-form">#}
-{#					{% csrf_token %}#}
-{#					<div class="form-field-12">#}
-{#						<label for="amount">Choose Amount:</label>#}
-{#						<br>#}
-{#						<br>#}
-{#						<select required name="amount" id="amount">#}
-{#						  <option selected value="5">$5 --- Here's a coffee, on me :)</option>#}
-{#						  <option value="10">$10 --- You helped me, so I am going to help you</option>#}
-{#						  <option value="25">$25 --- I love your channel!</option>#}
-{#						</select>#}
-{#					</div>#}
-{##}
-{#					<div class="form-field-6">#}
-{#						<input required type="text" name="email" placeholder="email...">#}
-{#					</div>#}
-{##}
-{#					<div class="form-field-6">#}
-{#						<input required type="text" name="nickname" placeholder="Nickname...">#}
-{#					</div>#}
-{##}
-{#				  <div class="form-row">#}
-{#				    <label for="card-element2">#}
-{#				      Credit or debit card#}
-{#				    </label>#}
-{#				    <div id="card-element2">#}
-{#				      <!-- A Stripe Element will be inserted here. -->#}
-{#				    </div>#}
-{##}
-{#				    <!-- Used to display form errors. -->#}
-{#				    <div id="card-errors" role="alert"></div>#}
-{#				  </div>#}
-{##}
-{#				  <div style="clear:left"></div>#}
-{#				  <hr>#}
-{##}
-{#    <button>Submit Payment</button>#}
-{##}
-{#				</form>#}
-{##}
-{##}
-{#		</div>#}
-{##}
-{##}
-{#	</div>#}
-
-
-                </div>
         </div>
     </div>
 

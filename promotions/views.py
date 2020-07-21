@@ -140,6 +140,8 @@ def create_book_model_form(request):
     elif request.method == 'POST':
         formset = BookModelFormset(request.POST)
         if formset.is_valid():
+            total = request.POST.get('total_money')
+
             for form in formset:
                 # only save if name is present
                 if form:
