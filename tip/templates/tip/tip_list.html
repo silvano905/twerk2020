@@ -18,8 +18,8 @@
 
                 {% if user.is_authenticated %}
 
-                        <a href="{% url 'promotions:book'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Comprar Quiniela</a>
-                        <a href="{% url 'tips:for_user' username=request.user.username%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Mis Quinielas</a>
+                        <a href="{% url 'promotions:book'%}" class="btn btn-light btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Comprar Quinielas</a>
+                        <a href="{% url 'tips:for_user' username=request.user.username%}" class="btn btn-dark btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Mis Quinielas</a>
 
 
                 {% else %}
@@ -33,42 +33,41 @@
 
         </div>
 
-              {% if user.is_authenticated %}
-                        <a href="{% url 'promotions:winners'%}" class="btn btn-light" role="button" aria-pressed="true" style="margin-bottom: 5px">Ganadores de la Jornada 7</a>
-              {% endif %}
-
-
-
       </div>
 
   </div>
 </div>
 
 
-<div class="jumbotron">
+<div class="jumbotron" style="margin-top: 10px">
     <h5 style="text-align: center">Quinielas con mejor puntuacion</h5>
     <div class="container">
         <div class="row">
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=9 %}" role="button" style="margin-bottom: 7px">9 puntos</a></div>
-            <div class="col col--4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=8 %}" role="button" style="margin-bottom: 7px">8 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=7 %}" role="button" style="margin-bottom: 7px">7 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=6 %}" role="button" style="margin-bottom: 7px">6 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=5 %}" role="button" style="margin-bottom: 7px">5 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=4 %}" role="button" style="margin-bottom: 7px">4 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=3 %}" role="button" style="margin-bottom: 7px">3 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=2 %}" role="button" style="margin-bottom: 7px">2 puntos</a></div>
-            <div class="col col-4 col-md-3"><a class="btn btn-primary" href="{% url 'tips:filter' value=1 %}" role="button" style="margin-bottom: 7px">1 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=9 %}" role="button" style="margin-bottom: 7px">9 puntos</a></div>
+            <div class="col col--4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=8 %}" role="button" style="margin-bottom: 7px">8 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=7 %}" role="button" style="margin-bottom: 7px">7 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=6 %}" role="button" style="margin-bottom: 7px">6 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=5 %}" role="button" style="margin-bottom: 7px">5 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=4 %}" role="button" style="margin-bottom: 7px">4 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=3 %}" role="button" style="margin-bottom: 7px">3 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=2 %}" role="button" style="margin-bottom: 7px">2 puntos</a></div>
+            <div class="col col-4 col-md-3"><a class="btn btn-outline-primary btn-sm" href="{% url 'tips:filter' value=1 %}" role="button" style="margin-bottom: 7px">1 puntos</a></div>
         </div>
     </div>
 </div>
 
 
     <div class="jumbotron">
-        <div style="text-align: center; margin-bottom: 10px">
+        <div style="text-align: center; margin-bottom: 5px">
             <a class="btn btn-success" href="{% url 'tips:download' %}" role="button">
                 Descargar lista completa
                 <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/k21Asset+3.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
             </a>
+
+              {% if user.is_authenticated %}
+                  <a href="{% url 'promotions:winners'%}" class="btn btn-info" role="button" aria-pressed="true" style="margin: 10px">Ganadores de la Jornada 7</a>
+              {% endif %}
+
         </div>
         <div class="row">
             {% for post in post_list %}
@@ -76,9 +75,9 @@
                     <div>
 
                         {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% else %}
-                        <div class="card text-black bg-light mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% endif %}
 
                             <div class="card-body">
