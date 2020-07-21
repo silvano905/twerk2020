@@ -101,7 +101,7 @@
 
                 {% block search_block %}
                         <form method="GET" action="{% url 'promotions:details'%}" class="form-inline">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Buscar quiniela por numero" aria-label="Search" name="q">
+                          <input class="form-control mr-sm-2" type="text" placeholder="Buscar quiniela por número de identificación" aria-label="Search" name="q">
                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                         </form>
 
@@ -119,8 +119,8 @@
 {#            {% endblock %}#}
         </div>
     {% else %}
-            <a class="nav-link" href="{% url 'login'%}">Login</a>
-            <a class="nav-link" href="{% url 'accounts:registration'%}">Create Account</a>
+            <a class="nav-link" href="{% url 'login'%}">Entra a mi cuenta</a>
+            <a class="nav-link" href="{% url 'accounts:registration'%}">Crear una cuenta</a>
     {% endif %}
 </nav>
 
