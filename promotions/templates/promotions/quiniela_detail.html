@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+
+{% block search_block %}
+{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron">
+
+    {% if post %}
+
+          <div class="mx-auto card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;max-width: 22rem;">
+
+                <div class="card-body">
+                    <p class="card-text" style="color: whitesmoke">{{ post.author.username }}</p>
+                    <p>Número de identificación: {{ post.pk }}</p>
+                    <p>Puntos: {{ post.points }}</p>
+                    <ul class="list-group list-group-horizontal-sm">
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.one }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.one_team }}</button>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.two }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.two_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.three }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.three_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.four }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.four_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.five }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.five_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.six }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.six_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.seven_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.eight_team }}</button>
+                        </div>  </li>
+                      <li class="list-group-item">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
+                          <button type="button" class="btn btn-secondary">{{ post.nine_team }}</button>
+                        </div>  </li>
+                    </ul>
+
+                </div>
+
+          </div>
+
+        <div style="text-align: center">
+            <a class="btn btn btn-info btn-lg" href="{% url 'tips:list' %}" role="button" style="margin-bottom: 7px">&#x2190;Regresar</a>
+        </div>
+
+    {% else %}
+        <div style="text-align: center">
+            <h5>Quiniela no existe con el número de identificación: {{ pk }}</h5>
+            <a class="btn btn btn-info btn-lg" href="{% url 'tips:list' %}" role="button" style="margin-bottom: 7px">&#x2190;Regresar</a>
+
+        </div>
+
+    {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

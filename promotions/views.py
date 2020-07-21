@@ -184,3 +184,17 @@ def delete_cart_item(request, pk):
     query = Juego.objects.filter(author__exact=request.user, pk=pk)
     query.delete()
     return redirect('tips:stripe')
+
+
+def search_quiniela(request):
+    if request.method == 'GET':
+        pk = request.GET.get('q')
+        pk = int(pk)
+        search = []
+        if pk is not None:
+            if not MakeTip.objects.filter(pk=pk).exists():
+                search = []
+            else:
+                search = MakeTip.objects.get(pk=pk)
+
+        return render(request, 'promotions/quiniela_detail.html', {"post": search, "pk": pk})

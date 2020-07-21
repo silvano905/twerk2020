@@ -98,6 +98,16 @@
                 </li>
             {% endif %}
             </ul>
+
+                {% block search_block %}
+                        <form method="GET" action="{% url 'promotions:details'%}" class="form-inline">
+                          <input class="form-control mr-sm-2" type="text" placeholder="Buscar quiniela por numero" aria-label="Search" name="q">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+
+                {% endblock %}
+
+
                     <a class="nav-link" href="{% url 'logout'%}" >Cerrar Sesión</a>
 
 {#            {% block serach_block %}#}
