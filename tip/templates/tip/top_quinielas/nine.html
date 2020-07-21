@@ -10,13 +10,14 @@
                     <div>
 
                         {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% else %}
-                        <div class="card text-black bg-light mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% endif %}
 
                             <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
+                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">{{ post.author.username }}</a></p>
+                                <p>Numero de identificacion: {{ post.pk }}</p>
                                 <p class="card-text">Puntos: {{ post.points }}</p>
 
                                 <ul class="list-group list-group-horizontal-sm">

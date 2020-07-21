@@ -19,6 +19,7 @@ import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from catmessage.models import Juego
+import datetime
 
 User = get_user_model()
 
@@ -91,6 +92,8 @@ class TipDeleteView(DeleteView, LoginRequiredMixin):
 
 class UserTips(ListView, LoginRequiredMixin):
 
+
+
     context_object_name = 'post_list'
     model = MakeTip
     template_name = 'tip/user_tip_list.html'
@@ -106,6 +109,17 @@ class UserTips(ListView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post_user'] = self.post_user.tips.all().count()
+
+        now = datetime.datetime.now()
+        edit_day = now.strftime("%A")
+        no_more_editing = False
+
+        if edit_day == "Thursday":
+            no_more_editing = True
+        else:
+            no_more_editing = False
+
+        context['no_more_editing'] = no_more_editing
         return context
 
 
@@ -157,7 +171,6 @@ def index(request):
     total_payment = request_user.count()*2
     total_quinielas = request_user.count()
 
-    import datetime
     x = datetime.datetime.now()
     date_now = x.today()
 

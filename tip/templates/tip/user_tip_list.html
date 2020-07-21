@@ -6,94 +6,103 @@
 
 {% block body_block %}
 
-<div class="jumbotron main_wrapper_jumbotron">
-    <div class="jumbotron" style="text-align: center">
-        <h5>{{ post_user }} quinielas de la Jornada 7</h5>
-    </div>
+    <div class="jumbotron">
+        <div style="text-align: center; margin-bottom: 7px">
+            <h5>{{ post_user }} quinielas de la Jornada 7</h5>
+        </div>
 
 
-    <div class="row">
-        {% if post_list %}
-            {% for post in post_list %}
-            <div class="col-lg-4">
-                <div>
-                      <div class="card text-black bg-light mb-3">
+        <div class="row">
+            {% if post_list %}
+                {% for post in post_list %}
+                <div class="col-lg-4">
+                    <div>
+                          <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
 
-                            <div class="card-body">
-                                <p class="card-text" style="color: black">@{{ post.author.username }}</p>
-                                <p>Numero de identificacion# {{ post.pk }}</p>
-                                <p>Puntos: {{ post.points }}</p>
-                                <ul class="list-group list-group-horizontal-sm">
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.one }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.one_team }}</button>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.two }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.two_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.three }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.three_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.four }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.four_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.five }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.five_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.six }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.six_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.seven_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.eight_team }}</button>
-                                    </div>  </li>
-                                  <li class="list-group-item">
-                                      <div class="btn-group" role="group" aria-label="Basic example">
-                                      <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
-                                      <button type="button" class="btn btn-secondary">{{ post.nine_team }}</button>
-                                    </div>  </li>
-                                </ul>
+                                <div class="card-body">
+                                    <p class="card-text" style="color: whitesmoke">{{ post.author.username }}</p>
+                                    <p>Numero de identificacion: {{ post.pk }}</p>
+                                    <p>Puntos: {{ post.points }}</p>
+                                    <ul class="list-group list-group-horizontal-sm">
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.one }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.one_team }}</button>
+                                        </div>
+                                      </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.two }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.two_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.three }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.three_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.four }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.four_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.five }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.five_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.six }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.six_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.seven }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.seven_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.eight }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.eight_team }}</button>
+                                        </div>  </li>
+                                      <li class="list-group-item">
+                                          <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-secondary">{{ post.nine }}</button>
+                                          <button type="button" class="btn btn-secondary">{{ post.nine_team }}</button>
+                                        </div>  </li>
+                                    </ul>
 
-                                {% if user.is_authenticated and post.author == user %}
-                                    <a href="{% url 'tips:tip_edit' pk=post.pk%}" class="btn btn-outline-info">Editar</a>
-                                {% endif %}
 
+
+
+                                    {% if not no_more_editing %}
+                                        {% if user.is_authenticated and post.author == user %}
+                                            <div class="alert alert-secondary" role="alert" style="margin-top: 8px">
+                                                <p>Solo puedes editar/cambiar la quiniela hasta el jueves de cada semana</p>
+                                                <a href="{% url 'tips:tip_edit' pk=post.pk%}" class="btn btn-outline-info" style="margin-top: 8px">Editar</a>
+                                            </div>
+
+                                        {% endif %}
+                                    {% else %}
+                                    {% endif %}
+
+                                </div>
 
                             </div>
-
-                        </div>
-                </div>
-            </div>
-            {% endfor %}
-        {% else %}
-            <div class="container">
-                <div class="jumbotron">
-                    <div align="center">
-                        <p>No has comprado quinielas de la Jornada 7</p>
                     </div>
                 </div>
-            </div>
-        {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="container">
+                    <div class="jumbotron">
+                        <div align="center">
+                            <p>No has comprado quinielas de la Jornada 7</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
     </div>
-</div>
 
 {% endblock %}
 

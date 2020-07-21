@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 {% extends 'main.html' %}
 {% block body_block %}
+
+    {% if are_games_finished %}
+
+
+
         <div class="jumbotron">
         <h1 class="display-4" style="text-align: center">Ganaron con {{ point }} Puntos</h1>
         <div class="row">
@@ -9,14 +14,14 @@
                     <div>
 
                         {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% else %}
-                        <div class="card text-black bg-light mb-3">
+                        <div class="card text-white mb-3" style="background-color: #2d3047; color: #f1faee !important;">
                         {% endif %}
 
                             <div class="card-body">
-                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">@{{ post.author.username }}</a></p>
-                                <h5>{{ post.pk }}</h5>
+                                <p class="card-text"><a href="{% url 'tips:for_user' username=post.author.username %}">{{ post.author.username }}</a></p>
+                                <h5>Numero de identificacion: {{ post.pk }}</h5>
                                 <h5>{{ post.points }}</h5>
 
                                 <ul class="list-group list-group-horizontal-sm">
@@ -81,4 +86,15 @@
             {% endfor %}
         </div>
         </div>
+
+    {% else %}
+
+        <div class="jumbotron" style="text-align: center">
+            <h5>Todavia no se termina la Jornada 7</h5>
+            <h5>Numero de juegos restantes: {{ games_to_be_played }}</h5>
+        </div>
+
+    {% endif %}
+
+
 {% endblock %}

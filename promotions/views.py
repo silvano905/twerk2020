@@ -27,6 +27,14 @@ User = get_user_model()
 
 def getAllWinners(request):
     queryset = MakeTip.objects.all()
+    game_results = get_object_or_404(GamesModel, pk=1).games
+    games_played = len(game_results)
+    games_to_be_played = 9-int(games_played)
+    are_games_finished = False
+    if games_played == 9:
+        are_games_finished = True
+    else:
+        are_games_finished = False
 
     final_list = []
     winners_list = []
@@ -67,7 +75,9 @@ def getAllWinners(request):
 
     context = {
         "nine_list": final_list,
-        "point": winners_list_total
+        "point": winners_list_total,
+        "are_games_finished": are_games_finished,
+        "games_to_be_played": games_to_be_played
     }
 
     return render(request, 'promotions/all_winners.html', context)
