@@ -19,7 +19,7 @@ class MakeMessageForm(forms.ModelForm):
 class BookFormset(forms.ModelForm):
 
     CHOICES = (
-        ('', 'Seleciona aqui'),
+        ('', 'Seleciona tu pronóstico aqui'),
         ('L', 'L'),
         ('E', 'E'),
         ('V', 'V'),

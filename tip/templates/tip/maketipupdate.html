@@ -8,6 +8,10 @@
 
     <div class="jumbotron" style="text-align: center">
 
+    <div style="text-align: center; margin-bottom: 20px">
+        <h5>Tus pronósticos de esta quiniela</h5>
+    </div>
+
     <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Terminé de cambiar</button>

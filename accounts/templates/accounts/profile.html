@@ -15,8 +15,10 @@
     {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-4 col-sm-12">
-                <label>Si eres unos de los ganadores de alguna quiniela se te contactara usando el número de teléfono que escribas.</label>
+                <label>Si eres unos de los ganadores de alguna quiniela se te contactará usando el número de teléfono que escribas.</label>
+                <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/jumpstart_phone.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
             {{ form.description }}
+
             </div>
 
         </div>
@@ -25,6 +27,10 @@
 
 <button class="btn btn-primary" type="submit">Enviar</button>
     </form>
+
+                        <small style="color: mediumseagreen">Esta es la información se mantiene privada</small>
+
+
         </div>
 </div>
 

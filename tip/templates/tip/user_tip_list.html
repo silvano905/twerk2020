@@ -8,7 +8,7 @@
 
     <div class="jumbotron">
         <div style="text-align: center; margin-bottom: 7px">
-            <h5>{{ post_user }} quinielas de la Jornada 7</h5>
+            <h5><strong style="color: #447e9b">{{ post_user }}</strong> quinielas de la Jornada 7</h5>
         </div>
 
 
@@ -77,10 +77,21 @@
 
                                     {% if not no_more_editing %}
                                         {% if user.is_authenticated and post.author == user %}
-                                            <div class="alert alert-secondary" role="alert" style="margin-top: 8px">
-                                                <p>Solo puedes editar/cambiar la quiniela hasta el jueves de cada semana</p>
-                                                <a href="{% url 'tips:tip_edit' pk=post.pk%}" class="btn btn-outline-info" style="margin-top: 8px">Editar</a>
+
+
+                                            <div class="dropdown" style="margin-top: 10px">
+                                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                ¿quieres cambiar algo?
+                                              </button>
+                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-width: 300px;">
+                                                    <p style="padding: 8px">Solo puedes cambiar la quiniela hasta el jueves de cada semana</p>
+                                                    <a href="{% url 'tips:tip_edit' pk=post.pk%}" class="btn btn-primary" style="padding: 8px">Cambiar</a>
+
+                                              </div>
                                             </div>
+
+
+
 
                                         {% endif %}
                                     {% else %}

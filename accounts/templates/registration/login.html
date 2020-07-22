@@ -12,12 +12,12 @@
 
     <form method="post">
 
-        <p class="text-center">Ingresar</p>
+        <p class="text-center">Ingresar a mi cuenta</p>
 
         {% csrf_token %}
         {% bootstrap_form form %}
 
-        <input type="submit" value="Iniciar" class="btn btn-default">
+        <input type="submit" value="Entrar" class="btn btn-primary">
         <a href="{% url 'password_reset' %}">Se te olvidó la contraseña?</a>
 
     </form>
