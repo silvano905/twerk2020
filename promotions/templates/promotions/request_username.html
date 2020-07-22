@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+
+{% block search_block %}
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+
+        {% if email %}
+            <h5 style="margin-bottom: 20px">Este correo electrónico no está registrado con una cuenta: <strong style="color: darkred">{{ email }}</strong></h5>
+        {% endif %}
+
+
+        {% if post %}
+            <h4><strong style="color: #447e9b">{{ post }}</strong> es tu nombre de usuario</h4>
+            <a class="btn btn-primary" role="button" href="{% url 'login'%}">Entrar a mi cuenta</a>
+        {% else %}
+
+
+        <div style="text-align: center">
+            <h4>Busca tu nombre de usuario con el correo electrónico que usaste para abrir tu cuenta</h4>
+
+            <form method="GET" action="{% url 'promotions:forgot'%}" class="form-inline">
+              <input class="form-control mr-sm-2" type="text" placeholder="Correo electrónico" aria-label="Search" name="q">
+              <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

@@ -198,3 +198,26 @@ def search_quiniela(request):
                 search = MakeTip.objects.get(pk=pk)
 
         return render(request, 'promotions/quiniela_detail.html', {"post": search, "pk": pk})
+
+
+def forgot_username(request):
+    if request.method == 'GET':
+        email = request.GET.get('q')
+        search = []
+        found_user = []
+        if email is not None:
+            if not User.objects.filter(email=email).exists():
+                search = []
+                found_user = email
+            else:
+                search = User.objects.get(email=email)
+                found_user = []
+
+        return render(request, 'promotions/request_username.html', {"post": search, "email": found_user})
+    else:
+        search = []
+        return render(request, 'promotions/request_username.html', {"post": search})
+
+
+def check_win(request):
+    return render(request, 'promotions/ganaste.html')

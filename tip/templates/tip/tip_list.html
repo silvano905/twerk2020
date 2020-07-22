@@ -45,10 +45,9 @@
                         <a href="{% url 'promotions:book'%}" class="btn btn-primary btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Comprar Quinielas</a>
                         <a href="{% url 'tips:for_user' username=request.user.username%}" class="btn btn-dark btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Mis Quinielas</a>
 
-
                 {% else %}
-                    <a href="{% url 'login'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Entrar A Mi Cuenta</a>
-                    <a href="{% url 'accounts:registration'%}" class="btn btn-info btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Crear Cuenta</a>
+                    <a href="{% url 'login'%}" class="btn btn-primary btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Entrar A Mi Cuenta</a>
+                    <a href="{% url 'accounts:registration'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Crear Cuenta</a>
                 {% endif %}
 
 
@@ -77,6 +76,10 @@
             <div class="col col-4 col-md-3"><a class="btn btn-outline-dark btn-sm" href="{% url 'tips:filter' value=2 %}" role="button" style="margin-bottom: 7px">2 puntos</a></div>
             <div class="col col-4 col-md-3"><a class="btn btn-outline-dark btn-sm" href="{% url 'tips:filter' value=1 %}" role="button" style="margin-bottom: 7px">1 puntos</a></div>
         </div>
+
+        <a href="{% url 'promotions:gane' %}" class="btn btn-dark btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Cómo cobrar si ganas</a>
+
+
     </div>
 </div>
 

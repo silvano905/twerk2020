@@ -9,6 +9,8 @@ urlpatterns = [
     url('^listaganadores/$', views.getAllWinners, name="winners"),
     url('^createbook/$', views.create_book_model_form, name="book"),
     url('^identificacion/$', views.search_quiniela, name="details"),
+    url('^olvide-nombre/$', views.forgot_username, name="forgot"),
+    url('^informacion/$', views.check_win, name="gane"),
     url(r'^remove/(?P<pk>\d+)/$', views.delete_cart_item, name='cart_remove_item'),
 
 ]

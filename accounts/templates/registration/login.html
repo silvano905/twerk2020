@@ -6,24 +6,28 @@
 {% endblock %}
 
 {% block body_block%}
-<div class="jumbotron main_wrapper_jumbotron">
-    <div class="container">
-        <div class="jumbotron">
+    <div class="jumbotron main_wrapper_jumbotron">
+        <div class="container">
+            <div class="jumbotron">
 
-    <form method="post">
+                <form method="post">
 
-        <p class="text-center">Ingresar a mi cuenta</p>
+                    <p class="text-center">Ingresar a mi cuenta</p>
 
-        {% csrf_token %}
-        {% bootstrap_form form %}
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
 
-        <input type="submit" value="Entrar" class="btn btn-primary">
-        <a href="{% url 'password_reset' %}">Se te olvidó la contraseña?</a>
+                    <input type="submit" value="Entrar" class="btn btn-primary">
 
-    </form>
+                </form>
+
+                <div style="margin-top: 10px">
+                    <a class="btn btn-light" role="button" href="{% url 'password_reset' %}" style="margin: 7px">Se te olvidó la contraseña?</a>
+                    <a class="btn btn-light" role="button" href="{% url 'promotions:forgot' %}" style="margin: 7px">¿Olvidaste tu nombre de usuario?</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 
 {% endblock %}
