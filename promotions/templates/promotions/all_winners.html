@@ -14,7 +14,7 @@
         <h1 class="display-4" style="text-align: center">Ganaron con {{ point }} Puntos</h1>
         <div class="row">
             {% for post in nine_list %}
-                <div class="col-md-4">
+                <div class="col-md-6 col-lg-4">
                     <div>
 
                         {% if user.is_authenticated and post.author == user %}
