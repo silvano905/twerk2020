@@ -65,13 +65,6 @@ def make_a_message(request, pk):
 
 
 def user_detail_messages_view(request, pk):
-    # jj = MyMessage.objects.filter(author=request.user, recipient=4)
-    # jjj = MyMessage.objects.filter(author=pk, recipient=request.user.pk)
-    # profile = get_object_or_404(Profile, pk=4)
-    # print(jj)
-    # print(jjj)
-    # print(request.user)
-    # print(profile)
     if request.user.profiles.pk == 4:
         # if user is admin
         is_this_admin = True
@@ -85,14 +78,6 @@ def user_detail_messages_view(request, pk):
         profile = get_object_or_404(Profile, pk=4)
         search_user = MyMessage.objects.filter(author=request.user, recipient=4)
         request_user = MyMessage.objects.filter(author=profile.user, recipient=request.user.profiles)
-
-    # print(search_user)
-    # print(request_user)
-
-    # is_blocked = False
-    #
-    # if BlockedList.objects.filter(user=profile.user, profile=request.user.profiles):
-    #     is_blocked = True
 
     result_list = sorted(
         chain(search_user, request_user),

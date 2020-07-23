@@ -28,6 +28,16 @@ User = get_user_model()
 def crate_tip(request):
     form = MakePostForm()
 
+    now = datetime.datetime.now()
+    todays_date = now.strftime("%A")
+    no_buying = False
+
+    no_buying_days = ["Friday", "Saturday", "Sunday"]
+    if todays_date in no_buying_days:
+        no_buying = True
+    else:
+        no_buying = False
+
     if request.method == "POST":
         form = MakePostForm(data=request.POST, files=request.FILES)
 
@@ -59,7 +69,7 @@ def crate_tip(request):
         else:
             form = MakePostForm()
 
-    return render(request, 'tip/maketip_form.html', {'form': form})
+    return render(request, 'tip/maketip_form.html', {'form': form, "no_buying": no_buying})
 
 
 class TipUpdateView(UpdateView, LoginRequiredMixin):
@@ -67,6 +77,23 @@ class TipUpdateView(UpdateView, LoginRequiredMixin):
     # success_url = reverse_lazy('tips:list')
     model = MakeTip
     template_name = 'tip/maketipupdate.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        now = datetime.datetime.now()
+        edit_day = now.strftime("%A")
+        no_edit = False
+
+        no_editing_days = ["Friday", "Saturday", "Sunday"]
+        if edit_day in no_editing_days:
+            no_edit = True
+        else:
+            no_edit = False
+
+        context['no_editing'] = no_edit
+        return context
+
 
     def form_valid(self, form):
         post = form.save(commit=False)
@@ -114,7 +141,7 @@ class UserTips(ListView, LoginRequiredMixin):
         edit_day = now.strftime("%A")
         no_more_editing = False
 
-        no_editing_days = ["Thursday", "Friday", "Saturday", "Sunday"]
+        no_editing_days = ["Friday", "Saturday", "Sunday"]
         if edit_day in no_editing_days:
             no_more_editing = True
         else:
@@ -147,10 +174,22 @@ def filter_list(request, value):
 
 
 def tips_list_search(request):
+    now = datetime.datetime.now()
+    edit_day = now.strftime("%A")
+    no_download = False
+
+    no_editing_days = ["Monday", "Tuesday", "Wednesday", "Thursday"]
+    if edit_day in no_editing_days:
+        no_download = True
+    else:
+        no_download = False
+
+
     queryset = MakeTip.objects.all()
 
     context = {
         "post_list": queryset,
+        "no_download": no_download
 
     }
     return render(request, 'tip/tip_list.html', context)
@@ -175,11 +214,22 @@ def index(request):
     x = datetime.datetime.now()
     date_now = x.today()
 
+    now = datetime.datetime.now()
+    today_date = now.strftime("%A")
+    no_more_buying = False
+
+    no_more_buying_days = ["Friday", "Saturday", "Sunday"]
+    if today_date in no_more_buying_days:
+        no_more_buying = True
+    else:
+        no_more_buying = False
+
     context = {
         "quinielas": request_user,
         "total": total_payment,
         "total_quinielas": total_quinielas,
-        "date": date_now
+        "date": date_now,
+        "no_buying": no_more_buying
     }
 
     return render(request, 'tip/stripe/index.html', context)

@@ -23,7 +23,7 @@
             <h4>Busca tu nombre de usuario con el correo electrónico que usaste para abrir tu cuenta</h4>
 
             <form method="GET" action="{% url 'promotions:forgot'%}" class="form-inline">
-              <input class="form-control mr-sm-2" type="text" placeholder="Correo electrónico" aria-label="Search" name="q">
+              <input class="form-control mr-sm-2" type="email" placeholder="Correo electrónico" aria-label="Search" name="q" autocomplete="email">
               <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>

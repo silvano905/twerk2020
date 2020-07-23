@@ -88,6 +88,13 @@ button:hover {
 
     <div class="jumbotron">
 
+            {% if not quinielas %}
+                <div style="text-align: center;background-color: #002855; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                <h5>No tienes quinielas para pagar</h5>
+                <a href="{% url 'promotions:book'%}" class="btn btn-primary btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Comprar Quinielas</a>
+                </div>
+            {% endif %}
+
             <div class="mx-auto card text-white bg-primary mb-3" style="max-width: 18rem;">
               <div class="card-body">
                 <h6 class="card-title">Usuario: {{ request.user }}</h6>
@@ -99,69 +106,79 @@ button:hover {
 
 
             <div class="mx-auto card text-white bg-info mb-3" style="max-width: 22rem;">
-              <div class="card-body">
+                  <div class="card-body">
+
+                    {% if no_buying %}
+                    {% else %}
+                      <!-- Set up a container element for the button -->
+                        <div id="paypal-button-container"></div>
+
+                        <!-- Include the PayPal JavaScript SDK -->
+
+                        <script >
+                            // Render the PayPal button into #paypal-button-container
+                            paypal.Buttons({
+                                style: {
+                                    color: 'gold',
+                                    layout: 'horizontal'
+                                },
+
+                                // Set up the transaction
+                                createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                            amount: {
+                                                value: '10.01'
+                                            }
+                                        }]
+                                    });
+                                },
+
+                                // Finalize the transaction
+                                onApprove: function(data, actions) {
+                                    return actions.order.capture().then(function(details) {
+                                        // Show a success message to the buyer
+                                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                                    });
+                                }
 
 
-                                      <!-- Set up a container element for the button -->
-                    <div id="paypal-button-container"></div>
-
-                    <!-- Include the PayPal JavaScript SDK -->
-
-                    <script >
-                        // Render the PayPal button into #paypal-button-container
-                        paypal.Buttons({
-                            style: {
-                                color: 'gold',
-                                layout: 'horizontal'
-                            },
-
-                            // Set up the transaction
-                            createOrder: function(data, actions) {
-                                return actions.order.create({
-                                    purchase_units: [{
-                                        amount: {
-                                            value: '10.01'
-                                        }
-                                    }]
-                                });
-                            },
-
-                            // Finalize the transaction
-                            onApprove: function(data, actions) {
-                                return actions.order.capture().then(function(details) {
-                                    // Show a success message to the buyer
-                                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                });
-                            }
+                            }).render('#paypal-button-container');
+                        </script>
+                        {% endif %}
 
 
-                        }).render('#paypal-button-container');
-                    </script>
+                        {% if no_buying %}
+                        <form method="get" id="payment-form">
+                        {% else %}
+                        <form action="{% url 'tips:charge' %}" method="post" id="payment-form">
+                        {% endif %}
+                            {% csrf_token %}
+
+                          <div class="form-group">
+
+                            <label for="card-element2">
+                              Tarjeta de crédito o débito
+                            </label>
 
 
+                            <div id="card-element2">
+                              <!-- A Stripe Element will be inserted here. -->
+                            </div>
 
-                <form action="{% url 'tips:charge' %}" method="post" id="payment-form">
-                    {% csrf_token %}
+                            <!-- Used to display form errors. -->
+                            <div id="card-errors" role="alert"></div>
+                          </div>
 
-                  <div class="form-group">
+                        {% if no_buying %}
+                            <h4>No puedes comprar, solo de lunes a jueves</h4>
+                        {% else %}
+                          <button>Completar Pago</button>
+                        {% endif %}
 
-                    <label for="card-element2">
-                      Tarjeta de crédito o débito
-                    </label>
-
-
-                    <div id="card-element2">
-                      <!-- A Stripe Element will be inserted here. -->
-                    </div>
-
-                    <!-- Used to display form errors. -->
-                    <div id="card-errors" role="alert"></div>
+                        </form>
                   </div>
-
-                  <button>Completar Pago</button>
-                </form>
-              </div>
-</div>
+            </div>
 
 
         <div class="row">

@@ -6,18 +6,28 @@
 
 {% block body_block %}
 
+{% if no_editing %}
+        <div class="jumbotron">
+            <div style="text-align: center;background-color: #002855; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                <h4>No puedes editar/cambiar las quinielas</h4>
+            </div>
+        </div>
+{% else %}
+
     <div class="jumbotron" style="text-align: center">
 
-    <div style="text-align: center; margin-bottom: 20px">
-        <h5>Tus pronósticos de esta quiniela</h5>
+        <div style="text-align: center; margin-bottom: 20px">
+            <h5>Tus pronósticos de esta quiniela</h5>
+        </div>
+
+        <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Terminé de cambiar</button>
+        </form>
+
+
     </div>
 
-    <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Terminé de cambiar</button>
-    </form>
-</div>
-
-
+{% endif %}
 
 {% endblock %}

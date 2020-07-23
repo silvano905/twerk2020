@@ -6,49 +6,30 @@
 {% endblock %}
 
 {% block body_block %}
+    {% if no_buying %}
 
-
-    <div class="container">
-            <div class="d-flex justify-content-center">
-
-                <div class="jumbotron">
-
-                <form action="{% url 'tips:create_tip'%}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-
-                            {% bootstrap_form form %}
-
-{#                    <div>#}
-{#                        <label for="cars">Chivas vs América: {{ form.one }}</label>#}
-{#                        <label for="cars">Monterrey vs Cruz Azul: {{ form.two }}</label>#}
-{#                        <label for="cars">León vs Santos: {{ form.three }}</label>#}
-{#                        <label for="cars">Pumas vs Tigres: {{ form.four }}</label>#}
-{#                        <label for="cars">FC Juárez vs Morelia: {{ form.five }}</label>#}
-{#                        <label for="cars">Puebla vs Pachuca: {{ form.six }}</label>#}
-{#                        <label for="cars">Club Querétaro vs Atlético de San Luis: {{ form.seven }}</label>#}
-{#                        <label for="cars">Necaxa vs Toluca: {{ form.eight }}</label>#}
-{#                        <label for="cars">Club Tijuana vs Atlas: {{ form.nine }}</label>#}
-{##}
-{##}
-{#                    </div>#}
-
-                    <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
-
-
-                </form>
-
-                    </div>
-
+        <div class="jumbotron">
+            <div style="text-align: center;background-color: #002855; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                <h4>No puedes comprar quinielas de esta semana.</h4>
+                <h4>Puedes comprar de <strong>lunes a jueves.</strong></h4>
             </div>
+        </div>
 
+    {% else %}
 
-    </div>
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="jumbotron">
+                    <form action="{% url 'tips:create_tip'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            {% bootstrap_form form %}
+                        <button type="submit" class="btn btn-primary" style="margin: 10px" onclick="showDiv()">Publicar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
+    {% endif %}
 
-
-<script>
-
-
-</script>
 
 {% endblock %}
