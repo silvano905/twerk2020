@@ -13,8 +13,12 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/promotions/templates/promotions/ganaste.html" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/templates/promotions/ganaste.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" afterDir="false" />
@@ -208,7 +212,7 @@
       <workItem from="1595344739156" duration="14497000" />
       <workItem from="1595373974503" duration="4095000" />
       <workItem from="1595384634233" duration="3650000" />
-      <workItem from="1595436785571" duration="10268000" />
+      <workItem from="1595436785571" duration="14351000" />
     </task>
     <servers />
   </component>

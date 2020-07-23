@@ -10,6 +10,7 @@ from accounts.models import Profile, PointsUserList, BlockedList
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
+from django.contrib.auth import authenticate, login
 
 
 class ViewUserProfile(TemplateView, LoginRequiredMixin):
@@ -48,8 +49,9 @@ def create_user_form(request):
     from django.contrib.auth.models import User
     all_users_list = User.objects.all()
 
-
     if request.method == "POST":
+        phone_number = request.POST.get('mypk')
+
         form = UserFormRegistration(request.POST)
 
         if form.is_valid():
@@ -60,12 +62,22 @@ def create_user_form(request):
             contra = form.cleaned_data['password1']
             form.save(commit=True)
 
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
+
+            crate_profile = Profile.objects.create(user=request.user, description=phone_number)
+            crate_profile.save()
+
+            return redirect('tips:list')
+
             # msg_contra = username + " / " + contra + " / " + email_user
             #
             # msg_html = render_to_string('registration/welcome.html')
             # send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
             #           fail_silently=False)
-            return redirect('login')
+            # return redirect('login')
         else:
             all_users_list = User.objects.all()
 

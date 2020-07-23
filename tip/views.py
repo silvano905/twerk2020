@@ -114,7 +114,8 @@ class UserTips(ListView, LoginRequiredMixin):
         edit_day = now.strftime("%A")
         no_more_editing = False
 
-        if edit_day == "Thursday":
+        no_editing_days = ["Thursday", "Friday", "Saturday", "Sunday"]
+        if edit_day in no_editing_days:
             no_more_editing = True
         else:
             no_more_editing = False
