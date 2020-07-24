@@ -174,6 +174,8 @@ def filter_list(request, value):
 
 
 def tips_list_search(request):
+    user_obj = MakeTip.objects.filter(author=request.user)
+
     now = datetime.datetime.now()
     edit_day = now.strftime("%A")
     no_download = False
@@ -189,7 +191,8 @@ def tips_list_search(request):
 
     context = {
         "post_list": queryset,
-        "no_download": no_download
+        "no_download": no_download,
+        "user_obj": user_obj
 
     }
     return render(request, 'tip/tip_list.html', context)
