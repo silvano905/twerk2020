@@ -31,12 +31,6 @@
 
         </div>
 
-{##}
-{#      <p class="lead">Solo Para Personas De Estados Unidos</p>#}
-{#      <p class="lead">Precio: $2 dolares por quiniela</p>#}
-{#      <p class="lead">A Los Ganadores Se Les Contactará Para Depositar EL Dinero A Su Cuenta De Banco</p>#}
-{#      <p class="lead">Puedes Comprar Las Quinielas Con Tarjeta De Crédito, Débito o Paypal</p>#}
-
       <div style="text-align: center">
         <div class="btn-group" role="group" aria-label="Basic example" style="margin-bottom: 10px">
 
@@ -62,17 +56,30 @@
   </div>
 </div>
 
-    <div class="jumbotron" style="margin-top: 10px">
-        <div style="text-align: center;background-color: #ffbd00; padding: 10px; border-radius: 10px;color: black;">
-            <h5>¿Necesitas ayuda para crear una cuenta nueva?</h5>
-            <a href="http://batteryjumpchicago.com">
-                <button type="button" class="btn btn-success">Aqui te ayudamos</button>
-            <img src="https://jumpservicechicago.s3.us-east-2.amazonaws.com/k23Asset+1.png" alt="quinielas liga mx" style="margin-right: 5px; width: 150px; height: auto">
-            </a>
+    {% if user.is_authenticated %}
+        <div class="jumbotron" style="margin-top: 10px;">
+            <div style="text-align: center;background-color: #00a6fb; padding: 10px; border-radius: 10px;color: black;">
+                <h5>¿Necesitas ayuda para comprar quinielas?</h5>
+                <a href="http://batteryjumpchicago.com">
+                    <button type="button" class="btn btn-success">Aqui te ayudamos</button>
+                <img src="https://jumpservicechicago.s3.us-east-2.amazonaws.com/k23Asset+1.png" alt="quinielas liga mx" style="margin-right: 5px; width: 150px; height: auto">
+                </a>
+            </div>
         </div>
-    </div>
+    {% else %}
 
-<div class="jumbotron">
+        <div class="jumbotron" style="margin-top: 10px;">
+            <div style="text-align: center;background-color: #ffbd00; padding: 10px; border-radius: 10px;color: black;">
+                <h5>¿Necesitas ayuda para crear una cuenta nueva?</h5>
+                <a href="http://batteryjumpchicago.com">
+                    <button type="button" class="btn btn-success">Aqui te ayudamos</button>
+                <img src="https://jumpservicechicago.s3.us-east-2.amazonaws.com/k23Asset+1.png" alt="quinielas liga mx" style="margin-right: 5px; width: 150px; height: auto">
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+<div class="jumbotron" style="margin-top: 10px">
     <h5 style="text-align: center">Quinielas con mejor puntuacion</h5>
     <div class="container">
         <div class="row">
