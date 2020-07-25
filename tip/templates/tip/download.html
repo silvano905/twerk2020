@@ -3,6 +3,23 @@
 {% block body_block %}
 
         <div class="jumbotron">
+
+            <div style="text-align: center;background-color: #001845; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                <h5>Puedes descargar una lista completa de todas las quinielas para que puedas verificar y confirmar el ganador si lo desea</h5>
+            </div>
+
+            <div style="text-align: center;background-color: #2ec4b6; padding: 10px; border-radius: 10px;color: black; margin-bottom: 10px">
+                <h5>Solo puedes descargar la lista completa cuando termine el último día para comprar qunielas: <stong>Viernes, Sabado y Domingo</stong></h5>
+            </div>
+
+
+        {% if no_download %}
+
+            <div style="text-align: center;background-color: #ed6a5a; padding: 10px; border-radius: 10px;color: black; margin-bottom: 10px">
+                <h5>Todavia no se termina el último día para comprar qunielas, que es el jueves de cada semana.</h5>
+            </div>
+
+        {% else %}
         <div class="row">
             {% for post in post_list %}
                 <div class="col-md-4">
@@ -18,50 +35,6 @@
 
                                 <p>{{ post.all_choices }} - {{ post.author.username }} -Numero de Identificacion {{ post.pk }}</p>
 
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">@{{ post.author.username }}</li>#}
-{#                                  <li class="list-group-item">Numero de identificacion# {{ post.pk }}</li>#}
-{#                                  <li class="list-group-item">{{ post.one }} - Chivas vs América</li>#}
-{#                                </ul>#}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.two }} - Monterrey vs Cruz Azul</li>#}
-{#                                </ul>#}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.three }} - León vs Santos</li>#}
-{#                                </ul>#}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.four }} - Pumas vs Tigres</li>#}
-{#                                </ul>#}
-{##}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.five }} - Juárez vs Morelia</li>#}
-{#                                </ul>#}
-{##}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.six }} - Puebla vs Pachuca</li>#}
-{#                                </ul>#}
-{##}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.seven }} - Querétaro vs San Luis</li>#}
-{#                                </ul>#}
-{##}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.eight }} - Necaxa vs Toluca</li>#}
-{#                                </ul>#}
-{##}
-{##}
-{#                                <ul class="list-group">#}
-{#                                  <li class="list-group-item">{{ post.nine }} - Tijuana vs Atlas</li>#}
-{#                                </ul>#}
-
-
                             </div>
 
                         </div>
@@ -74,5 +47,7 @@
             {% endfor %}
         </div>
         </div>
+
+        {% endif %}
 
 {% endblock %}

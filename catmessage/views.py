@@ -5,10 +5,13 @@ from django.contrib.auth import get_user_model
 from mousegroup.forms import MakeMessageGroupForm
 from mousegroup.models import GroupMessage
 from django.contrib.auth.decorators import login_required
-from .models import MyMessage
+from .models import MyMessage, Juego
+from .forms import BookModelFormset, BookFormset
 from itertools import chain
 from django.views.generic import TemplateView, DeleteView, UpdateView, ListView
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+import datetime
 User = get_user_model()
 
 
@@ -65,7 +68,7 @@ def make_a_message(request, pk):
 
 
 def user_detail_messages_view(request, pk):
-    if request.user.profiles.pk == 4:
+    if request.user.profiles.pk == 14:
         # if user is admin
         is_this_admin = True
         profile = get_object_or_404(Profile, pk=pk)
@@ -75,8 +78,8 @@ def user_detail_messages_view(request, pk):
     else:
         # if user is not admin
         is_this_admin = False
-        profile = get_object_or_404(Profile, pk=4)
-        search_user = MyMessage.objects.filter(author=request.user, recipient=4)
+        profile = get_object_or_404(Profile, pk=14)
+        search_user = MyMessage.objects.filter(author=request.user, recipient=14)
         request_user = MyMessage.objects.filter(author=profile.user, recipient=request.user.profiles)
 
     result_list = sorted(
@@ -100,3 +103,43 @@ def block_user(request):
     else:
         BlockedList.objects.create(user=profile.user, profile=request.user.profiles)
     return redirect(profile.get_absolute_url())
+
+
+class TipUpdateView(UpdateView, LoginRequiredMixin):
+    form_class = BookFormset
+    # success_url = reverse_lazy('tips:list')
+    model = Juego
+    template_name = 'mymessage/juegoupdate.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #
+    #     now = datetime.datetime.now()
+    #     edit_day = now.strftime("%A")
+    #     no_edit = False
+    #
+    #     no_editing_days = ["Friday", "Saturday", "Sunday"]
+    #     if edit_day in no_editing_days:
+    #         no_edit = True
+    #     else:
+    #         no_edit = False
+    #
+    #     context['no_editing'] = no_edit
+    #     return context
+
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        one = form.cleaned_data['one']
+        two = form.cleaned_data['two']
+        three = form.cleaned_data['three']
+        four = form.cleaned_data['four']
+        five = form.cleaned_data['five']
+        six = form.cleaned_data['six']
+        seven = form.cleaned_data['seven']
+        eight = form.cleaned_data['eight']
+        nine = form.cleaned_data['nine']
+
+        post.all_choices = one + two + three + four + five + six + seven + eight + nine
+        post.save()
+        return redirect('tips:stripe')

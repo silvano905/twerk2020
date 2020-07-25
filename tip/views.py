@@ -154,8 +154,19 @@ class UserTips(ListView, LoginRequiredMixin):
 def download_view(request):
     queryset = MakeTip.objects.all()
 
+    now = datetime.datetime.now()
+    edit_day = now.strftime("%A")
+    no_download = False
+
+    no_download_days = ["Monday", "Tuesday", "Wednesday", "Thursday"]
+    if edit_day in no_download_days:
+        no_download = True
+    else:
+        no_download = False
+
     context = {
-        "post_list": queryset
+        "post_list": queryset,
+        "no_download": no_download
     }
 
     return render(request, 'tip/download.html', context)
@@ -174,7 +185,12 @@ def filter_list(request, value):
 
 
 def tips_list_search(request):
-    user_obj = MakeTip.objects.filter(author=request.user)
+    user_obj = []
+    if request.user.is_authenticated:
+
+        user_obj = MakeTip.objects.filter(author=request.user)
+    else:
+        user_obj = []
 
     now = datetime.datetime.now()
     edit_day = now.strftime("%A")
@@ -211,6 +227,20 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 def index(request):
     request_user = Juego.objects.filter(author=request.user)
+    final_repeated_list = []
+    all_my_choices = []
+    for my_obj in request_user:
+        all_my_choices.append(my_obj.all_choices)
+
+    import collections
+    repeated_all_choices = [item for item, count in collections.Counter(all_my_choices).items() if count > 1]
+    for i in repeated_all_choices:
+        for x in request_user:
+            if x.all_choices == i:
+                final_repeated_list.append(x.pk)
+    print(final_repeated_list)
+
+
     total_payment = request_user.count()*2
     total_quinielas = request_user.count()
 
@@ -220,19 +250,22 @@ def index(request):
     now = datetime.datetime.now()
     today_date = now.strftime("%A")
     no_more_buying = False
+    # turn to false on monday up
 
-    no_more_buying_days = ["Friday", "Saturday", "Sunday"]
-    if today_date in no_more_buying_days:
-        no_more_buying = True
-    else:
-        no_more_buying = False
+    # uncomment on monday
+    # no_more_buying_days = ["Friday", "Saturday", "Sunday"]
+    # if today_date in no_more_buying_days:
+    #     no_more_buying = True
+    # else:
+    #     no_more_buying = False
 
     context = {
         "quinielas": request_user,
         "total": total_payment,
         "total_quinielas": total_quinielas,
         "date": date_now,
-        "no_buying": no_more_buying
+        "no_buying": no_more_buying,
+        "repeated_list": final_repeated_list
     }
 
     return render(request, 'tip/stripe/index.html', context)

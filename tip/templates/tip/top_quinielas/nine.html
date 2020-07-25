@@ -6,6 +6,8 @@
 
 {% block body_block %}
 
+    {% if nine_list %}
+
         <div class="jumbotron">
         <h1 class="display-4" style="text-align: center">{{ points }} Puntos</h1>
         <div class="row">
@@ -86,6 +88,15 @@
             {% endfor %}
         </div>
         </div>
+    {% else %}
+
+        <div class="jumbotron">
+            <div style="text-align: center;background-color: #001845; padding: 10px; border-radius: 10px;color: whitesmoke;">
+                <h4>0 quinielas con {{ points }} puntos</h4>
+            </div>
+        </div>
+
+    {% endif %}
 
 
 {% endblock %}

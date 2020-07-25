@@ -7,6 +7,10 @@
 
 <div class="jumbotron">
 
+                <div style="text-align: center;background-color: #001845; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                    <h5>responderemos su pregunta lo antes posible</h5>
+                </div>
+
 
         {% for mm in both_lists %}
             <div class="row justify-content-between">
@@ -29,7 +33,7 @@
                 {% if is_this_admin == False %}
 
                     <div class="col-6">
-                        {% if mm.author.profiles.pk == 4%}
+                        {% if mm.author.profiles.pk == 14 %}
                             <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
                               <div class="card-body">
                                   <h5 class="card-title"><strong style="color: black">Administración</strong></h5>
@@ -79,9 +83,9 @@
                     <div align="center">
 
                         {% if both_lists %}
-                            <a href="{% url 'catmessage:add_message' pk=4 %}" class="btn btn-primary">Responder</a>
+                            <a href="{% url 'catmessage:add_message' pk=14 %}" class="btn btn-primary">Responder</a>
                         {% else %}
-                            <a href="{% url 'catmessage:add_message' pk=4 %}" class="btn btn-primary">Escribe tu pregunta</a>
+                            <a href="{% url 'catmessage:add_message' pk=14 %}" class="btn btn-primary">Escribe tu pregunta</a>
                         {% endif %}
 
                     </div>

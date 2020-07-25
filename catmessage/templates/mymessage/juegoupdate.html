@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% load bootstrap4 %}
+
+{% block search_block %}
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block body_block %}
+
+
+
+    <div class="jumbotron" style="text-align: center">
+
+        <div style="text-align: center; margin-bottom: 20px">
+            <h5>Tus pronósticos de esta quiniela</h5>
+        </div>
+
+        <form method="post" onsubmit="myButton.disabled = true; return true;">
+            {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary" id="myBtn" name="myButton">Terminé de cambiar</button>
+        </form>
+
+
+    </div>
+
+<script>
+function myFunction() {
+  document.getElementById("myBtn").disabled = true;
+}
+</script>
+
+{% endblock %}

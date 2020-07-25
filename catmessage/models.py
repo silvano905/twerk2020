@@ -56,28 +56,28 @@ class Juego(models.Model):
         return self.all_choices
 
     def one_team(self):
-        return 'Chivas vs América'
+        return 'Puebla vs Cruz Azul'
 
     def two_team(self):
-        return 'Monterrey 0 vs Cruz Azul 0'
+        return 'Juárez vs Necaxa'
 
     def three_team(self):
-        return 'León 2 vs Santos 3'
+        return 'América	vs Tijuana'
 
     def four_team(self):
-        return 'Pumas 1 vs Tigres 2'
+        return 'Tigres vs Pachuca'
 
     def five_team(self):
-        return 'Juárez 0 vs Morelia 3'
+        return 'Atlas vs Pumas'
 
     def six_team(self):
-        return 'Puebla 2 vs Pachuca 0'
+        return 'Toluca vs San Luis'
 
     def seven_team(self):
-        return 'Querétaro vs San Luis'
+        return 'Querétaro vs Mazatlán'
 
     def eight_team(self):
-        return 'Necaxa vs Toluca'
+        return 'Santos vs Chivas'
 
     def nine_team(self):
-        return 'Tijuana 1 vs Atlas 1'
+        return 'León vs Monterrey'

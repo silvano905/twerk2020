@@ -31,6 +31,9 @@
 
 
         {% bootstrap_form form %}
+        <input type="checkbox" onclick="myFunction()">mostrar contraseña
+
+<br>
         <button type="submit" class="btn btn-primary" id="submithide">Registrar</button>
 
     </form>
@@ -49,6 +52,15 @@
 
 
     <script>
+
+            function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
 
     {# for unsername #}
         const getInput = document.querySelector('.inputPassword');
@@ -106,6 +118,9 @@
 
             }
         };
+
+
+
 
     </script>
 

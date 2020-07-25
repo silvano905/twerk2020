@@ -27,7 +27,7 @@ User = get_user_model()
 
 def getAllWinners(request):
     queryset = MakeTip.objects.all()
-    game_results = get_object_or_404(GamesModel, pk=1).games
+    game_results = get_object_or_404(GamesModel, pk=2).games
     games_played = len(game_results)
     games_to_be_played = 9-int(games_played)
     are_games_finished = False
@@ -84,7 +84,7 @@ def getAllWinners(request):
 
 
 def update_all_scores_view(request):
-    game_results = get_object_or_404(GamesModel, pk=1).games
+    game_results = get_object_or_404(GamesModel, pk=2).games
     queryset = MakeTip.objects.all()
 
     a = game_results
