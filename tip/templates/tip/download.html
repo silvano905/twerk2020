@@ -5,21 +5,24 @@
         <div class="jumbotron">
 
             <div style="text-align: center;background-color: #001845; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
-                <h5>Puedes descargar una lista completa de todas las quinielas para que puedas verificar y confirmar el ganador si lo desea</h5>
+                <h5>Puedes descargar una lista completa de todas las quinielas para que puedas verificar y confirmar el ganador si lo desea. <stong>Viernes, Sabado y Domingo</stong></h5>
             </div>
 
             <div style="text-align: center;background-color: #2ec4b6; padding: 10px; border-radius: 10px;color: black; margin-bottom: 10px">
-                <h5>Solo puedes descargar la lista completa cuando termine el último día para comprar qunielas: <stong>Viernes, Sabado y Domingo</stong></h5>
+                <h5>Solo puedes descargar la lista completa cuando termine el último día para comprar qunielas</h5>
             </div>
 
 
         {% if no_download %}
 
             <div style="text-align: center;background-color: #ed6a5a; padding: 10px; border-radius: 10px;color: black; margin-bottom: 10px">
-                <h5>Todavia no se termina el último día para comprar qunielas, que es el jueves de cada semana.</h5>
+                <h5>Todavia no se termina el último día para comprar quinielas, que es el jueves de cada semana.</h5>
             </div>
 
         {% else %}
+            <div style="text-align: center; margin: 10px">
+                <a href="https://github.com/nicodell90/quinielasligamx/raw/master/Untitled%20document%20(1).pdf?raw=true" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Descargar lista completa</a>
+            </div>
         <div class="row">
             {% for post in post_list %}
                 <div class="col-md-4">
