@@ -28,7 +28,7 @@ SECRET_KEY = os.environ['MY_KEY_TWERK']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ruiz90.pythonanywhere.com', '127.0.0.1', 'www.concurso2020twerk.com']
+ALLOWED_HOSTS = ['ruiz90.pythonanywhere.com', '127.0.0.1', 'www.quinielasligamx.com']
 
 
 # Application definition

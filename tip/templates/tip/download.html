@@ -23,33 +23,36 @@
             <div style="text-align: center; margin: 10px">
                 <a href="https://github.com/nicodell90/quinielasligamx/raw/master/Untitled%20document%20(1).pdf?raw=true" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px;">Descargar lista completa</a>
             </div>
-        <div class="row">
-            {% for post in post_list %}
-                <div class="col-md-4">
-                    <div>
 
-                        {% if user.is_authenticated and post.author == user %}
-                        <div class="card text-black bg-warning mb-3">
-                        {% else %}
-                        <div class="card text-black bg-light mb-3">
-                        {% endif %}
+        {% if request.user.profiles.pk == 14 %}
+            <div class="row">
+                {% for post in post_list %}
+                    <div class="col-md-4">
+                        <div>
 
-                            <div class="card-body">
+                            {% if user.is_authenticated and post.author == user %}
+                            <div class="card text-black bg-warning mb-3">
+                            {% else %}
+                            <div class="card text-black bg-light mb-3">
+                            {% endif %}
 
-                                <p>{{ post.all_choices }} - {{ post.author.username }} -Numero de Identificacion {{ post.pk }}</p>
+                                <div class="card-body">
+
+                                    <p>{{ post.all_choices }} - {{ post.author.username }} -Numero de Identificacion {{ post.pk }}</p>
+
+                                </div>
 
                             </div>
 
-                        </div>
 
+                        </div>
 
                     </div>
 
-                </div>
-
-            {% endfor %}
-        </div>
-        </div>
+                {% endfor %}
+            </div>
+            </div>
+        {% endif %}
 
         {% endif %}
 

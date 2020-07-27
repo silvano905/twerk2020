@@ -111,21 +111,21 @@ class TipUpdateView(UpdateView, LoginRequiredMixin):
     model = Juego
     template_name = 'mymessage/juegoupdate.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #
-    #     now = datetime.datetime.now()
-    #     edit_day = now.strftime("%A")
-    #     no_edit = False
-    #
-    #     no_editing_days = ["Friday", "Saturday", "Sunday"]
-    #     if edit_day in no_editing_days:
-    #         no_edit = True
-    #     else:
-    #         no_edit = False
-    #
-    #     context['no_editing'] = no_edit
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        now = datetime.datetime.now()
+        edit_day = now.strftime("%A")
+        no_edit = False
+
+        no_editing_days = ["Friday", "Saturday", "Sunday"]
+        if edit_day in no_editing_days:
+            no_edit = True
+        else:
+            no_edit = False
+
+        context['no_editing'] = no_edit
+        return context
 
 
     def form_valid(self, form):

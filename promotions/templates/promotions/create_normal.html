@@ -5,46 +5,58 @@
 {% block search_block %}
 {% endblock %}
 
+
+
 {% block body_block %}
+    {% if no_buying %}
+        <div class="jumbotron">
+            <div style="text-align: center;background-color: #002855; padding: 10px; border-radius: 10px;color: whitesmoke; margin-bottom: 10px">
+                <h5>No puedes comprar quinielas de la jornada 3.</h5>
+                <h5>Puedes comprar de <strong>Lunes a Jueves.</strong></h5>
+            </div>
+        </div>
+    {% else %}
+
+
     <div class="d-flex justify-content-center">
-    <div class="jumbotron">
+        <div class="jumbotron">
 
-        <div class="alert alert-warning" role="alert">
-          Solo se permite comprar un maximo de 25 quinielas
-        </div>
+            <div class="alert alert-warning" role="alert">
+              Solo se permite comprar un maximo de 25 quinielas
+            </div>
 
-        <div class="d-flex justify-content-center">
-        <form method="POST" action="" onsubmit="myButton.disabled = true; return true;">
-            {% csrf_token %}
+            <div class="d-flex justify-content-center">
+            <form method="POST" action="" onsubmit="myButton.disabled = true; return true;">
+                {% csrf_token %}
 
-            <input id="send_total" type="hidden" name="total_money" value="">
-            {{ formset.management_form }}
-            {% for form in formset %}
-                <nav class="navbar sticky-top navbar-light bg-light">
-                  <p><strong id="number_quinielas">1</strong> Quiniela<span id="plural"></span> - Precio total: $<strong id="total_quinielas">2</strong></p>
-                </nav>
+                <input id="send_total" type="hidden" name="total_money" value="">
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    <nav class="navbar sticky-top navbar-light bg-light">
+                      <p><strong id="number_quinielas">1</strong> Quiniela<span id="plural"></span> - Precio total: $<strong id="total_quinielas">2</strong></p>
+                    </nav>
 
-                <div class="form-row" style="margin-top: 15px">
-                    <div class="col-auto">
+                    <div class="form-row" style="margin-top: 15px">
+                        <div class="col-auto">
 
-                    <div style="background-color: #205067; width: 300px;height: 5px; border-radius: 5px; margin-top: 20px"></div>
+                        <div style="background-color: #205067; width: 300px;height: 5px; border-radius: 5px; margin-top: 20px"></div>
 
 
-                        {% bootstrap_form form %}
-                            <div class="input-group-append" style="margin-bottom: 5px">
-                                <button class="btn btn-success add-form-row" id="change_info">+</button>
-                            </div>
+                            {% bootstrap_form form %}
+                                <div class="input-group-append" style="margin-bottom: 5px">
+                                    <button class="btn btn-success add-form-row" id="change_info">+</button>
+                                </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-                    <div style="margin-top: 20px">
-                        <button name="myButton" type="submit" class="btn btn-block btn-primary">Pagar Quinielas</button>
+                {% endfor %}
+                        <div style="margin-top: 20px">
+                            <button name="myButton" type="submit" class="btn btn-block btn-primary">Pagar Quinielas</button>
 
-                    </div>
-        </form>
+                        </div>
+            </form>
+            </div>
+
         </div>
-
-    </div>
     </div>
 <!-- create_normal.html :: part 4 -->
 
@@ -158,4 +170,6 @@ $(document).on('click', '.remove-form-row', function(e){
 
 </script>
 
+
+    {% endif %}
 {% endblock %}

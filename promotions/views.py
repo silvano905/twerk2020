@@ -23,6 +23,7 @@ from catmessage.forms import BookModelFormset
 from django.forms import formset_factory
 from django.forms import modelformset_factory
 User = get_user_model()
+import datetime
 
 
 def getAllWinners(request):
@@ -141,6 +142,17 @@ def update_all_scores_view(request):
 def create_book_model_form(request):
     template_name = 'promotions/create_normal.html'
     heading_message = 'Model Formset Demo'
+
+    now = datetime.datetime.now()
+    todays_date = now.strftime("%A")
+    no_buying = False
+
+    no_buying_days = ["Friday", "Saturday", "Sunday"]
+    if todays_date in no_buying_days:
+        no_buying = True
+    else:
+        no_buying = False
+
     if request.method == 'GET':
         # we don't want to display the already saved model instances
         # formset = modelformset_factory(Juego, fields=('one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'))
@@ -176,6 +188,7 @@ def create_book_model_form(request):
     return render(request, template_name, {
             'formset': formset,
             'heading': heading_message,
+            "no_buying": no_buying
         })
 
 
