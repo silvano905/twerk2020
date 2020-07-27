@@ -290,7 +290,7 @@ def charge(request):
     return redirect(reverse('tips:success', args=[amount]))
 
 
-def successMsg(request, args):
+def successMsg(request):
     user_obj = Juego.objects.filter(author=request.user)
 
     for cart_item in user_obj:
@@ -313,7 +313,7 @@ def successMsg(request, args):
         delete_cart_item = Juego.objects.filter(author__exact=request.user, pk=cart_item.pk)
         delete_cart_item.delete()
 
-    amount = args
+    amount = '2'
     total_quinielas = int(amount)//2
     return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": total_quinielas})
 

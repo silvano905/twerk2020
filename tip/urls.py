@@ -16,5 +16,5 @@ urlpatterns = [
     url(r'^warning', views.CreateProfileBeforeSearch.as_view(), name='createprofilebeforeview'),
     url('^stripe/$', views.index, name="stripe"),
     url('charge/', views.charge, name="charge"),
-    path('success/<str:args>/', views.successMsg, name="success")
+    url('success/', views.successMsg, name="success")
 ]

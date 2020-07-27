@@ -107,7 +107,7 @@ button:hover {
               <div class="card-body">
                 <h6 class="card-title">Usuario: {{ request.user }}</h6>
                 <h6 class="card-title">Numero de Quinielas: <strong>{{ total_quinielas }}</strong></h6>
-                <h6 class="card-title">Precio Total: <strong>${{ total }}</strong></h6>
+                <h6 class="card-title">Precio Total: <strong id="total_pay">{{ total }}</strong></h6>
                 <p class="card-text"><small>{{ date }}</small></p>
               </div>
             </div>
@@ -123,68 +123,64 @@ button:hover {
 
                         <!-- Include the PayPal JavaScript SDK -->
 
-                        <script >
-                            // Render the PayPal button into #paypal-button-container
-                            paypal.Buttons({
-                                style: {
-                                    color: 'gold',
-                                    layout: 'horizontal'
-                                },
+    <script>
+    let total_paypal = document.getElementById('total_pay').textContent;
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
 
-                                // Set up the transaction
-                                createOrder: function(data, actions) {
-                                    return actions.order.create({
-                                        purchase_units: [{
-                                            amount: {
-                                                value: '10.01'
-                                            }
-                                        }]
-                                    });
-                                },
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: parseFloat(total_paypal).toFixed(2)
+                        }
+                    }]
+                });
+            },
 
-                                // Finalize the transaction
-                                onApprove: function(data, actions) {
-                                    return actions.order.capture().then(function(details) {
-                                        // Show a success message to the buyer
-                                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                                    });
-                                }
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    submitFormData()
+
+                });
+            }
+
+        }).render('#paypal-button-container');
+    </script>
+
+    <script>
+    const data = JSON.stringify({
+    'hello':'world',
+});
+
+	    function submitFormData() {
+	    	var url = "/success/";
+	    	fetch('{% url 'tips:success' %}', {
+	    		method:'POST',
+	    		headers:{
+            'Content-Type':'application/json',
+            'X-CSRFToken':'{{csrf_token}}',
+            'X-Requested-With':'XMLHttpRequest',
+	    		},
+	    		body:data,
+
+	    	})
+	    	.then((response) => {
+	    	    window.location.href = "{% url 'tips:list' %}";
+				console.log(response);
+				})
+	    }
+
+    </script>
 
 
-                            }).render('#paypal-button-container');
-                        </script>
+
                         {% endif %}
 
-
-                        {% if no_buying %}
-                        <form method="get" id="payment-form">
-                        {% else %}
-                        <form action="{% url 'tips:charge' %}" method="post" id="payment-form" onsubmit="myButton.disabled = true; return true;">
-                        {% endif %}
-                            {% csrf_token %}
-
-                          <div class="form-group">
-
-                            <label for="card-element2">
-                              Tarjeta de crédito o débito
-                            </label>
-
-
-                            <div id="card-element2">
-                              <!-- A Stripe Element will be inserted here. -->
-                            </div>
-
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                          </div>
-
-                        {% if no_buying %}
-                            <h4>No puedes comprar, solo de lunes a jueves</h4>
-                        {% else %}
-                          <button name="myButton">Completar Pago</button>
-                        {% endif %}
-
-                        </form>
                   </div>
             </div>
 
@@ -339,79 +335,5 @@ button:hover {
 
         </div>
     </div>
-
-
-	<script>
-		// Create a Stripe client.
-		var stripe = Stripe('pk_test_51H4G4xB9GffACqxkTUkP9dsSwvCH5UbEKBPhQkxvngpJZjERzWymnLpIfOxvyiq3LdIXTRzULJVNYmW9SQVhXvTI00RZ0E91sN');
-
-		// Create an instance of Elements.
-		var elements = stripe.elements();
-
-		// Custom styling can be passed to options when creating an Element.
-		// (Note that this demo uses a wider set of styles than the guide below.)
-		var style = {
-		  base: {
-		    color: '#32325d',
-		    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-		    fontSmoothing: 'antialiased',
-		    fontSize: '16px',
-		    '::placeholder': {
-		      color: '#aab7c4'
-		    }
-		  },
-		  invalid: {
-		    color: '#fa755a',
-		    iconColor: '#fa755a'
-		  }
-		};
-
-		// Create an instance of the card Element.
-		var card = elements.create('card', {style: style});
-
-		// Add an instance of the card Element into the `card-element` <div>.
-		card.mount('#card-element2');
-
-		// Handle real-time validation errors from the card Element.
-		card.addEventListener('change', function(event) {
-		  var displayError = document.getElementById('card-errors');
-		  if (event.error) {
-		    displayError.textContent = event.error.message;
-		  } else {
-		    displayError.textContent = '';
-		  }
-		});
-
-		// Handle form submission.
-		var form = document.getElementById('payment-form');
-		form.addEventListener('submit', function(event) {
-		  event.preventDefault();
-
-		  stripe.createToken(card).then(function(result) {
-		    if (result.error) {
-		      // Inform the user if there was an error.
-		      var errorElement = document.getElementById('card-errors');
-		      errorElement.textContent = result.error.message;
-		    } else {
-		      // Send the token to your server.
-		      stripeTokenHandler(result.token);
-		    }
-		  });
-		});
-
-		// Submit the form with the token ID.
-		function stripeTokenHandler(token) {
-		  // Insert the token ID into the form so it gets submitted to the server
-		  var form = document.getElementById('payment-form');
-		  var hiddenInput = document.createElement('input');
-		  hiddenInput.setAttribute('type', 'hidden');
-		  hiddenInput.setAttribute('name', 'stripeToken');
-		  hiddenInput.setAttribute('value', token.id);
-		  form.appendChild(hiddenInput);
-
-		  // Submit the form
-		  form.submit();
-		}
-	</script>
 
 {% endblock %}
