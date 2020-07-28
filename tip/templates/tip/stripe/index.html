@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script src="https://www.paypal.com/sdk/js?client-id=AZtOzhptqErTCUpwRQrJuiQRJek3nldW7_wwo7MdwJ0TaYebqdi9D4YUtfmnIoN_hOH6mSvBuvokaDPj&currency=USD&disable-funding=credit" ></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AfbFYOySdqGxPssRVW4rj0B7ux-9Icc7W0SigqsOhseGqzBWuLb_1No35qYcm5nYbYLxptBOqDOtEFGN&currency=USD&disable-funding=credit" ></script>
 
 {% extends 'main.html' %}
 <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Inter&display=swap" rel="stylesheet">
@@ -67,6 +67,21 @@
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
+                                        var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+
+                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                        // Recoverable state, see: "Handle Funding Failures"
+                        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+                        return actions.restart();
+                    }
+
+                    if (errorDetail) {
+                        var msg = 'Sorry, your transaction could not be processed.';
+                        if (errorDetail.description) msg += '\n\n' + errorDetail.description;
+                        if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
+                        // Show a failure message
+                        return alert(msg);
+                    }
                     submitFormData()
 
                 });
