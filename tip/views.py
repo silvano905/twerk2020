@@ -263,7 +263,7 @@ def index(request):
         "total_quinielas": total_quinielas,
         "date": date_now,
         "no_buying": no_more_buying,
-        "repeated_list": final_repeated_list
+        "repeated_list": final_repeated_list,
     }
 
     return render(request, 'tip/stripe/index.html', context)

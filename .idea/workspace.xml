@@ -14,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" afterDir="false" />
@@ -213,7 +212,7 @@
       <workItem from="1595525851540" duration="8096000" />
       <workItem from="1595605198886" duration="18752000" />
       <workItem from="1595782590681" duration="5471000" />
-      <workItem from="1595866727865" duration="8259000" />
+      <workItem from="1595866727865" duration="9817000" />
     </task>
     <servers />
   </component>
