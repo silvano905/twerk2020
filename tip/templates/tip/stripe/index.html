@@ -46,6 +46,8 @@
                         <div id="paypal-button-container"></div>
 <script src="https://www.paypal.com/sdk/js?client-id=AfbFYOySdqGxPssRVW4rj0B7ux-9Icc7W0SigqsOhseGqzBWuLb_1No35qYcm5nYbYLxptBOqDOtEFGN&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
+let total_paypal = {{ total }}
+
   paypal.Buttons({
       style: {
           shape: 'rect',
@@ -58,14 +60,31 @@
           return actions.order.create({
               purchase_units: [{
                   amount: {
-                      value: '1'
+                      value: parseFloat(total_paypal).toFixed(2)
                   }
               }]
           });
       },
       onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              	    function submitFormData() {
+                        var url = "/success/";
+                        fetch('{% url 'tips:success' %}', {
+                            method:'POST',
+                            headers:{
+                        'Content-Type':'application/json',
+                        'X-CSRFToken':'{{csrf_token}}',
+                        'X-Requested-With':'XMLHttpRequest',
+                            },
+                            body:data,
+
+                        })
+                        .then((response) => {
+                            window.location.href = "{% url 'tips:list' %}";
+                            console.log(response);
+                            })
+                    }
+              submitFormData();
           });
       }
   }).render('#paypal-button-container');
