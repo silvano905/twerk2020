@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, DeleteView, UpdateView, ListView
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
-from .forms import MakePostForm
+from .forms import MakePostForm, Getall
 from promotions.models import GamesModel
 from .models import MakeTip, LikeUserList, DownVoteUserList
 # from comments.models import Comment
@@ -20,7 +20,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from catmessage.models import Juego
 import datetime
-
+import json
 User = get_user_model()
 
 
@@ -226,6 +226,8 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 
 def index(request):
+    form = Getall()
+
     request_user = Juego.objects.filter(author=request.user)
     final_repeated_list = []
     all_my_choices = []
@@ -238,7 +240,6 @@ def index(request):
         for x in request_user:
             if x.all_choices == i:
                 final_repeated_list.append(x.pk)
-    print(final_repeated_list)
 
 
     total_payment = request_user.count()*2
@@ -264,8 +265,8 @@ def index(request):
         "date": date_now,
         "no_buying": no_more_buying,
         "repeated_list": final_repeated_list,
+        'form': form
     }
-
     return render(request, 'tip/stripe/index.html', context)
 
 
@@ -293,6 +294,10 @@ def charge(request):
 def successMsg(request):
     user_obj = Juego.objects.filter(author=request.user)
 
+    amount = request.POST.get('total')
+    quinielas = request.POST.get('quinielas')
+
+
     for cart_item in user_obj:
         all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
         bought_items = MakeTip.objects.create(one=cart_item.one,
@@ -313,8 +318,8 @@ def successMsg(request):
         delete_cart_item = Juego.objects.filter(author__exact=request.user, pk=cart_item.pk)
         delete_cart_item.delete()
 
-    amount = '2'
-    total_quinielas = int(amount)//2
-    return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": total_quinielas})
+    # amount = '2'
+    # total_quinielas = int(amount)//2
+    return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": quinielas})
 
 

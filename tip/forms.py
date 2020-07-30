@@ -31,3 +31,8 @@ class MakePostForm(forms.ModelForm):
         # widgets = {
         #     'one': TextInput(attrs={'class': 'jj'}),
         # }
+
+
+class Getall(forms.Form):
+    name = forms.CharField()
+    last = forms.CharField()

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{#<script src="https://www.paypal.com/sdk/js?client-id=ASzvGqTzmVvn8nXGN_BR3LHnX5uxniGaniDJwJYaxRtyi9vhTnKEY7YdL6FD6PnEbfZhb6uoZMyO6OXn&currency=USD&disable-funding=credit" ></script>#}
 
 {% extends 'main.html' %}
 <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Inter&display=swap" rel="stylesheet">
@@ -43,8 +42,16 @@
                     {% if no_buying %}
                     {% else %}
 
+                        <form method="post" action="{% url 'tips:success'%}" id="myForm">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ total }}" name="total">
+                            <input type="hidden" value="{{ total_quinielas }}" name="quinielas">
+
+                        </form>
+
+
                         <div id="paypal-button-container"></div>
-<script src="https://www.paypal.com/sdk/js?client-id=AfbFYOySdqGxPssRVW4rj0B7ux-9Icc7W0SigqsOhseGqzBWuLb_1No35qYcm5nYbYLxptBOqDOtEFGN&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AfbFYOySdqGxPssRVW4rj0B7ux-9Icc7W0SigqsOhseGqzBWuLb_1No35qYcm5nYbYLxptBOqDOtEFGN&currency=USD&disable-funding=credit" data-sdk-integration-source="button-factory"></script>
 <script>
 let total_paypal = {{ total }}
 
@@ -67,24 +74,8 @@ let total_paypal = {{ total }}
       },
       onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
-              	    function submitFormData() {
-                        var url = "/success/";
-                        fetch('{% url 'tips:success' %}', {
-                            method:'POST',
-                            headers:{
-                        'Content-Type':'application/json',
-                        'X-CSRFToken':'{{csrf_token}}',
-                        'X-Requested-With':'XMLHttpRequest',
-                            },
-                            body:data,
+              document.getElementById("myForm").submit();
 
-                        })
-                        .then((response) => {
-                            window.location.href = "{% url 'tips:list' %}";
-                            console.log(response);
-                            })
-                    }
-              submitFormData();
           });
       }
   }).render('#paypal-button-container');
