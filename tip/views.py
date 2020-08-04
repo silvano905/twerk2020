@@ -323,3 +323,7 @@ def successMsg(request):
     return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": quinielas})
 
 
+def site_map(request):
+    return render(request, 'tip/sitemap.xml', content_type='text/xml')
+
+
