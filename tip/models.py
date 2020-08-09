@@ -26,31 +26,31 @@ class MakeTip(models.Model):
         return self.all_choices
 
     def one_team(self):
-        return 'Puebla vs Cruz Azul'
+        return 'Necaxa vs Mazatlán'
 
     def two_team(self):
-        return 'Juárez vs Necaxa'
+        return 'Pachuca vs León'
 
     def three_team(self):
-        return 'América	vs Tijuana'
+        return 'Tigres vs Puebla'
 
     def four_team(self):
-        return 'Tigres vs Pachuca'
+        return 'Querétaro vs Cruz Azul'
 
     def five_team(self):
-        return 'Atlas vs Pumas'
+        return 'Juárez vs Chivas'
 
     def six_team(self):
-        return 'Toluca vs San Luis'
+        return 'Pumas vs Monterrey'
 
     def seven_team(self):
-        return 'Querétaro vs Mazatlán'
+        return 'Tijuana vs San Luis'
 
     def eight_team(self):
-        return 'Santos vs Chivas'
+        return 'Atlas vs Toluca'
 
     def nine_team(self):
-        return 'León vs Monterrey'
+        return 'América vs Santos'
 
 
     def get_absolute_url(self):
