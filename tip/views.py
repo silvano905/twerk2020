@@ -203,10 +203,15 @@ def tips_list_search(request):
         no_download = False
 
     queryset = MakeTip.objects.all()
+
+    paginator = Paginator(queryset, 50)
+    page = request.GET.get('page')
+    queryset2 = paginator.get_page(page)
+
     context = {
-        "post_list": queryset,
         "no_download": no_download,
         "user_obj": user_obj,
+        "post_list": queryset2
 
     }
     return render(request, 'tip/tip_list.html', context)

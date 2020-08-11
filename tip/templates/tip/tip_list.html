@@ -192,13 +192,43 @@
                 </div>
             {% endfor %}
         </div>
+
+
+        <div class="d-flex justify-content-center">
+
+        <div class="pagination">
+            {% if post_list.has_other_pages %}
+                {% if post_list.has_previous %}
+                  <a href="?page={{ post_list.previous_page_number }}" class="pagination_numbers" style="color: black">&laquo;</a>
+                {% else %}
+                  <div class="disabled pagination_numbers"><span style="color: black">&laquo;</span></div>
+                {% endif %}
+                {% for i in post_list.paginator.page_range %}
+                  {% if post_list.number == i %}
+                    <div class="pagination_numbers"><span style="color: black"> {{ i }}- </span></div>
+                  {% else %}
+                    <a href="?page={{ i }}" class="pagination_numbers" style="color: black">{{ i }}-</a>
+                  {% endif %}
+                {% endfor %}
+                {% if post_list.has_next %}
+                  <a href="?page={{ post_list.next_page_number }}" class="pagination_numbers" style="color: black">&raquo;</a>
+                {% else %}
+                  <div class="disabled pagination_numbers"><span style="color: black">&raquo;</span></div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+
+
+
     </div>
 
 
 <div class="jumbotron">
     <div style="text-align: center">
 
-            <a href="fb.me/quinielasligamxusa">
+            <a href="http://fb.me/quinielasligamxusa">
             <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/facebook.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 35px; height: auto">
         </a>
 
@@ -211,30 +241,5 @@
 </div>
 
 
-    <div class="d-flex justify-content-center">
-
-        <div class="pagination">
-            {% if post_list.has_other_pages %}
-                {% if post_list.has_previous %}
-                  <a href="?page={{ post_list.previous_page_number }}" class="pagination_numbers">&laquo;</a>
-                {% else %}
-                  <div class="disabled pagination_numbers"><span>&laquo;</span></div>
-                {% endif %}
-                {% for i in post_list.paginator.page_range %}
-                  {% if post_list.number == i %}
-                    <div class="pagination_numbers"><span> {{ i }} </span></div>
-                  {% else %}
-                    <a href="?page={{ i }}" class="pagination_numbers">{{ i }}</a>
-                  {% endif %}
-                {% endfor %}
-                {% if post_list.has_next %}
-                  <a href="?page={{ post_list.next_page_number }}" class="pagination_numbers">&raquo;</a>
-                {% else %}
-                  <div class="disabled pagination_numbers"><span>&raquo;</span></div>
-                {% endif %}
-            {% endif %}
-        </div>
-
-    </div>
 {% endblock %}
 

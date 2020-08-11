@@ -13,6 +13,9 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/buensexo_web/settings.py" afterDir="false" />
@@ -84,19 +87,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mymessages" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\stripe" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp\mysite" />
-      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\promotions\templates\promotions" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mousegroup" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\message_groups" />
       <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\top_quinielas" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\catmessage" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\mymessages" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\twerk2020\tip\templates\tip\stripe" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp\mysite" />
+      <recent name="C:\Users\silvano\PycharmProjects\pycharm2020\ajaxapp" />
     </key>
   </component>
   <component name="RunManager" selected="Python.delete">
@@ -226,7 +229,8 @@
       <workItem from="1597105775054" duration="487000" />
       <workItem from="1597106281115" duration="83000" />
       <workItem from="1597106390763" duration="3231000" />
-      <workItem from="1597113356032" duration="1156000" />
+      <workItem from="1597113356032" duration="1475000" />
+      <workItem from="1597184104075" duration="2913000" />
     </task>
     <servers />
   </component>
