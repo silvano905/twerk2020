@@ -236,10 +236,13 @@ def index(request):
     request_user = Juego.objects.filter(author=request.user)
 
     free_users = [14, 15, 17, 18, 19]
-    current_user = request.user.profiles.pk
-    free_quiniela = False
-    if current_user in free_users:
-        free_quiniela = True
+    try:
+        current_user = request.user.profiles.pk
+        free_quiniela = False
+        if current_user in free_users:
+            free_quiniela = True
+    except:
+        free_quiniela = False
 
     form = Getall()
 
