@@ -202,20 +202,11 @@ def tips_list_search(request):
     else:
         no_download = False
 
-
     queryset = MakeTip.objects.all()
-
-    free_users = [14, 15, 17, 18, 19]
-    current_user = request.user.profiles.pk
-    free_quiniela = False
-    if current_user in free_users:
-        free_quiniela = True
-
     context = {
         "post_list": queryset,
         "no_download": no_download,
         "user_obj": user_obj,
-        "free_quiniela": free_quiniela
 
     }
     return render(request, 'tip/tip_list.html', context)
