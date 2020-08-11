@@ -205,10 +205,17 @@ def tips_list_search(request):
 
     queryset = MakeTip.objects.all()
 
+    free_users = [14, 15, 17, 18, 19]
+    current_user = request.user.profiles.pk
+    free_quiniela = False
+    if current_user in free_users:
+        free_quiniela = True
+
     context = {
         "post_list": queryset,
         "no_download": no_download,
-        "user_obj": user_obj
+        "user_obj": user_obj,
+        "free_quiniela": free_quiniela
 
     }
     return render(request, 'tip/tip_list.html', context)
@@ -226,9 +233,16 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 
 def index(request):
+    request_user = Juego.objects.filter(author=request.user)
+
+    free_users = [14, 15, 17, 18, 19]
+    current_user = request.user.profiles.pk
+    free_quiniela = False
+    if current_user in free_users:
+        free_quiniela = True
+
     form = Getall()
 
-    request_user = Juego.objects.filter(author=request.user)
     final_repeated_list = []
     all_my_choices = []
     for my_obj in request_user:
@@ -240,7 +254,6 @@ def index(request):
         for x in request_user:
             if x.all_choices == i:
                 final_repeated_list.append(x.pk)
-
 
     total_payment = request_user.count()*2
     total_quinielas = request_user.count()
@@ -265,7 +278,8 @@ def index(request):
         "date": date_now,
         "no_buying": no_more_buying,
         "repeated_list": final_repeated_list,
-        'form': form
+        'form': form,
+        'free': free_quiniela
     }
     return render(request, 'tip/stripe/index.html', context)
 
@@ -295,33 +309,35 @@ def successMsg(request):
     user_obj = Juego.objects.filter(author=request.user)
 
     amount = request.POST.get('total')
+    lock_success = request.POST.get('lock')
+    lock_success_original = '2020mx'
     quinielas = request.POST.get('quinielas')
 
+    if lock_success == lock_success_original:
 
-    for cart_item in user_obj:
-        all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
-        bought_items = MakeTip.objects.create(one=cart_item.one,
-                                              two=cart_item.two,
-                                              three=cart_item.three,
-                                              four=cart_item.four,
-                                              five=cart_item.five,
-                                              six=cart_item.six,
-                                              seven=cart_item.seven,
-                                              eight=cart_item.eight,
-                                              nine=cart_item.nine,
-                                              author=request.user,
-                                              all_choices=all_choices
-                               )
+        for cart_item in user_obj:
+            all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
+            bought_items = MakeTip.objects.create(one=cart_item.one,
+                                                  two=cart_item.two,
+                                                  three=cart_item.three,
+                                                  four=cart_item.four,
+                                                  five=cart_item.five,
+                                                  six=cart_item.six,
+                                                  seven=cart_item.seven,
+                                                  eight=cart_item.eight,
+                                                  nine=cart_item.nine,
+                                                  author=request.user,
+                                                  all_choices=all_choices
+                                   )
 
-        bought_items.save()
+            bought_items.save()
 
-        delete_cart_item = Juego.objects.filter(author__exact=request.user, pk=cart_item.pk)
-        delete_cart_item.delete()
+            delete_cart_item = Juego.objects.filter(author__exact=request.user, pk=cart_item.pk)
+            delete_cart_item.delete()
 
-    # amount = '2'
-    # total_quinielas = int(amount)//2
-    return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": quinielas})
-
+        return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": quinielas})
+    else:
+        return redirect('tips:list')
 
 def site_map(request):
     return render(request, 'tip/sitemap.xml', content_type='text/xml')

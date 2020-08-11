@@ -45,7 +45,11 @@
                         <form method="post" action="{% url 'tips:success'%}" id="myForm">
                             {% csrf_token %}
                             <input type="hidden" value="{{ total }}" name="total">
+                            <input type="hidden" value="2020mx" name="lock">
                             <input type="hidden" value="{{ total_quinielas }}" name="quinielas">
+                            {% if free %}
+                            <input type="submit" value="pagar">
+                            {% endif %}
 
                         </form>
 
