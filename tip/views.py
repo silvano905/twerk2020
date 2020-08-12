@@ -185,6 +185,13 @@ def filter_list(request, value):
 
 
 def tips_list_search(request):
+    x = datetime.datetime.now()
+    date_now = x.day
+    date_now2 = x.month
+    date_now3 = x.year
+    now_date = str(date_now2) + '-' + str(date_now) + '-' + str(date_now3)
+
+
     user_obj = []
     if request.user.is_authenticated:
 
@@ -211,7 +218,8 @@ def tips_list_search(request):
     context = {
         "no_download": no_download,
         "user_obj": user_obj,
-        "post_list": queryset2
+        "post_list": queryset2,
+        'date': now_date
 
     }
     return render(request, 'tip/tip_list.html', context)
