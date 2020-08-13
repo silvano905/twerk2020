@@ -209,7 +209,7 @@ def tips_list_search(request):
     else:
         no_download = False
 
-    queryset = MakeTip.objects.all()
+    queryset = MakeTip.objects.order_by('-created_date')
 
     paginator = Paginator(queryset, 50)
     page = request.GET.get('page')

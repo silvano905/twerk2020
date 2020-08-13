@@ -70,13 +70,15 @@ def create_user_form(request):
             crate_profile = Profile.objects.create(user=request.user, description=phone_number)
             crate_profile.save()
 
+            msg_contra = username
+
+            msg_html = render_to_string('registration/welcome.html')
+            send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
+                      fail_silently=False)
+
             return redirect('tips:list')
 
-            # msg_contra = username + " / " + contra + " / " + email_user
-            #
-            # msg_html = render_to_string('registration/welcome.html')
-            # send_mail('C2020T', 'Bienvenido!', settings.EMAIL_HOST_USER, ['silvanovaldez90@yahoo.com'], html_message=msg_contra,
-            #           fail_silently=False)
+
             # return redirect('login')
         else:
             all_users_list = User.objects.all()
