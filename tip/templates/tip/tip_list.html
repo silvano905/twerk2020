@@ -13,7 +13,7 @@
 
 
         <div style="background-color: #1b3249; width: 350px;height: 45px; border-radius: 5px">
-            <h2 style="color: whitesmoke"><strong style="color: mediumspringgreen">Premio:</strong> $1,000 Dolares</h2>
+            <h2 style="color: whitesmoke"><strong style="color: mediumspringgreen">Premio:</strong> $1,000 Dólares</h2>
         </div>
 
         <div class="list-group" style="margin: 12px; text-align: center; color: #1b3249 !important;">
@@ -114,10 +114,10 @@
         <div style="text-align: center; margin-bottom: 5px">
             {% if no_download %}
             {% else %}
-{#                <a class="btn btn-success" href="{% url 'tips:download' %}" role="button">#}
-{#                    Descargar lista completa#}
-{#                    <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/k21Asset+3.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">#}
-{#                </a>#}
+                <a class="btn btn-success" href="{% url 'tips:download' %}" role="button">
+                    Descargar lista completa
+                    <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/k21Asset+3.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 25px; height: auto">
+                </a>
             {% endif %}
               {% if user.is_authenticated %}
                   <a href="{% url 'promotions:winners'%}" class="btn btn-info" role="button" aria-pressed="true" style="margin: 10px">Ganadores de la Jornada 4</a>
