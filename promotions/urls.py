@@ -6,6 +6,7 @@ app_name = 'promotions'
 
 urlpatterns = [
     url('^updatescores/$', views.update_all_scores_view, name="updatescores"),
+    url('^autoadd/$', views.auto_add_quinielas, name="autoadd"),
     url('^listaganadores/$', views.getAllWinners, name="winners"),
     url('^createbook/$', views.create_book_model_form, name="book"),
     url('^identificacion/$', views.search_quiniela, name="details"),

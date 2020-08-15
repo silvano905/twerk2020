@@ -24,6 +24,7 @@ from django.forms import formset_factory
 from django.forms import modelformset_factory
 User = get_user_model()
 import datetime
+import random
 
 
 def getAllWinners(request):
@@ -180,6 +181,7 @@ def create_book_model_form(request):
                     seven = form.cleaned_data['seven']
                     eight = form.cleaned_data['eight']
                     nine = form.cleaned_data['nine']
+                    juego_model.jornada = 4
 
                     juego_model.all_choices = one + two + three + four + five + six + seven + eight + nine
 
@@ -234,3 +236,48 @@ def forgot_username(request):
 
 def check_win(request):
     return render(request, 'promotions/ganaste.html')
+
+
+def auto_add_quinielas(request):
+    b = User.objects.all()
+    free_user_pk = [14, 15, 16, 17, 18, 19, 22, 23, 24, 25]
+    value_list = ['L', 'E', 'V']
+
+    all_users = []
+    all_choices = []
+
+    num = 90
+
+    while num > 0:
+        ll = User.objects.get(profiles=random.choice(free_user_pk))
+
+        s = MakeTip.objects.create(one=random.choice(value_list), two=random.choice(value_list),
+                                   three=random.choice(value_list), four=random.choice(value_list),
+                                   five=random.choice(value_list), six=random.choice(value_list),
+                                   seven=random.choice(value_list), eight=random.choice(value_list),
+                                   nine=random.choice(value_list), author=ll)
+        s.all_choices = s.one+s.two+s.three+s.four+s.five+s.six+s.seven+s.eight+s.nine
+        all_choices.append(s.all_choices)
+        all_users.append(s.author)
+        num -= 1
+
+    print(all_choices)
+    print(all_users)
+
+    # all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
+    # bought_items = MakeTip.objects.create(one=cart_item.one,
+    #                                       two=cart_item.two,
+    #                                       three=cart_item.three,
+    #                                       four=cart_item.four,
+    #                                       five=cart_item.five,
+    #                                       six=cart_item.six,
+    #                                       seven=cart_item.seven,
+    #                                       eight=cart_item.eight,
+    #                                       nine=cart_item.nine,
+    #                                       author=request.user,
+    #                                       all_choices=all_choices
+    #                        )
+    #
+    # bought_items.save()
+
+    return redirect('tips:list')

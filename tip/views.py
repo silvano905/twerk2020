@@ -119,8 +119,6 @@ class TipDeleteView(DeleteView, LoginRequiredMixin):
 
 class UserTips(ListView, LoginRequiredMixin):
 
-
-
     context_object_name = 'post_list'
     model = MakeTip
     template_name = 'tip/user_tip_list.html'
@@ -131,11 +129,11 @@ class UserTips(ListView, LoginRequiredMixin):
         except User.DoesNotExist:
             raise Http404
         else:
-            return self.post_user.tips.all()
+            return self.post_user.tips.filter(jornada=4)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['post_user'] = self.post_user.tips.all().count()
+        context['post_user'] = self.post_user.tips.filter(jornada=4).count()
 
         now = datetime.datetime.now()
         edit_day = now.strftime("%A")
@@ -209,9 +207,10 @@ def tips_list_search(request):
     else:
         no_download = False
 
-    queryset = MakeTip.objects.order_by('-created_date')
+    # queryset = MakeTip.objects.order_by('-created_date')
+    queryset = MakeTip.objects.filter(jornada=4).order_by('-created_date')
 
-    paginator = Paginator(queryset, 50)
+    paginator = Paginator(queryset, 25)
     page = request.GET.get('page')
     queryset2 = paginator.get_page(page)
 
@@ -334,7 +333,8 @@ def successMsg(request):
                                                   eight=cart_item.eight,
                                                   nine=cart_item.nine,
                                                   author=request.user,
-                                                  all_choices=all_choices
+                                                  all_choices=all_choices,
+                                                  jornada=6
                                    )
 
             bought_items.save()

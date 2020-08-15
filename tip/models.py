@@ -17,6 +17,7 @@ class MakeTip(models.Model):
     nine = models.CharField(max_length=63, default=0)
     all_choices = models.CharField(max_length=20, blank=True)
     points = models.IntegerField(default=0, blank=True)
+    jornada = models.IntegerField(default=4, blank=True)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
