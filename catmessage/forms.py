@@ -24,15 +24,15 @@ class BookFormset(forms.ModelForm):
         ('E', 'E'),
         ('V', 'V'),
     )
-    one = forms.CharField(widget=forms.Select(choices=CHOICES), label='Necaxa vs Mazatlán', required=True)
-    two = forms.CharField(widget=forms.Select(choices=CHOICES), label='Pachuca vs León', required=True)
-    three = forms.CharField(widget=forms.Select(choices=CHOICES), label='Tigres vs Puebla', required=True)
-    four = forms.CharField(widget=forms.Select(choices=CHOICES), label='Querétaro vs Cruz Azul', required=True)
-    five = forms.CharField(widget=forms.Select(choices=CHOICES), label='Juárez vs Chivas', required=True)
-    six = forms.CharField(widget=forms.Select(choices=CHOICES), label='Pumas vs Monterrey', required=True)
-    seven = forms.CharField(widget=forms.Select(choices=CHOICES), label='Tijuana vs San Luis', required=True)
-    eight = forms.CharField(widget=forms.Select(choices=CHOICES), label='Atlas vs Toluca', required=True)
-    nine = forms.CharField(widget=forms.Select(choices=CHOICES), label='América vs Santos', required=True)
+    one = forms.CharField(widget=forms.Select(choices=CHOICES), label='Necaxa vs Santos', required=True)
+    two = forms.CharField(widget=forms.Select(choices=CHOICES), label='FC Juárez vs León', required=True)
+    three = forms.CharField(widget=forms.Select(choices=CHOICES), label='Atlas vs Querétaro', required=True)
+    four = forms.CharField(widget=forms.Select(choices=CHOICES), label='Tigres vs Pumas', required=True)
+    five = forms.CharField(widget=forms.Select(choices=CHOICES), label='América vs Monterrey', required=True)
+    six = forms.CharField(widget=forms.Select(choices=CHOICES), label='Toluca vs Chivas', required=True)
+    seven = forms.CharField(widget=forms.Select(choices=CHOICES), label='San Luis vs Cruz Azul', required=True)
+    eight = forms.CharField(widget=forms.Select(choices=CHOICES), label='Tijuana vs Puebla', required=True)
+    nine = forms.CharField(widget=forms.Select(choices=CHOICES), label='Pachuca vs Mazatlán', required=True)
 
 
     class Meta:

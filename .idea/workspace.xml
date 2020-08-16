@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="758d0744-16e8-49d4-92e9-e6471b303945" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tip/migrations/0010_juegojornada.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/django/contrib/auth/migrations/0012_auto_20200716_1311.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/rest_framework/authtoken/migrations/0001_initial.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/venv/Lib/site-packages/rest_framework/authtoken/migrations/0002_auto_20160226_1747.py" afterDir="false" />
@@ -14,14 +13,9 @@
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../chicagobusiness/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/promotions/templates/promotions/all_winners.html" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/templates/promotions/all_winners.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/promotions/templates/promotions/quiniela_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/templates/promotions/quiniela_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catmessage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/catmessage/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/promotions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/promotions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/tip_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/user_tip_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tip/templates/tip/stripe/success.html" beforeDir="false" afterPath="$PROJECT_DIR$/tip/templates/tip/stripe/success.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tip/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tip/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/.idea/buensexo_web.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../silvano/django/buensexo_web/accounts/migrations/0001_initial.py" afterDir="false" />
@@ -245,7 +239,7 @@
       <workItem from="1597505952714" duration="1547000" />
       <workItem from="1597509640701" duration="18735000" />
       <workItem from="1597590561471" duration="361000" />
-      <workItem from="1597591671344" duration="2773000" />
+      <workItem from="1597591671344" duration="6492000" />
     </task>
     <servers />
   </component>

@@ -33,7 +33,7 @@ def getAllWinners(request):
 
     juegos_names = JuegoJornada.objects.get(jornada=jornada)
     queryset = MakeTip.objects.filter(jornada=jornada)
-    game_results = get_object_or_404(GamesModel, pk=3).games
+    game_results = get_object_or_404(GamesModel, pk=jornada).games
     games_played = len(game_results)
     games_to_be_played = 9-int(games_played)
     are_games_finished = False
@@ -95,7 +95,7 @@ def update_all_scores_view(request):
     jornada = JornadaNum.objects.all()
     jornada = jornada[0].num
 
-    game_results = get_object_or_404(GamesModel, pk=3).games
+    game_results = get_object_or_404(GamesModel, pk=jornada).games
     queryset = MakeTip.objects.filter(jornada=jornada)
 
     a = game_results
@@ -264,7 +264,7 @@ def auto_add_quinielas(request):
     all_users = []
     all_choices = []
 
-    num = 5
+    num = 110
 
     while num > 0:
         ll = User.objects.get(profiles=random.choice(free_user_pk))
@@ -280,23 +280,5 @@ def auto_add_quinielas(request):
         all_users.append(s.author)
         s.save()
         num -= 1
-
-
-
-    # all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
-    # bought_items = MakeTip.objects.create(one=cart_item.one,
-    #                                       two=cart_item.two,
-    #                                       three=cart_item.three,
-    #                                       four=cart_item.four,
-    #                                       five=cart_item.five,
-    #                                       six=cart_item.six,
-    #                                       seven=cart_item.seven,
-    #                                       eight=cart_item.eight,
-    #                                       nine=cart_item.nine,
-    #                                       author=request.user,
-    #                                       all_choices=all_choices
-    #                        )
-    #
-    # bought_items.save()
 
     return redirect('tips:list')

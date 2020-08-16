@@ -10,7 +10,7 @@
 		<h4>Gracias por su pago de <strong>${{amount}}</strong></h4>
 		<h4>Compraste <strong>{{ total_quinielas }}</strong> Quinielas</h4>
 		<hr>
-		<a class="btn btn-primary" href="{% url 'tips:list'%}" role="button">&#x2190;Mis Quinielas</a>
+		<a class="btn btn-primary" href="{% url 'tips:for_user' username=request.user.username%}" role="button">&#x2190;Mis Quinielas</a>
 	</div>
 </div>
 {% endblock %}

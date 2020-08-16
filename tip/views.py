@@ -129,10 +129,11 @@ class UserTips(ListView, LoginRequiredMixin):
         no_more_editing = False
         jornada = JornadaNum.objects.all()
         jornada = jornada[0].num
-        juegos_names = JuegoJornada.objects.get(jornada=jornada)
         q = []
+        juegos_names = []
         if request.GET.get('q'):
             q = request.GET.get('q')
+            juegos_names = JuegoJornada.objects.get(jornada=q)
             quinielas_list = MakeTip.objects.filter(author=request.user, jornada=q)
             count_quinielas = quinielas_list.count()
 
@@ -145,6 +146,7 @@ class UserTips(ListView, LoginRequiredMixin):
             else:
                 no_more_editing = False
         else:
+            juegos_names = JuegoJornada.objects.get(jornada=jornada)
             now = datetime.datetime.now()
             edit_day = now.strftime("%A")
             no_more_editing = False
