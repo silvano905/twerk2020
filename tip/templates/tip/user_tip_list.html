@@ -17,7 +17,7 @@
     {% endif %}
 
 
-            <div class="row">
+            <div class="row" style="margin-bottom: 5px; text-align: center">
                 <div class="col col-4 col-md-3">
                     <form method="GET" action="{% url 'tips:for_user' username=request.user.username%}" class="form-inline">
                         <input type="hidden" name="q" value="4">
