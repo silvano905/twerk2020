@@ -255,7 +255,7 @@ def tips_list_search(request):
     # queryset = MakeTip.objects.order_by('-created_date')
     queryset = MakeTip.objects.filter(jornada=jornada).order_by('-created_date')
 
-    paginator = Paginator(queryset, 25)
+    paginator = Paginator(queryset, 15)
     page = request.GET.get('page')
     queryset2 = paginator.get_page(page)
 

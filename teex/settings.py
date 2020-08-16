@@ -26,7 +26,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'accounts/static/media')
 SECRET_KEY = os.environ['MY_KEY_TWERK']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ruiz90.pythonanywhere.com', '127.0.0.1', 'www.quinielasligamx.com']
 
