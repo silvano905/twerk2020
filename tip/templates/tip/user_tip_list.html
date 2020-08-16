@@ -17,8 +17,6 @@
     {% endif %}
 
 
-    <div class="jumbotron">
-        <div class="container">
             <div class="row">
                 <div class="col col-4 col-md-3">
                     <form method="GET" action="{% url 'tips:for_user' username=request.user.username%}" class="form-inline">
@@ -41,8 +39,6 @@
 
             </div>
 
-        </div>
-    </div>
 
         <div class="row">
             {% if post_list %}
