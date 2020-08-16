@@ -17,7 +17,7 @@ from django.conf import settings
 import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from tip.models import MakeTip
+from tip.models import MakeTip, JornadaNum
 from catmessage.models import Juego
 from catmessage.forms import BookModelFormset
 from django.forms import formset_factory
@@ -28,7 +28,10 @@ import random
 
 
 def getAllWinners(request):
-    queryset = MakeTip.objects.all()
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
+    queryset = MakeTip.objects.filter(jornada=jornada)
     game_results = get_object_or_404(GamesModel, pk=3).games
     games_played = len(game_results)
     games_to_be_played = 9-int(games_played)
@@ -79,15 +82,19 @@ def getAllWinners(request):
         "nine_list": final_list,
         "point": winners_list_total,
         "are_games_finished": are_games_finished,
-        "games_to_be_played": games_to_be_played
+        "games_to_be_played": games_to_be_played,
+        'jornada': jornada
     }
 
     return render(request, 'promotions/all_winners.html', context)
 
 
 def update_all_scores_view(request):
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
     game_results = get_object_or_404(GamesModel, pk=3).games
-    queryset = MakeTip.objects.all()
+    queryset = MakeTip.objects.filter(jornada=jornada)
 
     a = game_results
 
@@ -144,6 +151,9 @@ def create_book_model_form(request):
     template_name = 'promotions/create_normal.html'
     heading_message = 'Model Formset Demo'
 
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
     now = datetime.datetime.now()
     todays_date = now.strftime("%A")
     no_buying = False
@@ -181,7 +191,7 @@ def create_book_model_form(request):
                     seven = form.cleaned_data['seven']
                     eight = form.cleaned_data['eight']
                     nine = form.cleaned_data['nine']
-                    juego_model.jornada = 4
+                    juego_model.jornada = jornada
 
                     juego_model.all_choices = one + two + three + four + five + six + seven + eight + nine
 
@@ -190,7 +200,8 @@ def create_book_model_form(request):
     return render(request, template_name, {
             'formset': formset,
             'heading': heading_message,
-            "no_buying": no_buying
+            "no_buying": no_buying,
+            'jornada': jornada
         })
 
 
@@ -239,6 +250,9 @@ def check_win(request):
 
 
 def auto_add_quinielas(request):
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
     b = User.objects.all()
     free_user_pk = [14, 15, 16, 17, 18, 19, 22, 23, 24, 25]
     value_list = ['L', 'E', 'V']
@@ -246,7 +260,7 @@ def auto_add_quinielas(request):
     all_users = []
     all_choices = []
 
-    num = 90
+    num = 5
 
     while num > 0:
         ll = User.objects.get(profiles=random.choice(free_user_pk))
@@ -255,14 +269,15 @@ def auto_add_quinielas(request):
                                    three=random.choice(value_list), four=random.choice(value_list),
                                    five=random.choice(value_list), six=random.choice(value_list),
                                    seven=random.choice(value_list), eight=random.choice(value_list),
-                                   nine=random.choice(value_list), author=ll)
+                                   nine=random.choice(value_list), author=ll,
+                                   jornada=jornada)
         s.all_choices = s.one+s.two+s.three+s.four+s.five+s.six+s.seven+s.eight+s.nine
         all_choices.append(s.all_choices)
         all_users.append(s.author)
+        s.save()
         num -= 1
 
-    print(all_choices)
-    print(all_users)
+
 
     # all_choices = cart_item.one+cart_item.two+cart_item.three+cart_item.four+cart_item.five+cart_item.six+cart_item.seven+cart_item.eight+cart_item.nine
     # bought_items = MakeTip.objects.create(one=cart_item.one,

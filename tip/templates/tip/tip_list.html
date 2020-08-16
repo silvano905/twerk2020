@@ -8,7 +8,7 @@
   <div style="text-align: center;">
 
       <h1 class="display-5">Quinielas Liga MX</h1>
-      <h2>Liga Mexicana Jornada 4</h2>
+      <h2>Liga Mexicana Jornada {{ jornada }}</h2>
       <h5>{{ date }}</h5>
 
 
@@ -123,7 +123,7 @@
 
             {% endif %}
               {% if user.is_authenticated %}
-                  <a href="{% url 'promotions:winners'%}" class="btn btn-info" role="button" aria-pressed="true" style="margin: 10px">Ganadores de la Jornada 4</a>
+                  <a href="{% url 'promotions:winners'%}" class="btn btn-info" role="button" aria-pressed="true" style="margin: 10px">Ganadores de la Jornada {{ jornada }}</a>
               {% endif %}
 
         </div>

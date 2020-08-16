@@ -5,11 +5,44 @@
 {% endblock %}
 
 {% block body_block %}
-
     <div class="jumbotron">
+    {% if not num %}
         <div style="text-align: center; background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
-            <h5><strong style="color: #447e9b">{{ post_user }}</strong> quinielas de la Jornada 4</h5>
+            <h5><strong style="color: #447e9b">{{ post_list.count }}</strong> quinielas de la Jornada {{ jornada }}</h5>
         </div>
+    {% else %}
+        <div style="text-align: center; background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
+            <h5><strong style="color: #447e9b">{{ count }}</strong> quinielas de la Jornada {{ num }}</h5>
+        </div>
+    {% endif %}
+
+
+    <div class="jumbotron" style="margin-top: 5px">
+        <div class="container">
+            <div class="row">
+                <div class="col col-4 col-md-3">
+                    <form method="GET" action="{% url 'tips:for_user' username=request.user.username%}" class="form-inline">
+                        <input type="hidden" name="q" value="4">
+                      <button class="btn btn-dark my-2 my-sm-0" type="submit">Jornada 4</button>
+                    </form>
+                </div>
+                <div class="col col--4 col-md-3">
+                    <form method="GET" action="{% url 'tips:for_user' username=request.user.username%}" class="form-inline">
+                        <input type="hidden" name="q" value="5">
+                      <button class="btn btn-dark my-2 my-sm-0" type="submit">Jornada 5</button>
+                    </form>
+                </div>
+                <div class="col col--4 col-md-3">
+                    <form method="GET" action="{% url 'tips:for_user' username=request.user.username%}" class="form-inline">
+                        <input type="hidden" name="q" value="6">
+                      <button class="btn btn-dark my-2 my-sm-0" type="submit">Jornada 6</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
         <div class="row">
             {% if post_list %}
@@ -75,7 +108,7 @@
 
 
                                     {% if not no_more_editing %}
-                                        {% if user.is_authenticated and post.author == user %}
+                                        {% if user.is_authenticated and post.author == user and post.jornada == jornada %}
 
 
                                             <div class="dropdown" style="margin-top: 10px">
@@ -103,13 +136,6 @@
                 </div>
                 {% endfor %}
             {% else %}
-                <div class="container">
-                    <div class="jumbotron">
-                        <div align="center">
-                            <p>No has comprado quinielas de la Jornada 4</p>
-                        </div>
-                    </div>
-                </div>
             {% endif %}
         </div>
     </div>

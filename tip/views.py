@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from .forms import MakePostForm, Getall
 from promotions.models import GamesModel
-from .models import MakeTip, LikeUserList, DownVoteUserList
+from .models import MakeTip, LikeUserList, DownVoteUserList, JornadaNum
 # from comments.models import Comment
 from django.db.models import Q
 from accounts.models import PointsUserList, Profile
@@ -123,31 +123,62 @@ class UserTips(ListView, LoginRequiredMixin):
     model = MakeTip
     template_name = 'tip/user_tip_list.html'
 
+    def get(self, request, *args, **kwargs):
+        quinielas_list = self.get_queryset()
+        count_quinielas = 0
+        no_more_editing = False
+        jornada = JornadaNum.objects.all()
+        jornada = jornada[0].num
+        q = []
+        if request.GET.get('q'):
+            q = request.GET.get('q')
+            quinielas_list = MakeTip.objects.filter(author=request.user, jornada=q)
+            count_quinielas = quinielas_list.count()
+
+            now = datetime.datetime.now()
+            edit_day = now.strftime("%A")
+            no_more_editing = False
+            no_editing_days = ["Friday", "Saturday", "Sunday"]
+            if edit_day in no_editing_days:
+                no_more_editing = True
+            else:
+                no_more_editing = False
+        else:
+            now = datetime.datetime.now()
+            edit_day = now.strftime("%A")
+            no_more_editing = False
+            no_editing_days = ["Friday", "Saturday", "Sunday"]
+            if edit_day in no_editing_days:
+                no_more_editing = True
+            else:
+                no_more_editing = False
+        return render(request, self.template_name, {'post_list': quinielas_list, 'num': q, 'count': count_quinielas, 'no_more_editing': no_more_editing, 'jornada':jornada})
+
+
     def get_queryset(self):
         try:
             self.post_user = User.objects.prefetch_related('tips').get(username__iexact=self.kwargs.get('username'))
         except User.DoesNotExist:
             raise Http404
         else:
-            return self.post_user.tips.filter(jornada=4)
+            jornada = JornadaNum.objects.all()
+            jornada = jornada[0].num
+            return self.post_user.tips.filter(jornada=jornada)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['post_user'] = self.post_user.tips.filter(jornada=4).count()
-
-        now = datetime.datetime.now()
-        edit_day = now.strftime("%A")
-        no_more_editing = False
-
-        no_editing_days = ["Friday", "Saturday", "Sunday"]
-        if edit_day in no_editing_days:
-            no_more_editing = True
-        else:
-            no_more_editing = False
-
-        context['no_more_editing'] = no_more_editing
-        return context
-
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['jornada'] = '4'
+    #     now = datetime.datetime.now()
+    #     edit_day = now.strftime("%A")
+    #     no_more_editing = False
+    #     no_editing_days = ["Friday", "Saturday", "Sunday"]
+    #     if edit_day in no_editing_days:
+    #         no_more_editing = True
+    #     else:
+    #         no_more_editing = False
+    #
+    #     context['no_more_editing'] = no_more_editing
+    #     return context
 
 def download_view(request):
     queryset = MakeTip.objects.all()
@@ -171,7 +202,9 @@ def download_view(request):
 
 
 def filter_list(request, value):
-    queryset = MakeTip.objects.all()
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+    queryset = MakeTip.objects.filter(jornada=jornada)
 
     all_games_filter = []
 
@@ -183,6 +216,9 @@ def filter_list(request, value):
 
 
 def tips_list_search(request):
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
     x = datetime.datetime.now()
     date_now = x.day
     date_now2 = x.month
@@ -208,7 +244,7 @@ def tips_list_search(request):
         no_download = False
 
     # queryset = MakeTip.objects.order_by('-created_date')
-    queryset = MakeTip.objects.filter(jornada=4).order_by('-created_date')
+    queryset = MakeTip.objects.filter(jornada=jornada).order_by('-created_date')
 
     paginator = Paginator(queryset, 25)
     page = request.GET.get('page')
@@ -218,7 +254,8 @@ def tips_list_search(request):
         "no_download": no_download,
         "user_obj": user_obj,
         "post_list": queryset2,
-        'date': now_date
+        'date': now_date,
+        'jornada': jornada
 
     }
     return render(request, 'tip/tip_list.html', context)
@@ -236,7 +273,9 @@ stripe.api_key = "sk_test_51H4G4xB9GffACqxkKLFJijrVgjhuHV47HEC0OYuLvbwcCfZZbvRcC
 
 
 def index(request):
-    request_user = Juego.objects.filter(author=request.user)
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+    request_user = Juego.objects.filter(author=request.user, jornada=jornada)
 
     free_users = [14, 15, 17, 18, 19]
     try:
@@ -312,7 +351,10 @@ def charge(request):
 
 
 def successMsg(request):
-    user_obj = Juego.objects.filter(author=request.user)
+    jornada = JornadaNum.objects.all()
+    jornada = jornada[0].num
+
+    user_obj = Juego.objects.filter(author=request.user, jornada=jornada)
 
     amount = request.POST.get('total')
     lock_success = request.POST.get('lock')
@@ -334,7 +376,7 @@ def successMsg(request):
                                                   nine=cart_item.nine,
                                                   author=request.user,
                                                   all_choices=all_choices,
-                                                  jornada=6
+                                                  jornada=jornada
                                    )
 
             bought_items.save()

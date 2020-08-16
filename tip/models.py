@@ -66,6 +66,10 @@ class LikeUserList(models.Model):
         return self.user.username
 
 
+class JornadaNum(models.Model):
+    num = models.IntegerField(blank=True)
+
+
 class DownVoteUserList(models.Model):
     post = models.ForeignKey(MakeTip, related_name='members_down', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
