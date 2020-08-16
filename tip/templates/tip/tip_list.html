@@ -103,7 +103,7 @@
         </div>
 
         <div style="margin-bottom: 5px; text-align: center">
-            <a href="{% url 'promotions:gane' %}" class="btn btn-outline-success" role="button" aria-pressed="true">Cómo cobrar si ganaste</a>
+            <a href="{% url 'promotions:gane' %}" class="btn btn-success" role="button" aria-pressed="true">Cómo cobrar si ganaste</a>
         </div>
 
     </div>
@@ -112,6 +112,18 @@
 
     <div class="jumbotron">
         <div style="text-align: center; margin-bottom: 5px">
+            <div style="background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
+
+                    <h5 style="background-color: #002855; padding: 10px; border-radius: 10px">Puedes descargar una lista completa de todas las quinielas para que puedas verificar y confirmar el ganador si lo desea.</h5>
+
+                    <div style="text-align: left">
+                        <h5 style="background-color: #06d6a0; padding: 10px; border-radius: 10px; margin-top: 10px">Solo puedes descargar la lista completa cuando termine el último día para comprar qunielas.</h5>
+                        <p>El último día para comprar es el jueves.</p>
+                        <p>Viernes y Sabado puedes bajar la lista completa.</p>
+
+                    </div>
+            </div>
+
             {% if no_download %}
             {% else %}
 
