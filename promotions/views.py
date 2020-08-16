@@ -160,11 +160,11 @@ def create_book_model_form(request):
     todays_date = now.strftime("%A")
     no_buying = False
 
-    no_buying_days = ["Friday", "Saturday", "Sunday"]
-    if todays_date in no_buying_days:
-        no_buying = True
-    else:
-        no_buying = False
+    # no_buying_days = ["Friday", "Saturday", "Sunday"]
+    # if todays_date in no_buying_days:
+    #     no_buying = True
+    # else:
+    #     no_buying = False
 
     if request.method == 'GET':
         # we don't want to display the already saved model instances

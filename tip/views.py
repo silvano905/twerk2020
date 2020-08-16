@@ -321,11 +321,11 @@ def index(request):
     today_date = now.strftime("%A")
     no_more_buying = False
 
-    no_more_buying_days = ["Friday", "Saturday", "Sunday"]
-    if today_date in no_more_buying_days:
-        no_more_buying = True
-    else:
-        no_more_buying = False
+    # no_more_buying_days = ["Friday", "Saturday", "Sunday"]
+    # if today_date in no_more_buying_days:
+    #     no_more_buying = True
+    # else:
+    #     no_more_buying = False
 
     context = {
         "quinielas": request_user,
