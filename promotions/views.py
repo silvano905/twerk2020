@@ -17,7 +17,7 @@ from django.conf import settings
 import stripe
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from tip.models import MakeTip, JornadaNum
+from tip.models import MakeTip, JornadaNum, JuegoJornada
 from catmessage.models import Juego
 from catmessage.forms import BookModelFormset
 from django.forms import formset_factory
@@ -31,6 +31,7 @@ def getAllWinners(request):
     jornada = JornadaNum.objects.all()
     jornada = jornada[0].num
 
+    juegos_names = JuegoJornada.objects.get(jornada=jornada)
     queryset = MakeTip.objects.filter(jornada=jornada)
     game_results = get_object_or_404(GamesModel, pk=3).games
     games_played = len(game_results)
@@ -83,7 +84,8 @@ def getAllWinners(request):
         "point": winners_list_total,
         "are_games_finished": are_games_finished,
         "games_to_be_played": games_to_be_played,
-        'jornada': jornada
+        'jornada': jornada,
+        'juego': juegos_names
     }
 
     return render(request, 'promotions/all_winners.html', context)
@@ -222,8 +224,10 @@ def search_quiniela(request):
                 search = []
             else:
                 search = MakeTip.objects.get(pk=pk)
+                jornada = search.jornada
+                juegos_names = JuegoJornada.objects.get(jornada=jornada)
 
-        return render(request, 'promotions/quiniela_detail.html', {"post": search, "pk": pk})
+        return render(request, 'promotions/quiniela_detail.html', {"post": search, "pk": pk, 'juego': juegos_names})
 
 
 def forgot_username(request):

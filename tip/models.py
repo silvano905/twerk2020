@@ -68,6 +68,19 @@ class LikeUserList(models.Model):
 
 class JornadaNum(models.Model):
     num = models.IntegerField(blank=True)
+    
+
+class JuegoJornada(models.Model):
+    jornada = models.IntegerField(default=4, blank=True)
+    p1 = models.CharField(max_length=40)
+    p2 = models.CharField(max_length=40)
+    p3 = models.CharField(max_length=40)
+    p4 = models.CharField(max_length=40)
+    p5 = models.CharField(max_length=40)
+    p6 = models.CharField(max_length=40)
+    p7 = models.CharField(max_length=40)
+    p8 = models.CharField(max_length=40)
+    p9 = models.CharField(max_length=40)
 
 
 class DownVoteUserList(models.Model):

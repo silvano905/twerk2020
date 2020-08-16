@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from .forms import MakePostForm, Getall
 from promotions.models import GamesModel
-from .models import MakeTip, LikeUserList, DownVoteUserList, JornadaNum
+from .models import MakeTip, LikeUserList, DownVoteUserList, JornadaNum, JuegoJornada
 # from comments.models import Comment
 from django.db.models import Q
 from accounts.models import PointsUserList, Profile
@@ -129,6 +129,7 @@ class UserTips(ListView, LoginRequiredMixin):
         no_more_editing = False
         jornada = JornadaNum.objects.all()
         jornada = jornada[0].num
+        juegos_names = JuegoJornada.objects.get(jornada=jornada)
         q = []
         if request.GET.get('q'):
             q = request.GET.get('q')
@@ -152,7 +153,9 @@ class UserTips(ListView, LoginRequiredMixin):
                 no_more_editing = True
             else:
                 no_more_editing = False
-        return render(request, self.template_name, {'post_list': quinielas_list, 'num': q, 'count': count_quinielas, 'no_more_editing': no_more_editing, 'jornada':jornada})
+        return render(request, self.template_name, {'post_list': quinielas_list, 'num': q,
+                                                    'count': count_quinielas, 'no_more_editing': no_more_editing,
+                                                    'jornada':jornada, 'juegos': juegos_names})
 
 
     def get_queryset(self):
@@ -205,6 +208,7 @@ def filter_list(request, value):
     jornada = JornadaNum.objects.all()
     jornada = jornada[0].num
     queryset = MakeTip.objects.filter(jornada=jornada)
+    juegos_names = JuegoJornada.objects.get(jornada=jornada)
 
     all_games_filter = []
 
@@ -212,12 +216,15 @@ def filter_list(request, value):
         if games.points == int(value):
             all_games_filter.append(games)
 
-    return render(request, 'tip/top_quinielas/nine.html', {'nine_list': all_games_filter, 'points': value})
+    return render(request, 'tip/top_quinielas/nine.html', {'nine_list': all_games_filter, 'points': value, 'juego': juegos_names})
 
 
 def tips_list_search(request):
     jornada = JornadaNum.objects.all()
     jornada = jornada[0].num
+
+    juegos_names = JuegoJornada.objects.get(jornada=jornada)
+
 
     x = datetime.datetime.now()
     date_now = x.day
@@ -255,7 +262,8 @@ def tips_list_search(request):
         "user_obj": user_obj,
         "post_list": queryset2,
         'date': now_date,
-        'jornada': jornada
+        'jornada': jornada,
+        'juegos': juegos_names
 
     }
     return render(request, 'tip/tip_list.html', context)
@@ -276,6 +284,7 @@ def index(request):
     jornada = JornadaNum.objects.all()
     jornada = jornada[0].num
     request_user = Juego.objects.filter(author=request.user, jornada=jornada)
+    juegos_names = JuegoJornada.objects.get(jornada=jornada)
 
     free_users = [14, 15, 17, 18, 19]
     try:
@@ -324,7 +333,8 @@ def index(request):
         "no_buying": no_more_buying,
         "repeated_list": final_repeated_list,
         'form': form,
-        'free': free_quiniela
+        'free': free_quiniela,
+        'juego': juegos_names
     }
     return render(request, 'tip/stripe/index.html', context)
 
@@ -387,6 +397,7 @@ def successMsg(request):
         return render(request, 'tip/stripe/success.html', {'amount': amount, "total_quinielas": quinielas})
     else:
         return redirect('tips:list')
+
 
 def site_map(request):
     return render(request, 'tip/sitemap.xml', content_type='text/xml')
