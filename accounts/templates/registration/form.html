@@ -15,6 +15,7 @@
 
         <p class="text-center">Por favor crea una cuenta</p>
 
+        <div id="alertmetwo" class="alert alert-danger" role="alert" style="display: none"></div>
         <div id="alertme" class="alert alert-danger" role="alert" style="display: none"></div>
         <div id="alertme_email" class="alert alert-warning" role="alert" style="display: none"></div>
         {% csrf_token %}
@@ -65,6 +66,8 @@
     {# for unsername #}
         const getInput = document.querySelector('.inputPassword');
         const alert_me = document.getElementById('alertme');
+        const alert_me_two = document.getElementById('alertmetwo');
+
         const all_users = [];
         {% for b in all_users_list %}
             all_users.push('{{ b }}');
@@ -74,7 +77,16 @@
         getInput.onfocusout = function() {
             let input_value = getInput.value;
             let boolean = all_users.includes(input_value);
-            if(boolean){
+            let check_space = /\s/.test(input_value)
+            if(check_space){
+                alert_me_two.textContent = "Junta tu nombre y apellido sin dejar espacio en el medio.";
+                alert_me_two.style.display = 'block';
+
+            }else {
+                alert_me_two.style.display = 'none';
+            }
+
+            if(boolean) {
                 alert_me.textContent = "Este nombre de usuario fue tomado por otro persona, elija otro nombre";
                 alert_me.style.display = 'block';
                 document.getElementById('submithide').disabled = true;
@@ -88,6 +100,8 @@
                 }
 
             }
+
+
         };
 
 
@@ -123,5 +137,6 @@
 
 
     </script>
+
 
 {% endblock %}
