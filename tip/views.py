@@ -255,6 +255,7 @@ def tips_list_search(request):
     # queryset = MakeTip.objects.order_by('-created_date')
     queryset = MakeTip.objects.filter(jornada=jornada).order_by('-created_date')
 
+    total_players = User.objects.all().count()
     paginator = Paginator(queryset, 15)
     page = request.GET.get('page')
     queryset2 = paginator.get_page(page)
@@ -265,7 +266,8 @@ def tips_list_search(request):
         "post_list": queryset2,
         'date': now_date,
         'jornada': jornada,
-        'juegos': juegos_names
+        'juegos': juegos_names,
+        'players': total_players
 
     }
     return render(request, 'tip/tip_list.html', context)
