@@ -11,9 +11,25 @@
     <div class="container">
         <div class="jumbotron">
 
-                    <div style="background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
-                        <h5 style="background-color: #002855; padding: 10px; border-radius: 10px; text-align: center">Necesitas crear una cuenta para comprar quinielas si no tienes una.</h5>
+            <div style="background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
+                <h5 style="background-color: #002855; padding: 10px; border-radius: 10px; text-align: center">Necesitas crear una cuenta para comprar quinielas si no tienes una.</h5>
+            </div>
+
+            <div style="text-align: center;background-color: #ffbd00; padding: 10px; border-radius: 10px;color: black; margin-bottom: 5px">
+                <h5>¿Necesitas ayuda para crear una cuenta nueva?</h5>
+                <button type="button" class="btn btn-success" onclick="myFunctiontwo()">Si</button>
+                <div id="helphide" style="display: none">
+                    <div style="background-color: #002855; padding: 10px; border-radius: 10px; text-align: center; margin: 5px">
+                        <h6 style="color: whitesmoke">Ver video en youtube</h6>
+                        <a href="https://youtu.be/e06ip-78lmI">Presione aquí para ver un video
+                        </a>
                     </div>
+                    <div style="background-color: #002855; padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 5px">
+                        <h6 style="color: whitesmoke">Envíanos un mensaje en facebook</h6>
+                        <a href="http://fb.me/quinielasligamxusa">Presione aquí para mandar mensaje en Facebook</a>
+                    </div>
+                </div>
+            </div>
 
     <form method="post" enctype="multipart/form-data">
 
@@ -57,6 +73,15 @@
 
 
     <script>
+
+        function myFunctiontwo() {
+      var x = document.getElementById("helphide");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
 
             function myFunction() {
           var x = document.getElementById("myInput");
