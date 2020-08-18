@@ -9,7 +9,7 @@
 
       <h1 class="display-5">Quinielas Liga MX</h1>
       <h2>Liga Mexicana Jornada {{ jornada }}</h2>
-      <h5>{{ date }}</h5>
+      <h5>Jornada {{ jornada }} empieza en Agosto 20, 2020</h5>
 
 
 
@@ -45,10 +45,10 @@
 
       </div>
 
-    <div style="text-align: center; margin-bottom: 5px">
+    <div style="text-align: center; margin-bottom: 10px">
         <button type="button" class="btn btn-light">
-  Jugadores <span class="badge badge-info">{{ players }}</span>
-</button>
+          Jugadores <span class="badge badge-info">{{ players }}</span>
+        </button>
     </div>
 
   </div>
@@ -60,6 +60,17 @@
         {% if user_obj %}
         {% else %}
             <div class="jumbotron" style="margin-top: 10px;">
+
+            <div style="background-color: #001845; padding: 10px; border-radius: 10px; color: whitesmoke; margin-bottom: 10px">
+                <h5 style="background-color: #002855; padding: 10px; border-radius: 10px; text-align: center">¿Tienes una pregunta?</h5>
+                <h5>Envíenos un mensaje a nuestro Facebook o un correo electrónico con su pregunta.</h5>
+                <a href="http://fb.me/quinielasligamxusa">@quinielasligamxusa
+                    <img src="https://chicagocarhelp.s3.us-east-2.amazonaws.com/facebook.png" alt="Jump Start Service Chicago IL" style="margin-right: 5px; width: 35px; height: auto">
+                </a>
+                <strong>quinielasligamxusa@gmail.com</strong>
+            </div>
+
+
                 <div style="text-align: center;background-color: #a8dadc; padding: 10px; border-radius: 10px;color: black;">
                     <h5>¿Necesitas ayuda para comprar quinielas?</h5>
                     <a href="https://youtu.be/5JalwD5b8ao">
