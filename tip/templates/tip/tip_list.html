@@ -35,6 +35,7 @@
                 {% else %}
                     <a href="{% url 'login'%}" class="btn btn-primary btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Entrar A Mi Cuenta</a>
                     <a href="{% url 'accounts:registration'%}" class="btn btn-success btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Crear Cuenta</a>
+
                 {% endif %}
 
 
@@ -42,7 +43,10 @@
 
 
         </div>
-
+        {% if user.is_authenticated %}
+        {% else %}
+          <a href="{% url 'accounts:registration'%}" class="btn btn-warning btn-lg" role="button" aria-pressed="true" style="margin-bottom: 5px">Comprar Quinielas</a>
+        {% endif %}
       </div>
 
     <div style="text-align: center; margin-bottom: 10px">

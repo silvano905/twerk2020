@@ -7,7 +7,7 @@ from django.forms import Textarea, TextInput
 
 class UserFormRegistration(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': "password1", "id": "myInput"}), max_length=40, label="contraseña")
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': "inputPassword", 'placeholder': 'Junta tu nombre sin dejar espacio en el medio'}), max_length=40, label="Nombre o apodo (ejemplo: luis9)")
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': "inputPassword", 'placeholder': 'Junta tu nombre sin dejar espacio en el medio'}), max_length=40, label="Primer nombre o apodo (ejemplo: luis9)")
     email = forms.CharField(widget=forms.TextInput(attrs={'class': "inputemail"}), max_length=60, label="Dirección de correo electrónico")
 
     class Meta:
